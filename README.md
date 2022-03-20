@@ -1,4 +1,4 @@
-# hello-world
+# ECloud Dashboard
 
 ## Project setup
 ```
