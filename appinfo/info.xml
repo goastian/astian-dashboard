@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>ecloud-dashboard</id>
+    <name>/e/ Cloud Dashboard</name>
+    <summary>/e/ Cloud Dashboard App</summary>
+    <description><![CDATA[/e/ Cloud Dashboard App]]></description>
+    <version>1.0.0</version>
+    <licence>ECORP SAS</licence>
+    <author mail="dev@e.email">ECORP SAS</author>
+    <namespace>eCloudDashboard</namespace>
+    <category>customization</category>
+    <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues/</bugs>
+    <dependencies>
+        <nextcloud min-version="19" max-version="21"/>
+    </dependencies>
+</info>
