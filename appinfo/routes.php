@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright (c) 2021 ECORP SAS <dev@e.email>
  *
- * @author Akhil Potukuchi <akhil@e.email>
+ * @author Ronak Patel <ronak@e.email>
  *
  * @license GNU AGPL version 3 or any later version
  *
