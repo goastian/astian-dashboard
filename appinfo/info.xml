@@ -1,16 +1,23 @@
 <?xml version="1.0"?>
-<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>ecloud-dashboard</id>
-    <name>/e/ Cloud Dashboard</name>
-    <summary>/e/ Cloud Dashboard App</summary>
-    <description><![CDATA[/e/ Cloud Dashboard App]]></description>
-    <version>1.0.0</version>
-    <licence>ECORP SAS</licence>
-    <author mail="dev@e.email">ECORP SAS</author>
-    <namespace>eCloudDashboard</namespace>
-    <category>customization</category>
-    <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues/</bugs>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>eclouddashboard</id>
+    <name>E Cloud Dashboard</name>
+    <summary>/e/ Cloud Dashboard</summary>
+    <description><![CDATA[/e/ Cloud Dashboard]]></description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="ronak@e.email" >Ronak Patel</author>
+    <namespace>ECloudDashboard</namespace>
+    <category>dashboard</category>
+    <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
     <dependencies>
-        <nextcloud min-version="19" max-version="21"/>
+        <nextcloud min-version="15" max-version="15"/>
     </dependencies>
+    <navigations>
+        <navigation>
+            <name>E Cloud Dashboard</name>
+            <route>eclouddashboard.page.index</route>
+        </navigation>
+    </navigations>
 </info>

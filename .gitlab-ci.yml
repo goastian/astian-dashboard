@@ -35,7 +35,7 @@ build-frontend:
     script:
         - npm run build
         - mkdir -p dist/ecloud-dashboard
-        - cp -a appinfo l10n lib dist/ecloud-dashboard
+        - cp -a appinfo l10n lib css img js  dist/ecloud-dashboard
     artifacts:
         paths:
             - dist/ecloud-dashboard
