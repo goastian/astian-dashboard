@@ -29,7 +29,6 @@ lint:
     stage: test
     script:
         - npm run lint
-        - npm run stylelint
 
 build-frontend:
     stage: build
