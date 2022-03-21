@@ -6,7 +6,7 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 
-class PageController extends Controller {
+class EdashboardController extends Controller {
 	private $userId;
 
 	public function __construct($AppName, IRequest $request, $UserId){
@@ -15,7 +15,7 @@ class PageController extends Controller {
 	}
 
 	/**
-	 * CAUTION: the @Stuff turns off security checks; for this page no admin is
+	 * CAUTION: the @Stuff turns off security checks; for this Edashboard no admin is
 	 *          required and no CSRF check. If you don't know what CSRF is, read
 	 *          it up in the docs or you might create a security hole. This is
 	 *          basically the only required method to add this exemption, don't
