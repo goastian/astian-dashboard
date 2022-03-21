@@ -1,0 +1,15 @@
+{
+    "name": "E Cloud Dashboard",
+    "description": "/e/ Cloud Dashboard",
+    "type": "project",
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "Ronak Patel"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    }
+}
