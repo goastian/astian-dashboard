@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
+		"build": "NODE_ENV=production webpack --progress --hide-modules --config webpack.js",
+		"dev": "NODE_ENV=development webpack --progress --config webpack.js",
+		"watch": "NODE_ENV=development webpack --progress --watch --config webpack.js",
+		"lint": "eslint --ext .vue src",
+		"lint:fix": "eslint --ext .vue src --fix",
+		"stylelint": "stylelint src",
+		"stylelint:fix": "stylelint src --fix"
+	},
   "dependencies": {
     "bootstrap": "^5.1.3",
     "bootstrap-vue": "^2.21.2",
@@ -14,6 +18,11 @@
     "vue": "^3.2.31"
   },
   "devDependencies": {
+    "@nextcloud/axios": "1.6.0",
+		"@nextcloud/dialogs": "^3.1.2",
+		"@nextcloud/l10n": "^1.4.1",
+		"@nextcloud/router": "^2.0.0",
+		"@nextcloud/vue": "^3.9.0",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
     "@vue/cli-plugin-babel": "~5.0.0",
@@ -37,9 +46,9 @@
     "rules": {}
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+		"extends @nextcloud/browserslist-config"
+	],
+  "engines": {
+		"node": ">=14.8.0"
+	}
 }
