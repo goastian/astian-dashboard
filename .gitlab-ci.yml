@@ -37,8 +37,9 @@ build-frontend:
         - npm run build
         - mkdir -p dist/ecloud-dashboard
         - rm dist/js/*.map
-        - cp -a appinfo css l10n lib templates src dist/js dist/ecloud-dashboard
+        - cp -a appinfo css l10n lib templates dist/js dist/ecloud-dashboard
         - cd dist/ && tar -czf ecloud-dashboard.tar.gz ecloud-dashboard
+
     artifacts:
         paths:
             - dist/ecloud-dashboard.tar.gz
