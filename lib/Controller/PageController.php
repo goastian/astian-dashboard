@@ -1,12 +1,12 @@
 <?php
-namespace OCA\ECloudDashboard\Controller;
+namespace OCA\Edashboard\Controller;
 
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 
-class EdashboardController extends Controller {
+class PageController extends Controller {
 	private $userId;
 
 	public function __construct($AppName, IRequest $request, $UserId){
@@ -15,7 +15,7 @@ class EdashboardController extends Controller {
 	}
 
 	/**
-	 * CAUTION: the @Stuff turns off security checks; for this Edashboard no admin is
+	 * CAUTION: the @Stuff turns off security checks; for this page no admin is
 	 *          required and no CSRF check. If you don't know what CSRF is, read
 	 *          it up in the docs or you might create a security hole. This is
 	 *          basically the only required method to add this exemption, don't
@@ -25,7 +25,7 @@ class EdashboardController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		return new TemplateResponse('eclouddashboard', 'index');  // templates/index.php
+		return new TemplateResponse('edashboard', 'index');  // templates/index.php
 	}
 
 }

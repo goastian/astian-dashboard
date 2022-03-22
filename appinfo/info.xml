@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>eclouddashboard</id>
-    <name>E Cloud Dashboard</name>
+    <id>edashboard</id>
+    <name>Edashboard</name>
     <summary>/e/ Cloud Dashboard</summary>
     <description><![CDATA[/e/ Cloud Dashboard]]></description>
     <version>0.0.1</version>
     <licence>agpl</licence>
     <author mail="ronak@e.email" >Ronak Patel</author>
-    <namespace>ECloudDashboard</namespace>
+    <namespace>Edashboard</namespace>
     <category>dashboard</category>
     <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
     <dependencies>
@@ -16,8 +16,8 @@
     </dependencies>
     <navigations>
         <navigation>
-            <name>E Cloud Dashboard</name>
-            <route>eclouddashboard.page.index</route>
+            <name>Edashboard</name>
+            <route>edashboard.page.index</route>
         </navigation>
     </navigations>
 </info>
