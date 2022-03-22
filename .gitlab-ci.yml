@@ -20,7 +20,8 @@ install-node-deps:
         - node --version
         - npm --version
     script:
-        - npm ci --cache .npm --prefer-offline
+        - npm set cache .npm
+        - npm ci
     only:
         changes:
             - package*.json
