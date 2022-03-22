@@ -1,1 +1,6 @@
+.php_cs.cache
 node_modules
+.idea
+.npm
+dist
+js
