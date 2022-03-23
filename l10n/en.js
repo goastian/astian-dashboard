@@ -1,5 +1,5 @@
 OC.L10N.register(
-    "email-recovery",
+    "edashboard",
     {
     "Recovery Email" : "Recovery Email",
     "Changes saved": "Changes saved",
