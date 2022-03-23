@@ -1,10 +1,8 @@
-const path = require('path')
-const { VueLoaderPlugin } = require('vue-loader')
-const StyleLintPlugin = require('stylelint-webpack-plugin')
+const path = require('path') 
 
 module.exports = {
     entry: {
-        'launcher': path.join(__dirname, 'src', 'launcher.js'),
+        'edashboard': path.join(__dirname, 'src', 'edashboard.js'),
     },
     output: {
         path: path.resolve(__dirname, './js'),
@@ -40,10 +38,7 @@ module.exports = {
                 },
             },
         ],
-    },
-    plugins: [
-        new VueLoaderPlugin(),
-    ],
+    }, 
     resolve: {
         extensions: ['*', '.js', '.vue'],
         symlinks: false,
