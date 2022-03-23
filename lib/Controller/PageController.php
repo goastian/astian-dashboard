@@ -25,7 +25,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		return new TemplateResponse('edashboard', 'index');  // templates/index.php
+		return new TemplateResponse('edashboard', 'ecloud-dashboard');  // templates/index.php
 	}
 
 }
