@@ -1,6 +1,6 @@
 <template> 
-  <AllApps msg="Here Apps will be shown"/>
-  <StorageLayout msg="Storage line here"/>
+  <AllApps />
+  <StorageLayout />
 </template>
 
 <script>
@@ -18,15 +18,19 @@ export default {
 
 <style>
 #app {
-  font-family: system-ui;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
-  width: 75%;
+  width: 70%;
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.welcome-label{
+  color: #333333;
+  font-size: 16px;
+  font-weight: 600;
 }
 </style>
