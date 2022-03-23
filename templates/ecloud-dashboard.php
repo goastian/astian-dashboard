@@ -1,5 +1,5 @@
 <?php
-script('edashboard', 'script');
-style('edashboard', 'style');
+script('edashboard', 'main');
+// style('edashboard', 'style');
 ?>
 <div id="app" class="container"></div>

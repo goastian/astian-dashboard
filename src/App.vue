@@ -1,5 +1,4 @@
 <template> 
-  <div class="welcome__label"><b>Welcome back Gael</b></div>
   <AllApps />
   <StorageLayout />
 </template>
