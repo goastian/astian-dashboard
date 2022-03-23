@@ -14,32 +14,32 @@
       </div>
 
      <div class="item">
+      <img width="60" height="60" src="../assets/email.png" />
+      <div class="item-label">Email</div>
+      <div class="item-sublabel">9 MB</div>
+    </div>
+
+     <div class="item">
       <img width="60" height="60" src="../assets/calendar.png" />
       <div class="item-label">Calendar</div>
-      <div class="item-sublabel">9 MB</div>
+      <div class="item-sublabel">144 MB</div>
     </div>
 
      <div class="item">
       <img width="60" height="60" src="../assets/photos.png" />
       <div class="item-label">Photos</div>
-      <div class="item-sublabel">144 MB</div>
-    </div>
-
-     <div class="item">
-      <img width="60" height="60" src="../assets/contacts.png" />
-      <div class="item-label">Contacts</div>
       <div class="item-sublabel">0.44 MB</div>
     </div>
 
      <div class="item">
-      <img width="60" height="60" src="../assets/notes.png" />
-      <div class="item-label">Notes</div>
+      <img width="60" height="60" src="../assets/tasks.png" />
+      <div class="item-label">Tasks</div>
       <div class="item-sublabel">18 MB</div>
     </div>
     
      <div class="item">
-      <img width="60" height="60" src="../assets/tasks.png" />
-      <div class="item-label">Tasks</div>
+      <img width="60" height="60" src="../assets/notes.png" />
+      <div class="item-label">Notes</div>
       <div class="item-sublabel">2.7 MB</div>
     </div>
     </div>
@@ -65,37 +65,43 @@
 
 
       <div class="item">
-        <img width="60" height="60" src="../assets/other.png" />
-        <div class="item-label">Activity</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/other.png" />
-        <div class="item-label">Carnet</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/other.png" />
-        <div class="item-label">Deck</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/other.png" />
+        <img width="60" height="60" src="../assets/Bookmarks.png" />
         <div class="item-label">Bookmarks</div>
         <div class="item-sublabel">2.7 MB</div>
       </div>
 
       <div class="item">
-        <img width="60" height="60" src="../assets/other.png" />
+        <img width="60" height="60" src="../assets/contacts.png" />
+        <div class="item-label">Contacts</div>
+        <div class="item-sublabel">2.7 MB</div>
+      </div>
+
+      <div class="item">
+        <img width="60" height="60" src="../assets/News.png" />
         <div class="item-label">News</div>
         <div class="item-sublabel">2.7 MB</div>
       </div>
 
       <div class="item">
-        <img width="60" height="60" src="../assets/other.png" />
+        <img width="60" height="60" src="../assets/Activity.png" />
+        <div class="item-label">Activity</div>
+        <div class="item-sublabel">2.7 MB</div>
+      </div>
+
+      <div class="item">
+        <img width="60" height="60" src="../assets/Carnet.png" />
+        <div class="item-label">Carnet</div>
+        <div class="item-sublabel">2.7 MB</div>
+      </div>
+
+      <div class="item">
+        <img width="60" height="60" src="../assets/Deck.png" />
+        <div class="item-label">Deck</div>
+        <div class="item-sublabel">2.7 MB</div>
+      </div>
+
+      <div class="item">
+        <img width="60" height="60" src="../assets/Gitlab.png" />
         <div class="item-label">Gitlab</div>
         <div class="item-sublabel">2.7 MB</div>
       </div>
