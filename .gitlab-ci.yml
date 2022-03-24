@@ -2,6 +2,7 @@ stages:
     - prepare
     - test
     - build
+    - deploy
 
 default:
     image: node:15.14.0-stretch
@@ -36,9 +37,79 @@ build-frontend:
     script:
         - npm run build
         - mkdir -p dist/ecloud-dashboard
-        - cp -a appinfo css l10n lib templates dist/css  dist/js dist/ecloud-dashboard
-        - cd dist/ && tar -czf ecloud-dashboard.tar.gz ecloud-dashboard
-
+        - cp -a appinfo css l10n lib templates js dist/ecloud-dashboard
     artifacts:
         paths:
-            - dist/ecloud-dashboard.tar.gz
+            - dist/ecloud-dashboard
+
+.deploy:ecloud-dashboard:
+    image: ubuntu:focal
+    stage: deploy
+    before_script:
+      - mkdir $HOME/.ssh
+      - chmod 700 ~/.ssh
+      - echo "$SSH_PRIVATE_KEY_ED" > $HOME/.ssh/id_ed25519
+      - echo "$SSH_PUBKEY_ED" > $HOME/.ssh/id_ed25519.pub
+      - echo "$SSH_KNOWN_HOSTS" > $HOME/.ssh/known_hosts
+      - chmod 600 ~/.ssh/id_ed25519
+      - chmod 644 ~/.ssh/known_hosts ~/.ssh/id_ed25519.pub
+      - apt-get update && apt-get install -y openssh-client
+    script:
+      - echo "Deploying to $CI_ENVIRONMENT_NAME ($DEPLOYMENT_HOST)"
+      - ssh $SSH_USER@$DEPLOYMENT_HOST "git clone --depth 1 $CI_REPOSITORY_URL --branch $DEPLOYMENT_BRANCH --single-branch /tmp/${CI_JOB_ID}/ecloud-dashboard && && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:disable ecloud-dashboard && sudo rsync -avzh --chown www-data:www-data --delete --exclude '.git*' /tmp/${CI_JOB_ID}/ecloud-dashboard ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable ecloud-dashboard"
+
+
+deploy:dev01:
+    extends: .deploy:ecloud-dashboard
+    only:
+      - master
+      - main
+      - production
+    environment:
+      name: dev/01
+      url: https://dev.eeo.one/
+    variables:
+      DEPLOYMENT_BRANCH: $CI_COMMIT_BRANCH
+      CONTAINER_NAME: dev01_nextcloud
+
+deploy:dev02:
+  extends: .deploy:ecloud-dashboard
+  when: manual
+  only:
+    - master
+    - main
+    - production
+  environment:
+    name: dev/02
+    url: https://ecloud02.dev.eeo.one
+  variables:
+    DEPLOYMENT_BRANCH: $CI_COMMIT_BRANCH
+    CONTAINER_NAME: dev02_nextcloud
+
+deploy:dev03:
+  extends: .deploy:ecloud-dashboard
+  when: manual
+  only:
+    - master
+    - main
+    - production
+  environment:
+    name: dev/03
+    url: https://ecloud03.dev.eeo.one
+  variables:
+    DEPLOYMENT_BRANCH: $CI_COMMIT_BRANCH
+    CONTAINER_NAME: dev03_nextcloud
+
+deploy:staging:
+  extends: .deploy:ecloud-dashboard
+  when: manual
+  only:
+    - master
+    - main
+    - production
+  environment:
+    name: staging/01
+    url: https://eeo.one
+  variables:
+    DEPLOYMENT_BRANCH: $CI_COMMIT_BRANCH
+    CONTAINER_NAME: nextcloud
