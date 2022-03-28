@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>edashboard</id>
+    <id>ecloud-dashboard</id>
     <name>Edashboard</name>
     <summary>/e/ Cloud Dashboard</summary>
     <description><![CDATA[/e/ Cloud Dashboard]]></description>
