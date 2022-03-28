@@ -5,14 +5,14 @@
     <name>Edashboard</name>
     <summary>/e/ Cloud Dashboard</summary>
     <description><![CDATA[/e/ Cloud Dashboard]]></description>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <licence>agpl</licence>
     <author mail="ronak@e.email" >Ronak Patel</author>
     <namespace>Edashboard</namespace>
     <category>dashboard</category>
     <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
     <dependencies>
-        <nextcloud min-version="18" max-version="21"/>
+        <nextcloud min-version="21" max-version="22"/>
     </dependencies>
     <navigations>
         <navigation>
