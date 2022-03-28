@@ -56,7 +56,7 @@ build-frontend:
       - apt-get update && apt-get install -y openssh-client
     script:
       - echo "Deploying to $CI_ENVIRONMENT_NAME ($DEPLOYMENT_HOST)"
-      - ssh $SSH_USER@$DEPLOYMENT_HOST "git clone --depth 1 $CI_REPOSITORY_URL --branch $DEPLOYMENT_BRANCH --single-branch /tmp/${CI_JOB_ID}/ecloud-dashboard && && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:disable ecloud-dashboard && sudo rsync -avzh --chown www-data:www-data --delete --exclude '.git*' /tmp/${CI_JOB_ID}/ecloud-dashboard ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable ecloud-dashboard"
+      - ssh $SSH_USER@$DEPLOYMENT_HOST "git clone --depth 1 $CI_REPOSITORY_URL --branch $DEPLOYMENT_BRANCH --single-branch /tmp/${CI_JOB_ID}/ecloud-dashboard && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:disable ecloud-dashboard && sudo rsync -avzh --chown www-data:www-data --delete --exclude '.git*' /tmp/${CI_JOB_ID}/ecloud-dashboard ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable ecloud-dashboard"
 
 
 deploy:dev01:
