@@ -26,10 +26,6 @@ import { generateUrl } from '@nextcloud/router';
 
 export default {
   name: 'AllApps',
-  components: {
-	},
-  props: {
-  },
   data () {
     return {
       isHidden: false,
@@ -53,10 +49,10 @@ export default {
 							entry.href
 						)
 						return entry;
-					}); 
-         	this.external = this.entries.slice(6);
-         	this.entries = this.entries.slice(0,6);
-				})
+					});
+          this.external = this.entries.slice(6);
+          this.entries = this.entries.slice(0,6);
+				});
 		},
     getUserinfo() {
 			axios
