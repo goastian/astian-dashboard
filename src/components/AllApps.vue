@@ -52,10 +52,10 @@ export default {
 						entry.active = window.location.pathname.includes(
 							entry.href
 						)
-						return entry
+						return entry;
 					}); 
-         	this.external = this.entries.slice(6)
-         	this.entries = this.entries.slice(0,6)
+         	this.external = this.entries.slice(6);
+         	this.entries = this.entries.slice(0,6);
           console.log('this.entries');
           console.log(this.entries);
 				})
@@ -108,10 +108,8 @@ export default {
   table-layout: fixed;
   width: 100%;
   box-sizing: border-box;
-  /* border-spacing: 10px; */
 }
 .item {
-    /* display: table-cell; */
   vertical-align: middle;
   text-align: center;
   width: 16.6666667%;
