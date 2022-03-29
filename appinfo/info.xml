@@ -2,22 +2,22 @@
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>ecloud-dashboard</id>
-    <name>Edashboard</name>
+    <name>ECloud dashboard</name>
     <summary>/e/ Cloud Dashboard</summary>
     <description><![CDATA[/e/ Cloud Dashboard]]></description>
-    <version>0.0.2</version>
-    <licence>ECORP SAS</licence>
-    <author mail="dev@e.email">ECORP SAS</author>
-    <namespace>Edashboard</namespace>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="ronak@e.email" >Ronak Patel</author>
+    <namespace>EcloudDashboard</namespace>
     <category>dashboard</category>
     <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
     <dependencies>
-        <nextcloud min-version="21" max-version="22"/>
+        <nextcloud min-version="18" max-version="21"/>
     </dependencies>
     <navigations>
         <navigation>
-            <name>Edashboard</name>
-            <route>edashboard.page.index</route>
+            <name>EcloudDashboard</name>
+            <route>ecloud-dashboard.page.index</route>
         </navigation>
     </navigations>
 </info>

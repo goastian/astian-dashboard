@@ -4,10 +4,11 @@
       <div class="row margintop10">
         <b class="storage">Storage</b>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: 64.7%;background-color: #CCE4FF;" aria-valuenow="64.7" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar"  v-for="quota in quotatoshowprogressbar" :key="quota.id" v-bind:style="quota.style">
+          </div>
         </div>
         <div class="upgrade__main_div">
-          <div class="usage-info">109.41 GB of  200 GB (54.7%) used</div>
+          <div class="usage-info">{{storageinfo.usedSpace}} of  {{storageinfo.totalSpace}} ({{totalspaceusedinpercentage}}%) used</div>
           <div class="upgrade-storage__div">
             <button>UPGRADE STORAGE</button>  
           </div>
@@ -15,48 +16,67 @@
       </div>
       <div  class="row margin0"> 
           <div class="col-lg-12  instructions">
-          <div class="row margin0">
-              <div class="col-lg-1 align-center"> <img width="25" height="25" src="../assets/redeem.png" alt="Storage Space"/> </div>
-              <div class="col-lg-10">
-                <div class="instructions__label">Get up to 40€ of credits for your cloud storage by inviting your friends!</div>
-                <div class="instructions__sublabel">For every friend who opens an account, you will both earn 2€ to be used for cloud storage on ecloud.</div>
-                <div class="urllink"><a href="#">INVITE YOUR FRIENDS</a></div>
-              </div>
-          </div>
-          </div>
-        
-        <!-- <div class="col-lg-4 padding0">
-          <div class="col-lg-12  instructions">
             <div class="row margin0">
-              <div class="col-lg-1"> <img width="15" height="15" src="../assets/mobile.png" alt="Backup"/> </div>
-              <div class="col-lg-10">
-                  Check the details about the backup of your Murena Phone.
-                <div class="urllink"><a href="#">Check backup</a></div>
-              </div>
+                <div class="col-lg-1 align-center"> <img width="25" height="25" src="../assets/redeem.png" alt="Storage Space"/> </div>
+                <div class="col-lg-10">
+                  <div class="instructions__label">Get up to 40€ of credits for your cloud storage by inviting your friends!</div>
+                  <div class="instructions__sublabel">For every friend who opens an account, you will both earn 2€ to be used for cloud storage on ecloud.</div>
+                  <div class="urllink"><a href="#">INVITE YOUR FRIENDS</a></div>
+                </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 padding0">
-          <div class="col-lg-12  instructions">
-            <div class="row margin0">
-              <div class="col-lg-1"> <img width="15" height="15" src="../assets/grow_up.png" alt="subscription"/> </div>
-              <div class="col-lg-10">
-                  Upgrade your subscription to get more storage
-                <div class="urllink"><a href="#">View subscription</a></div>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
 </template>
 
+
 <script>
+
+import axios from '@nextcloud/axios';
+import { generateUrl } from '@nextcloud/router'
+
 export default {
-  name: 'StorageLayout',
+  name: 'AllApps',
+  components: {
+	},
   props: {
-    msg: String
+  },
+  data () {
+    return {
+			storageinfo: [],
+      quotatoshowprogressbar : []
+    }
+  },
+  mounted() {
+		this.getStorageinfo()
+	},
+  methods: {
+    getStorageinfo() {
+			axios
+				.get(generateUrl('/apps/ecloud-dashboard/apps/getstorage'))
+				.then(response => {
+					this.storageinfo = response.data.storageinfo
+          
+          this.quotatoshowprogressbar = [
+          {'id' : '1', 'style': 'width:50%; background-color: rgb(204, 228, 255) !important'},
+          {'id' : '2', 'style': 'width:5%; background-color: rgb(255 204 246) !important'}
+          ];
+				})
+		}
+  },
+  computed: {
+    totalspaceusedinpercentage() {
+      let percent = (this.storageinfo.used * 100 ) / this.storageinfo.total
+      return percent.toFixed(2)
+    }
+    // ,quotaonprogressbar() {
+    //   let quotatoshowprogressbar = [
+    //     {'id' : '1', 'style': 'width:40%; background-color: rgb(204, 228, 255) !important'},
+    //     {'id' : '2', 'style': 'width:20%; background-color: rgb(255 204 246) !important'}
+    //     ];
+    //   return quotatoshowprogressbar
+    // }
   }
 }
 </script>

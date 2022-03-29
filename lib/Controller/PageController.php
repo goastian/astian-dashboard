@@ -1,5 +1,5 @@
 <?php
-namespace OCA\Edashboard\Controller;
+namespace OCA\EcloudDashboard\Controller;
 
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -25,6 +25,6 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		return new TemplateResponse('edashboard', 'ecloud-dashboard');  // templates/index.php
+		return new TemplateResponse('ecloud-dashboard', 'edashboard');  // templates/edashboard.php
 	}
 }

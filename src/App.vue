@@ -1,5 +1,4 @@
 <template> 
-  <div class="welcome__label"><b>Welcome back Gäel</b></div>
   <AllApps />
   <StorageLayout />
 </template>
@@ -18,9 +17,7 @@ export default {
 </script>
 
 <style>
-.welcome__label{    
-  margin-left: 2%;
-}
+
 #app {
     width: 70%;
     margin: 10% auto;
