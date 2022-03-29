@@ -4,7 +4,9 @@
       <div class="row margintop10">
         <b class="storage">Storage</b>
         <div class="progress">
-          <div class="progress-bar"  v-for="quota in quotatoshowprogressbar" :key="quota.id" v-bind:style="quota.style">
+          <div class="progress-bar" 
+          v-bind:style="{ width: totalspaceusedinpercentage + '%' }" 
+          style="background-color: rgb(204, 228, 255) !important ">
           </div>
         </div>
         <div class="upgrade__main_div">
@@ -57,11 +59,6 @@ export default {
 				.get(generateUrl('/apps/ecloud-dashboard/apps/getstorage'))
 				.then(response => {
 					this.storageinfo = response.data.storageinfo
-          
-          this.quotatoshowprogressbar = [
-          {'id' : '1', 'style': 'width:50%; background-color: rgb(204, 228, 255) !important'},
-          {'id' : '2', 'style': 'width:5%; background-color: rgb(255 204 246) !important'}
-          ];
 				})
 		}
   },
@@ -70,13 +67,6 @@ export default {
       let percent = (this.storageinfo.used * 100 ) / this.storageinfo.total
       return percent.toFixed(2)
     }
-    // ,quotaonprogressbar() {
-    //   let quotatoshowprogressbar = [
-    //     {'id' : '1', 'style': 'width:40%; background-color: rgb(204, 228, 255) !important'},
-    //     {'id' : '2', 'style': 'width:20%; background-color: rgb(255 204 246) !important'}
-    //     ];
-    //   return quotatoshowprogressbar
-    // }
   }
 }
 </script>
