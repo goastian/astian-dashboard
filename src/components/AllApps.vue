@@ -5,31 +5,24 @@
       <span v-if="!isHidden" class="toggle_apps show-all">SHOW ALL APPS</span>
       <span v-if="isHidden" class="toggle_apps show-less">SHOW LESS APPS</span>
     </div> 
-
-
     <div  class="app-container">  
       <div class="item"  v-for="entry in entries" :key="entry.message">
         <div class="color-icons" v-bind:class="entry.name"></div>
         <div class="item-label"> {{ entry.name }}</div>
       </div>
     </div> 
-
    <div  class="app-container" v-if="isHidden">         
       <div class="item"  v-for="entry in external" :key="entry.message">
         <div class="color-icons" v-bind:class="entry.name"></div>
         <div class="item-label"> {{ entry.name }}</div>
       </div>
    </div> 
-
 </div>
-
-
 </template>
 
 <script>
-
 import axios from '@nextcloud/axios';
-import { generateUrl } from '@nextcloud/router'
+import { generateUrl } from '@nextcloud/router';
 
 export default {
   name: 'AllApps',
