@@ -47,7 +47,7 @@ export default {
 			axios
 				.get(generateUrl('/apps/ecloud-dashboard/apps'))
 				.then(response => {
-					this.entries = response.data.apps
+					this.entries = response.data.apps;
 					this.entries = this.entries.map(entry => {
 						entry.active = window.location.pathname.includes(
 							entry.href
@@ -56,8 +56,6 @@ export default {
 					}); 
          	this.external = this.entries.slice(6);
          	this.entries = this.entries.slice(0,6);
-          console.log('this.entries');
-          console.log(this.entries);
 				})
 		},
     getUserinfo() {
