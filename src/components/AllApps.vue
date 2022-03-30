@@ -1,5 +1,5 @@
 <template>
-  <div id="ecloud-dashboard">  
+  <div class="new-icons">  
     <div class="welcome__label"><b>Welcome back {{userinfo.name}}</b></div>
     <div v-on:click="isHidden = !isHidden">
       <span v-if="!isHidden" class="toggle_apps show-all">SHOW ALL APPS</span>
