@@ -1,6 +1,6 @@
 <template>
   <div class="new-icons">  
-    <div class="welcome__label"><b>Welcome back {{userinfo.name}}</b></div>
+    <div class="welcome__label"><b>Welcome back {{ownerDisplayName}}</b></div>
     <div v-on:click="isHidden = !isHidden">
       <span v-if="!isHidden" class="toggle_apps show-all">SHOW ALL APPS</span>
       <span v-if="isHidden" class="toggle_apps show-less">SHOW LESS APPS</span>
@@ -30,37 +30,37 @@ export default {
     return {
       isHidden: false,
       entries: [],
-			external: [],
-      userinfo: []
+      external: [],
+      ownerDisplayName: ''
     }
   },
   mounted() {
-		this.getEntries(),
-		this.getUserinfo()
-	},
+    this.getEntries(),
+    this.getUserinfo()
+  },
   methods: {
     getEntries() {
-			axios
-				.get(generateUrl('/apps/ecloud-dashboard/apps'))
-				.then(response => {
-					this.entries = response.data.apps;
-					this.entries = this.entries.map(entry => {
-						entry.active = window.location.pathname.includes(
-							entry.href
-						)
-						return entry;
-					});
+      axios
+        .get(generateUrl('/apps/ecloud-dashboard/apps'))
+        .then(response => {
+          this.entries = response.data.apps;
+          this.entries = this.entries.map(entry => {
+            entry.active = window.location.pathname.includes(
+              entry.href
+            )
+            return entry;
+          });
           this.external = this.entries.slice(6);
           this.entries = this.entries.slice(0,6);
-				});
-		},
+        });
+    },
     getUserinfo() {
-			axios
-				.get(generateUrl('/apps/ecloud-dashboard/apps/getuserinfo'))
-				.then(response => {
-					this.userinfo = response.data.userinfo
-				})
-		}
+      axios
+        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
+        .then(response => {
+          this.ownerDisplayName = response.data.data.ownerDisplayName
+      })
+    }
   }
 }
 </script>
