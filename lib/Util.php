@@ -42,7 +42,7 @@ class Util
 
     public function getOrder()
     {
-        $order_raw = $this->config->getUserValue($this->userId, $this->appName, 'order');
+        $order_raw = $this->config->getUserValue($this->userId, 'ecloud-launcher', 'order');
         // If order raw empty try to get from 'apporder' app config
         $order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
         // If order raw is still empty, return empty array
