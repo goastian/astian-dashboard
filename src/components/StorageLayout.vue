@@ -69,10 +69,10 @@ export default {
       return percent.toFixed(2)
     },
     usageinfo(){
-        var humanUsed = \OC.Util.humanFileSize(this.storageinfo.used, true);
+        var humanUsed = OC.Util.humanFileSize(this.storageinfo.used, true);
         var percent = (this.storageinfo.used * 100 ) / this.storageinfo.quota
         if (this.storageinfo.quota > 0) {
-          var humanQuota = \OC.Util.humanFileSize(this.storageinfo.quota, true);
+          var humanQuota = OC.Util.humanFileSize(this.storageinfo.quota, true);
           return humanUsed+' of '+humanQuota+ '('+percent+'%)' + ' used';
         }else{
           return humanUsed+' used';
