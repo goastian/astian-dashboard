@@ -16,7 +16,7 @@
     </dependencies>
     <navigations>
         <navigation>
-            <name>EcloudDashboard</name>
+            <name>Ecloud Dashboard</name>
             <route>ecloud-dashboard.page.index</route>
         </navigation>
     </navigations>

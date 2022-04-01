@@ -6,8 +6,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './js'),
         publicPath: '/js',
-        filename: '[name].js?v=[hash]',
-        chunkFilename: 'chunks/[name]-[hash].js', 
+        filename: 'edashboard_[name].js?v=[hash]',
+        chunkFilename: 'chunks/edashboard_[name]-[hash].js', 
     },
     module: {
       rules: [

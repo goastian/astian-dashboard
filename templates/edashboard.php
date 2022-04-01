@@ -1,5 +1,5 @@
 <?php
-script('ecloud-dashboard', 'main');
-style('ecloud-dashboard', 'style');
+script('ecloud-dashboard', 'edashboard_main');
+// style('ecloud-dashboard', 'edashboard_style');
 ?>
 <div id="app" class="container"></div>
