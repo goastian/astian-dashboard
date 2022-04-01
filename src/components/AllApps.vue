@@ -1,6 +1,6 @@
 <template>
   <div class="new-icons">  
-    <div class="welcome__label"><b>Welcome back {{ownerDisplayName}}</b></div>
+    <div class="welcome__label"><b>Welcome back {{userinfo.ownerDisplayName}}</b></div>
     <div v-on:click="isHidden = !isHidden">
       <span v-if="!isHidden" class="toggle_apps show-all">SHOW ALL APPS</span>
       <span v-if="isHidden" class="toggle_apps show-less">SHOW LESS APPS</span>
@@ -31,7 +31,7 @@ export default {
       isHidden: false,
       entries: [],
       external: [],
-      ownerDisplayName: ''
+      userinfo: []
     }
   },
   mounted() {
@@ -43,6 +43,8 @@ export default {
       axios
         .get(generateUrl('/apps/ecloud-dashboard/apps'))
         .then(response => {
+          console.log('response.data');
+          console.log(response.data);
           this.entries = response.data.apps;
           this.entries = this.entries.map(entry => {
             entry.active = window.location.pathname.includes(
@@ -56,10 +58,11 @@ export default {
     },
     getUserinfo() {
       axios
-        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
+        .get(generateUrl('/apps/ecloud-dashboard/apps/getstorage'))
         .then(response => {
-          this.ownerDisplayName = response.data.data.ownerDisplayName
-      })
+          this.userinfo = response.data.storageinfo
+        })
+        
     }
   }
 }

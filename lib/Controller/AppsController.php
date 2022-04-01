@@ -52,7 +52,7 @@ class AppsController extends Controller
         $response = new JSONResponse();
         $storageInfo = $this->util->getStorageinfo();
         $userDisplayName = \OC_User::getDisplayName();
-        $response->setData(array('userDisplayName' => $userDisplayName, 'storageinfo' => $storageInfo['storageInfo'] ));
+        $response->setData(array('userDisplayName' => $userDisplayName, 'storageinfo' => $storageInfo ));
         return $response;
     }
 

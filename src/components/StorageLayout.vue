@@ -5,12 +5,12 @@
         <b class="storage">Storage</b>
         <div class="progress">
           <div class="progress-bar" 
-          v-bind:style="{ width: totalspaceusedinpercentage + '%' }" 
+          v-bind:style="{ width: percent + '%' }" 
           style="background-color: rgb(204, 228, 255) !important ">
           </div>
         </div>
         <div class="upgrade__main_div">
-          <div class="usage-info">{{usageinfo}}</div>
+          <div class="usage-info">{{storageinfo.quota_used}}</div>
           <div class="upgrade-storage__div">
             <button>UPGRADE STORAGE</button>  
           </div>
@@ -51,39 +51,18 @@ export default {
     }
   },
   mounted() {
-    // this.getStorageinfo(),
-    this.getDetails()
+    this.getStorageinfo()
   },
   methods: {
-    getDetails() {
+    getStorageinfo() {
       axios
-        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
+        .get(generateUrl('/apps/ecloud-dashboard/apps/getstorage'))
         .then(response => {
-          this.storageinfo = response.data.data
+          this.storageinfo = response.data.storageinfo
         })
     }
   },
-  computed: {
-    totalspaceusedinpercentage() {
-      let percent = (this.storageinfo.used * 100 ) / this.storageinfo.quota
-      return percent.toFixed(2)
-    },
-    usageinfo(){
-        try {
-          var humanUsed = OC.Util.humanFileSize(this.storageinfo.used, true);
-          var percent = (this.storageinfo.used * 100 ) / this.storageinfo.quota
-          if (this.storageinfo.quota > 0) {
-            var humanQuota = OC.Util.humanFileSize(this.storageinfo.quota, true);
-            return humanUsed+' of '+humanQuota+ '('+percent+'%)' + ' used';
-          }else{
-            return humanUsed+' used';
-          }
-        }
-        catch(err) {
-          return err.message;
-        }     
-    }
-  }
+  computed: {}
 }
 </script>
 

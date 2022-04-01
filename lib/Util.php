@@ -8,6 +8,8 @@ use OCP\App\IAppManager;
 use OCP\L10N\IFactory;
 use OCP\Files\IRootFolder;
 use OCP\Files\Folder;
+use OC_Util as OCUtil;
+use OC_Helper as OCHelper;
 
 class Util
 {
@@ -39,7 +41,6 @@ class Util
         $this->root = $root;
     }
 
-
     public function getOrder()
     {
         $order_raw = $this->config->getUserValue($this->userId, 'ecloud-launcher', 'order');
@@ -62,6 +63,14 @@ class Util
         foreach ($entries as &$entry) {
             $entriesByHref[$entry["href"]] = $entry;
         }
+
+        foreach ($entries as &$entry) {
+            $iconName = basename($entry["icon"]);
+            $iconName = preg_split('/.svg/', $iconName)[0] .'-new';
+            $entry["icon"] = "/svg/" . $entry["id"] . "/" . $iconName;
+            $entry["iconOffsetY"] = 0;
+            $entriesByHref[$entry["href"]] = $entry;
+        }
         /*
          Sort apps according to order
          Since "entriesByHref" is indexed by "href", simply reverse the order array and prepend in "entriesByHref"
@@ -76,28 +85,64 @@ class Util
                 }
             }
         }
-       $apps =array_values($entriesByHref);      
-        return array("apps" => $apps );
+       $entries = array_values($entriesByHref);      
+       return array( 'apps' => $entries);
     }
 
+
+    public function humanFileSize($bytes) {
+        if ($bytes < 0) {
+            return "?";
+        }
+        if ($bytes < 1024) {
+            return "$bytes B";
+        }
+        $bytes = round($bytes / 1024, 0);
+        if ($bytes < 1024) {
+            return "$bytes KB";
+        }
+        $bytes = round($bytes / 1024, 1);
+        if ($bytes < 1024) {
+            return "$bytes MB";
+        }
+        $bytes = round($bytes / 1024, 1);
+        if ($bytes < 1024) {
+            return "$bytes GB";
+        }
+        $bytes = round($bytes / 1024, 1);
+        if ($bytes < 1024) {
+            return "$bytes TB";
+        }
+
+        $bytes = round($bytes / 1024, 1);
+        return "$bytes PB";
+    }
     public function getStorageinfo()
     {
-        // $storageInfo = \OC_Helper::getStorageInfo('/');
         $usedMailQuota = $this->config->getUserValue($this->userId, $this->appName, 'usedMailQuota', 200000000);
-        // $usedMailQuota = $this->config->getUserValue($this->userSession->getUser()->getUID(), 'ecloud-core', 'usedMailQuota', 200000000);
-        \OC_Util::setupFS();
-		$dirInfo = \OC\Files\Filesystem::getFileInfo('/', false);
-		$storageInfo =  \OC_Helper::getStorageInfo('/', $dirInfo);
+        OCUtil::setupFS();
+        $storageInfo = OCHelper::getStorageInfo('/');
 
-        // $storageInfo = \OC_Helper::getStorageInfo('/');
-		$totalSpace = \OC_Helper::humanFileSize($storageInfo['total']);
-		$freeSpace = \OC_Helper::humanFileSize($storageInfo['free']);
-		$usedSpace = \OC_Helper::humanFileSize($storageInfo['used']);
-		$usedMailQuota = \OC_Helper::humanFileSize($usedMailQuota);
-        $storageInfo['totalSpace'] = $totalSpace;
-        $storageInfo['freeSpace'] = $freeSpace;
-        $storageInfo['usedSpace'] = $usedSpace;
-        $storageInfo['usedMailQuota'] = $usedMailQuota;
-        return array('storageInfo' => $storageInfo);
+        $humanUsed = $this->humanFileSize($storageInfo['used']);
+
+        if ($storageInfo['quota'] > 0) {
+            $percent = ($storageInfo['used'] * 100 ) / $storageInfo['quota'];
+            $humanQuota = $this->humanFileSize($storageInfo['quota']);
+            $quota_used = $humanUsed.' of '.$humanQuota. '('.$percent.'%)' . ' used';
+        }else{
+            $percent = 0;
+            $quota_used = $humanUsed.' used';
+        }
+
+        return [
+            'freeSpace' => $storageInfo['free'],
+            'quota' => $storageInfo['quota'],
+            'used' => $storageInfo['used'],
+            'owner' => $storageInfo['owner'],
+            'quota_used' => $quota_used,
+            'percent' => $percent,
+            'ownerDisplayName' => $storageInfo['ownerDisplayName']
+        ];
     }
+
 }
