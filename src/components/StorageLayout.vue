@@ -86,6 +86,7 @@ export default {
 
           
           var percent = (this.storageinfo.used * 100 ) / this.storageinfo.quota;
+          percent = percent.toFixed(2);
           if (this.storageinfo.quota > 0) {
             return humanReadableUsed+' of '+humanReadableQuota+ '('+percent+'%)' + ' used';
           }else{
