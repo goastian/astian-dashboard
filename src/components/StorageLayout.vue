@@ -20,7 +20,7 @@
           <div class="col-lg-12  instructions">
             <div class="row margin0">
                 <div class="storage-space_div col-lg-1 align-center"> <img width="25" height="25" src="../assets/redeem.png" alt="Storage Space"/> </div>
-                <div class="storage-space_div col-lg-10">
+                <div class="storage-space_div width90">
                   <div class="instructions__label">Get up to 40€ of credits for your cloud storage by inviting your friends!</div>
                   <div class="instructions__sublabel">For every friend who opens an account, you will both earn 2€ to be used for cloud storage on ecloud.</div>
                   <div class="urllink"><a href="#">INVITE YOUR FRIENDS</a></div>
@@ -223,5 +223,8 @@ a {
 .storage-space_div{
   float: left;
   padding: 10px;
+}
+.width90{
+  width: 90%;
 }
 </style>

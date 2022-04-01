@@ -36,15 +36,13 @@ export default {
   },
   mounted() {
     this.getEntries(),
-    this.getUserinfo()
+    this.getDetails()
   },
   methods: {
     getEntries() {
       axios
         .get(generateUrl('/apps/ecloud-dashboard/apps'))
         .then(response => {
-          console.log('response.data');
-          console.log(response.data);
           this.entries = response.data.apps;
           this.entries = this.entries.map(entry => {
             entry.active = window.location.pathname.includes(
@@ -56,13 +54,12 @@ export default {
           this.entries = this.entries.slice(0,6);
         });
     },
-    getUserinfo() {
+    getDetails() {
       axios
-        .get(generateUrl('/apps/ecloud-dashboard/apps/getstorage'))
+        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
         .then(response => {
-          this.userinfo = response.data.storageinfo
+          this.userinfo = response.data.data
         })
-        
     }
   }
 }
@@ -74,6 +71,7 @@ export default {
   margin-left: 2%;
 }
 .toggle_apps{
+  font-family: 'Roboto', sans-serif;
   float: right;
   font-size: 10px;
   color: #0086FF;
