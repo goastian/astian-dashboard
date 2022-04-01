@@ -70,22 +70,26 @@ export default {
     },
     usageinfo(){
         try {
-          // var humanUsed = OC.Util.humanFileSize(this.storageinfo.used, true);
-          // var percent = (this.storageinfo.used * 100 ) / this.storageinfo.quota
-          // if (this.storageinfo.quota > 0) {
-          //   var humanQuota = OC.Util.humanFileSize(this.storageinfo.quota, true);
-          //   return humanUsed+' of '+humanQuota+ '('+percent+'%)' + ' used';
-          // }else{
-          //   return humanUsed+' used';
-          // }
+          const decimals = 2;
+          const k = 1024;
+          const dm = decimals < 0 ? 0 : decimals;
+          const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
 
           var humanUsed = this.storageinfo.used;
+          var humanQuota = this.storageinfo.quota;
+
+          const i = Math.floor(Math.log(humanUsed) / Math.log(k));
+          var humanReadableUsed = (parseFloat((humanUsed / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]);
+
+          const j = Math.floor(Math.log(humanQuota) / Math.log(k));
+          var humanReadableQuota = (parseFloat((humanQuota / Math.pow(k, j)).toFixed(dm)) + ' ' + sizes[j]);
+
+          
           var percent = (this.storageinfo.used * 100 ) / this.storageinfo.quota;
           if (this.storageinfo.quota > 0) {
-            var humanQuota = this.storageinfo.quota;
-            return humanUsed+' of '+humanQuota+ '('+percent+'%)' + ' used';
+            return humanReadableUsed+' of '+humanReadableQuota+ '('+percent+'%)' + ' used';
           }else{
-            return humanUsed+' used';
+            return humanReadableUsed+' used';
           }
         }
         catch(err) {
