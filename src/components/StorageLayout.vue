@@ -12,7 +12,9 @@
         <div class="upgrade__main_div">
           <div class="usage-info">{{usageinfo}}</div>
           <div class="upgrade-storage__div">
-            <button>UPGRADE STORAGE</button>  
+            <a v-bind:href="redirecturl" id="upgrad-btn" >
+              UPGRADE STORAGE
+            </a>  
           </div>
         </div>
       </div>
@@ -23,7 +25,7 @@
                 <div class="storage-space_div width90">
                   <div class="instructions__label">Get up to 40€ of credits for your cloud storage by inviting your friends!</div>
                   <div class="instructions__sublabel">For every friend who opens an account, you will both earn 2€ to be used for cloud storage on ecloud.</div>
-                  <div class="urllink"><a href="#">INVITE YOUR FRIENDS</a></div>
+                  <div class="urllink"><a href="https://doc.e.foundation/support-topics/referral-program">INVITE YOUR FRIENDS</a></div>
                 </div>
             </div>
           </div>
@@ -47,11 +49,13 @@ export default {
   data () {
     return {
       storageinfo: [],
-      quotatoshowprogressbar : []
+      quotatoshowprogressbar : [],
+      groups : [],
+      redirecturl : ''
     }
   },
   mounted() {
-    // this.getStorageinfo(),
+    this.getGroups(),
     this.getDetails()
   },
   methods: {
@@ -60,6 +64,19 @@ export default {
         .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
         .then(response => {
           this.storageinfo = response.data.data
+        })
+    },
+    getGroups() {
+      axios
+        .get(generateUrl('/apps/ecloud-dashboard/apps/groups'))
+        .then(response => {
+          this.groups = response.data.groups;
+          this.redirecturl = 'https://doc.e.foundation/support-topics/referral-program';
+        
+          if(this.groups.includes("Premium") || this.groups.includes("premium") ){
+              this.redirecturl = response.data.link + '/my-account/referral_coupons/'
+          }
+          
         })
     }
   },
@@ -171,7 +188,7 @@ a {
   color: #949DA1;
   float: left;
 }
-.upgrade-storage__div button{
+.upgrade-storage__div #upgrad-btn{
   float: right;
   background: #0086FF;
   padding: 5px 15px;

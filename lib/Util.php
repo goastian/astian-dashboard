@@ -10,6 +10,10 @@ use OCP\Files\IRootFolder;
 use OCP\Files\Folder;
 use OC_Util as OCUtil;
 use OC_Helper as OCHelper;
+use OCP\IUser;
+use OCP\IUserManager;
+use OCP\IGroup;
+use OCP\IGroupManager;
 
 class Util
 {
@@ -21,6 +25,11 @@ class Util
     private $appManager;
     private $l10nFac;
     private $root;
+    /** @var IGroupManager */
+    private $groupManager;
+
+    /** @var IUserManager */
+    private $userManager;
 
     private const DEFAULT_ORDER = array("/apps/files/", "/apps/rainloop/", "/apps/contacts/", "/apps/calendar/", "/apps/notes/", "/apps/tasks/", "/apps/photos/");
     public function __construct(
@@ -30,6 +39,8 @@ class Util
         IAppManager $appManager,
         IFactory $l10nFac,
         IRootFolder $root,
+        IGroupManager $groupManager,
+        IUserManager $userManager,
         $userId
     ) {
         $this->appName = $appName;
@@ -39,6 +50,8 @@ class Util
         $this->appManager = $appManager;
         $this->l10nFac = $l10nFac;
         $this->root = $root;
+        $this->groupManager = $groupManager;
+        $this->userManager = $userManager;
     }
 
     public function getOrder()
@@ -85,37 +98,15 @@ class Util
                 }
             }
         }
-       $entries = array_values($entriesByHref);      
-       return array( 'apps' => $entries);
+       $entries = array_values($entriesByHref);
+       return array( 'apps' => $entries  );
     }
-
-
-    public function humanFileSize($bytes) {
-        if ($bytes < 0) {
-            return "?";
-        }
-        if ($bytes < 1024) {
-            return "$bytes B";
-        }
-        $bytes = round($bytes / 1024, 0);
-        if ($bytes < 1024) {
-            return "$bytes KB";
-        }
-        $bytes = round($bytes / 1024, 1);
-        if ($bytes < 1024) {
-            return "$bytes MB";
-        }
-        $bytes = round($bytes / 1024, 1);
-        if ($bytes < 1024) {
-            return "$bytes GB";
-        }
-        $bytes = round($bytes / 1024, 1);
-        if ($bytes < 1024) {
-            return "$bytes TB";
-        }
-
-        $bytes = round($bytes / 1024, 1);
-        return "$bytes PB";
+    public function groups() {
+        $link = $this->config->getAppValue(
+            'increasestoragebutton',
+            'link'
+          );
+       return array( 'groups' => $this->getGroups() , 'link' => $link  );
     }
     public function getStorageinfo()
     {
@@ -123,11 +114,11 @@ class Util
         OCUtil::setupFS();
         $storageInfo = OCHelper::getStorageInfo('/');
 
-        $humanUsed = $this->humanFileSize($storageInfo['used']);
+        $humanUsed = OC_Helper::getHumanFileSize($storageInfo['used']);
 
         if ($storageInfo['quota'] > 0) {
             $percent = ($storageInfo['used'] * 100 ) / $storageInfo['quota'];
-            $humanQuota = $this->humanFileSize($storageInfo['quota']);
+            $humanQuota = OC_Helper::getHumanFileSize($storageInfo['quota']);
             $quota_used = $humanUsed.' of '.$humanQuota. '('.$percent.'%)' . ' used';
         }else{
             $percent = 0;
@@ -144,5 +135,25 @@ class Util
             'ownerDisplayName' => $storageInfo['ownerDisplayName']
         ];
     }
+
+    /**
+     * returns a sorted list of the user's group GIDs
+     *
+     * @param IUser $user
+     * @return array
+     */
+    private function getGroups(): array {
+        $uid = \OC_User::getUser();
+        $user = $this->userManager->get($uid);
+        $groups = array_map(
+            static function (IGroup $group) {
+                return $group->getDisplayName();
+            },
+            $this->groupManager->getUserGroups($user)
+        );
+        sort($groups);
+
+        return $groups;
+    } 
 
 }

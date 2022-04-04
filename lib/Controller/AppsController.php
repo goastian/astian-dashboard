@@ -41,6 +41,17 @@ class AppsController extends Controller
         $response->setData($entries);
         return $response;
     }
+    /**
+     * @NoAdminRequired
+     * @return JSONResponse
+     */
+    public function groups()
+    {
+        $response = new JSONResponse();
+        $entries = $this->util->groups();
+        $response->setData($entries);
+        return $response;
+    }
 
     /**
      *  @NoAdminRequired
