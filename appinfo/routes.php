@@ -13,6 +13,6 @@ return [
        ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
        ['name' => 'apps#getuserinfo', 'url' => '/apps/getuserinfo', 'verb' => 'GET'],
        ['name' => 'apps#getstorage', 'url' => '/apps/getstorage', 'verb' => 'GET'],
-       
+       ['name' => 'apps#groups', 'url' => '/apps/groups', 'verb' => 'GET']       
     ]
 ];
