@@ -8,12 +8,11 @@ use OCP\App\IAppManager;
 use OCP\L10N\IFactory;
 use OCP\Files\IRootFolder;
 use OCP\Files\Folder;
-use OC_Util as OCUtil;
-use OC_Helper as OCHelper;
 use OCP\IUser;
 use OCP\IUserManager;
 use OCP\IGroup;
 use OCP\IGroupManager;
+use OCP\IUserSession;
 
 class Util
 {
@@ -23,7 +22,6 @@ class Util
     private $config;
     private $navigationManager;
     private $appManager;
-    private $l10nFac;
     private $root;
     /** @var IGroupManager */
     private $groupManager;
@@ -31,27 +29,24 @@ class Util
     /** @var IUserManager */
     private $userManager;
 
+    /** @var IUserSession */
+    private $userSession;
+
     private const DEFAULT_ORDER = array("/apps/files/", "/apps/rainloop/", "/apps/contacts/", "/apps/calendar/", "/apps/notes/", "/apps/tasks/", "/apps/photos/");
     public function __construct(
-        $appName,
         IConfig $config,
         INavigationManager $navigationManager,
-        IAppManager $appManager,
-        IFactory $l10nFac,
-        IRootFolder $root,
         IGroupManager $groupManager,
         IUserManager $userManager,
+        IUserSession $userSession,
         $userId
     ) {
-        $this->appName = $appName;
         $this->userId = $userId;
         $this->config = $config;
         $this->navigationManager = $navigationManager;
-        $this->appManager = $appManager;
-        $this->l10nFac = $l10nFac;
-        $this->root = $root;
         $this->groupManager = $groupManager;
         $this->userManager = $userManager;
+        $this->userSession = $userSession;
     }
 
     public function getOrder()
@@ -99,41 +94,15 @@ class Util
             }
         }
        $entries = array_values($entriesByHref);
+       
        return array( 'apps' => $entries  );
     }
-    public function groups() {
+    public function getGroupInfo() {
         $link = $this->config->getAppValue(
             'increasestoragebutton',
             'link'
           );
        return array( 'groups' => $this->getGroups() , 'link' => $link  );
-    }
-    public function getStorageinfo()
-    {
-        $usedMailQuota = $this->config->getUserValue($this->userId, $this->appName, 'usedMailQuota', 200000000);
-        OCUtil::setupFS();
-        $storageInfo = OCHelper::getStorageInfo('/');
-
-        $humanUsed = OC_Helper::getHumanFileSize($storageInfo['used']);
-
-        if ($storageInfo['quota'] > 0) {
-            $percent = ($storageInfo['used'] * 100 ) / $storageInfo['quota'];
-            $humanQuota = OC_Helper::getHumanFileSize($storageInfo['quota']);
-            $quota_used = $humanUsed.' of '.$humanQuota. '('.$percent.'%)' . ' used';
-        }else{
-            $percent = 0;
-            $quota_used = $humanUsed.' used';
-        }
-
-        return [
-            'freeSpace' => $storageInfo['free'],
-            'quota' => $storageInfo['quota'],
-            'used' => $storageInfo['used'],
-            'owner' => $storageInfo['owner'],
-            'quota_used' => $quota_used,
-            'percent' => $percent,
-            'ownerDisplayName' => $storageInfo['ownerDisplayName']
-        ];
     }
 
     /**
@@ -143,17 +112,11 @@ class Util
      * @return array
      */
     private function getGroups(): array {
-        $uid = \OC_User::getUser();
-        $user = $this->userManager->get($uid);
-        $groups = array_map(
-            static function (IGroup $group) {
-                return $group->getDisplayName();
-            },
-            $this->groupManager->getUserGroups($user)
-        );
-        sort($groups);
-
-        return $groups;
+        $user = $this->userSession->getUser();
+        if (!$user) {
+            return [];
+        }
+        return $this->groupManager->getUserGroupIds($user);
     } 
 
 }

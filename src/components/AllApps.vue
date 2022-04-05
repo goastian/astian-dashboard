@@ -1,9 +1,9 @@
 <template>
   <div class="new-icons">  
-    <div class="welcome__label"><b>Welcome back {{userinfo.ownerDisplayName}}</b></div>
+    <div class="welcome__label"><b>{{WelcomeBack}} {{userInfo.ownerDisplayName}}</b></div>
     <div v-on:click="isHidden = !isHidden">
-      <span v-if="!isHidden" class="toggle_apps show-all">SHOW ALL APPS</span>
-      <span v-if="isHidden" class="toggle_apps show-less">SHOW LESS APPS</span>
+      <span v-if="!isHidden" class="toggle_apps show-all">{{showAllApps}}</span>
+      <span v-if="isHidden" class="toggle_apps show-less">{{showLessApps}}</span>
     </div> 
     <div  class="app-container">  
       <a class="item"  v-for="entry in entries" :key="entry.message" :href="entry.href">
@@ -31,7 +31,10 @@ export default {
       isHidden: false,
       entries: [],
       external: [],
-      userinfo: []
+      userInfo: [],
+      showAllApps : OC.L10N.translate("ecloud-dashboard", "Show All Apps"),
+      showLessApps : OC.L10N.translate("ecloud-dashboard", "Show Less Apps"),
+      WelcomeBack : OC.L10N.translate("ecloud-dashboard", "Welcome back")
     }
   },
   mounted() {
@@ -58,7 +61,7 @@ export default {
       axios
         .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
         .then(response => {
-          this.userinfo = response.data.data
+          this.userInfo = response.data.data
         })
     }
   }
@@ -82,6 +85,7 @@ export default {
   margin-bottom: 20px;
   background-size: 10px;
   cursor: pointer;
+  text-transform: uppercase;
 }
 .show-all{
   background-image: url('../assets/down.png');

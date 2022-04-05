@@ -24,16 +24,6 @@ class AppsController extends Controller
      * @NoAdminRequired
      * @return JSONResponse
      */
-    public function getOrder()
-    {
-        $response = new JSONResponse();
-        $response->setData(array("order" => $this->util->getOrder()));
-        return $response;
-    }
-    /**
-     * @NoAdminRequired
-     * @return JSONResponse
-     */
     public function index()
     {
         $response = new JSONResponse();
@@ -45,42 +35,23 @@ class AppsController extends Controller
      * @NoAdminRequired
      * @return JSONResponse
      */
-    public function groups()
+    public function getGroups()
     {
         $response = new JSONResponse();
-        $entries = $this->util->groups();
+        $entries = $this->util->getGroupInfo();
         $response->setData($entries);
         return $response;
     }
-
     /**
      *  @NoAdminRequired
      * @return JSONResponse
      */
-
-    public function getstorage()
-    {
-        $response = new JSONResponse();
-        $storageInfo = $this->util->getStorageinfo();
-        $userDisplayName = \OC_User::getDisplayName();
-        $response->setData(array('userDisplayName' => $userDisplayName, 'storageinfo' => $storageInfo ));
-        return $response;
-    }
-
-    public function getuserinfo()
+    public function getUserInfo()
     {
         $response = new JSONResponse();
         $userDisplayName = \OC_User::getDisplayName();
         $userdata = array('name' => $userDisplayName);
         $response->setData(array('userinfo' => $userdata ));
         return $response;
-    }
-    /**
-     * @NoAdminRequired
-     */
-
-    public function updateOrder(string $order)
-    {
-        $this->util->updateOrder($order);
     }
 }

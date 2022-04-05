@@ -11,8 +11,8 @@ return [
     'routes' => [
        ['name' => 'apps#index', 'url' => '/apps', 'verb' => 'GET'],
        ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-       ['name' => 'apps#getuserinfo', 'url' => '/apps/getuserinfo', 'verb' => 'GET'],
-       ['name' => 'apps#getstorage', 'url' => '/apps/getstorage', 'verb' => 'GET'],
-       ['name' => 'apps#groups', 'url' => '/apps/groups', 'verb' => 'GET']       
+       ['name' => 'apps#getUserInfo', 'url' => '/apps/get-userinfo', 'verb' => 'GET'],
+       ['name' => 'apps#getStorageInfo', 'url' => '/apps/get-storageinfo', 'verb' => 'GET'],
+       ['name' => 'apps#getGroups', 'url' => '/apps/get-groups', 'verb' => 'GET']       
     ]
 ];
