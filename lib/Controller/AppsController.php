@@ -42,16 +42,4 @@ class AppsController extends Controller
         $response->setData($entries);
         return $response;
     }
-    /**
-     *  @NoAdminRequired
-     * @return JSONResponse
-     */
-    public function getUserInfo()
-    {
-        $response = new JSONResponse();
-        $userDisplayName = \OC_User::getDisplayName();
-        $userdata = array('name' => $userDisplayName);
-        $response->setData(array('userinfo' => $userdata ));
-        return $response;
-    }
 }
