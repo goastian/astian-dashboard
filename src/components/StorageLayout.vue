@@ -70,7 +70,7 @@ export default {
     },
     getGroups() {
       axios
-        .get(generateUrl('/apps/ecloud-dashboard/apps/get-groups'))
+        .get('apps/get-groups')
         .then(response => {
           this.groups = response.data.groups;
           this.redirectURL = 'https://doc.e.foundation/support-topics/referral-program';

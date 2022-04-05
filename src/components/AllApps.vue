@@ -44,7 +44,7 @@ export default {
   methods: {
     getEntries() {
       axios
-        .get(generateUrl('/apps/ecloud-dashboard/apps'))
+        .get('apps')
         .then(response => {
           this.entries = response.data.apps;
           this.entries = this.entries.map(entry => {
