@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "NODE_ENV=production webpack --progress --config webpack.config.js",
-    "lint": "vue-cli-service lint"
+    "lint": "eslint --ext .vue src",
+    "lint:fix": "eslint --ext .vue src --fix"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
