@@ -34,46 +34,46 @@ import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 
 export default {
-  name: 'AllApps',
-  data() {
-    return {
-      isHidden: false,
-      entries: [],
-      external: [],
-      userInfo: [],
-      showAllApps: OC.L10N.translate('ecloud-dashboard', 'Show All Apps'),
-      showLessApps: OC.L10N.translate('ecloud-dashboard', 'Show Less Apps'),
-      WelcomeBack: OC.L10N.translate('ecloud-dashboard', 'Welcome back'),
-    }
-  },
-mounted() {
-    this.getEntries()
-    this.getDetails()
-  },
-  methods: {
-    getEntries() {
-      axios
-        .get('apps')
-        .then(response => {
-          this.entries = response.data.apps
-          this.entries = this.entries.map(entry => {
-            entry.active = window.location.pathname.includes(
-              entry.href
-            )
-            return entry
-          })
-          this.external = this.entries.slice(6)
-          this.entries = this.entries.slice(0, 6)
-        })
-    },
-    getDetails() {
-      axios
-        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
-        .then(response => {
-          this.userInfo = response.data.data
-        })
-    },
-  },
+	name: 'AllApps',
+	data() {
+		return {
+			isHidden: false,
+			entries: [],
+			external: [],
+			userInfo: [],
+			showAllApps: OC.L10N.translate('ecloud-dashboard', 'Show All Apps'),
+			showLessApps: OC.L10N.translate('ecloud-dashboard', 'Show Less Apps'),
+			WelcomeBack: OC.L10N.translate('ecloud-dashboard', 'Welcome back'),
+		}
+	},
+	mounted() {
+		this.getEntries()
+		this.getDetails()
+	},
+	methods: {
+		getEntries() {
+			axios
+				.get('apps')
+				.then(response => {
+					this.entries = response.data.apps
+					this.entries = this.entries.map(entry => {
+						entry.active = window.location.pathname.includes(
+							entry.href
+						)
+						return entry
+					})
+					this.external = this.entries.slice(6)
+					this.entries = this.entries.slice(0, 6)
+				})
+		},
+		getDetails() {
+			axios
+				.get(generateUrl('/apps/files/ajax/getstoragestats.php'))
+				.then(response => {
+					this.userInfo = response.data.data
+				})
+		},
+	},
 }
 </script>
 

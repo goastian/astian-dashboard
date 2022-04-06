@@ -46,80 +46,80 @@ import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 
 export default {
-  name: 'StorageLayout',
-  components: {
-  },
-  data() {
-    return {
-      storageInfo: [],
-      groups: [],
-      redirectURL: '',
+	name: 'StorageLayout',
+	components: {
+	},
+	data() {
+		return {
+			storageInfo: [],
+			groups: [],
+			redirectURL: '',
 	  storageLink: '',
-      storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
-      upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
-      getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
-      openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
-      inviteYourFriends: OC.L10N.translate('ecloud-dashboard', 'Invite Your Friends'),
-    }
-  },
-  computed: {
-    totalSpaceUsedInPercentage() {
-      const percent = (this.storageInfo.used * 100) / this.storageInfo.quota
-      return percent.toFixed(2)
-    },
-    usageinfo() {
-        try {
-          const decimals = 2
-          const k = 1024
-          const dm = decimals < 0 ? 0 : decimals
-          const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
+			upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
+			getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
+			openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
+			inviteYourFriends: OC.L10N.translate('ecloud-dashboard', 'Invite Your Friends'),
+		}
+	},
+	computed: {
+		totalSpaceUsedInPercentage() {
+			const percent = (this.storageInfo.used * 100) / this.storageInfo.quota
+			return percent.toFixed(2)
+		},
+		usageinfo() {
+			try {
+				const decimals = 2
+				const k = 1024
+				const dm = decimals < 0 ? 0 : decimals
+				const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
 
-          const humanUsed = this.storageInfo.used
-          const humanQuota = this.storageInfo.quota
+				const humanUsed = this.storageInfo.used
+				const humanQuota = this.storageInfo.quota
 
-          const i = Math.floor(Math.log(humanUsed) / Math.log(k))
-          const humanReadableUsed = (parseFloat((humanUsed / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i])
+				const i = Math.floor(Math.log(humanUsed) / Math.log(k))
+				const humanReadableUsed = (parseFloat((humanUsed / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i])
 
-          const j = Math.floor(Math.log(humanQuota) / Math.log(k))
-          const humanReadableQuota = (parseFloat((humanQuota / Math.pow(k, j)).toFixed(dm)) + ' ' + sizes[j])
+				const j = Math.floor(Math.log(humanQuota) / Math.log(k))
+				const humanReadableQuota = (parseFloat((humanQuota / Math.pow(k, j)).toFixed(dm)) + ' ' + sizes[j])
 
-          let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
-          percent = percent.toFixed(2)
-          if (this.storageInfo.quota > 0) {
-            return humanReadableUsed + ' of ' + humanReadableQuota + '(' + percent + '%)' + ' used'
-          } else {
-            return humanReadableUsed + ' used'
-          }
-        } catch (err) {
-          return err.message
-        }
-    },
-  },
-  mounted() {
-    this.getGroups()
-    this.getDetails()
-  },
-  methods: {
-    getDetails() {
-      axios
-        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
-        .then(response => {
-          this.storageInfo = response.data.data
-        })
-    },
-    getGroups() {
-      axios
-        .get('apps/get-groups')
-        .then(response => {
-          this.groups = response.data.groups
-          this.storageLink = response.data.storageLink
+				let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
+				percent = percent.toFixed(2)
+				if (this.storageInfo.quota > 0) {
+					return humanReadableUsed + ' of ' + humanReadableQuota + '(' + percent + '%)' + ' used'
+				} else {
+					return humanReadableUsed + ' used'
+				}
+			} catch (err) {
+				return err.message
+			}
+		},
+	},
+	mounted() {
+		this.getGroups()
+		this.getDetails()
+	},
+	methods: {
+		getDetails() {
+			axios
+				.get(generateUrl('/apps/files/ajax/getstoragestats.php'))
+				.then(response => {
+					this.storageInfo = response.data.data
+				})
+		},
+		getGroups() {
+			axios
+				.get('apps/get-groups')
+				.then(response => {
+					this.groups = response.data.groups
+					this.storageLink = response.data.storageLink
 		  this.redirectURL = 'https://doc.e.foundation/support-topics/referral-program'
-          if (this.groups.includes('Premium') || this.groups.includes('premium')) {
-              this.redirectURL = response.data.link + '/my-account/referral_coupons/'
-          }
-        })
-    },
-  },
+					if (this.groups.includes('Premium') || this.groups.includes('premium')) {
+						this.redirectURL = response.data.link + '/my-account/referral_coupons/'
+					}
+				})
+		},
+	},
 }
 </script>
 

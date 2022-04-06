@@ -3,13 +3,13 @@ const { VueLoaderPlugin } = require('vue-loader')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
-	entry: path.join(__dirname, 'src', 'main.js'),
-	output: {
-		path: path.resolve(__dirname, './js'),
-		publicPath: '/js',
+	entry: './src/main.js',
+    output: {
+        path: path.resolve(__dirname, './js'),
+        publicPath: '/js',
         filename: 'edashboard_[name].js?v=[hash]',
-        chunkFilename: 'chunks/edashboard_[name]-[hash].js'
-	},
+        chunkFilename: 'chunks/edashboard_[name]-[hash].js', 
+    },
 	module: {
 		rules: [
 			{
