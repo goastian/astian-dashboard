@@ -93,30 +93,23 @@ class Util
                 }
             }
         }
+	   unset($entriesByHref['/apps/dashboard/']);
+	   unset($entriesByHref['/apps/ecloud-dashboard/']);
        $entries = array_values($entriesByHref);
        
        return array( 'apps' => $entries  );
     }
-    public function getGroupInfo() {
-        $link = $this->config->getAppValue(
-            'increasestoragebutton',
-            'link'
-          );
-       return array( 'groups' => $this->getGroups() , 'link' => $link  );
-    }
-
     /**
      * returns a sorted list of the user's group GIDs
      *
      * @param IUser $user
      * @return array
      */
-    private function getGroups(): array {
+    public function getGroups(): array {
         $user = $this->userSession->getUser();
         if (!$user) {
             return [];
         }
         return $this->groupManager->getUserGroupIds($user);
-    } 
-
+    }
 }

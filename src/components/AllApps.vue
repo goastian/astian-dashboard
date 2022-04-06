@@ -1,44 +1,53 @@
 <template>
-  <div class="new-icons">  
-    <div class="welcome__label"><b>{{WelcomeBack}} {{userInfo.ownerDisplayName}}</b></div>
-    <div v-on:click="isHidden = !isHidden">
-      <span v-if="!isHidden" class="toggle_apps show-all">{{showAllApps}}</span>
-      <span v-if="isHidden" class="toggle_apps show-less">{{showLessApps}}</span>
-    </div> 
-    <div  class="app-container">  
-      <a class="item"  v-for="entry in entries" :key="entry.message" :href="entry.href">
-        <div class="color-icons" v-bind:class="entry.name"></div>
-        <div class="item-label"> {{ entry.name }}</div>
-      </a>
-    </div> 
-   <div  class="app-container" v-if="isHidden">         
-      <a class="item"  v-for="entry in external" :key="entry.message" :href="entry.href">
-        <div class="color-icons" v-bind:class="entry.name"></div>
-        <div class="item-label"> {{ entry.name }}</div>
-      </a>
-   </div> 
-</div>
+	<div class="new-icons">
+		<div class="welcome__label">
+			<b>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</b>
+		</div>
+		<div @click="isHidden = !isHidden">
+			<span v-if="!isHidden" class="toggle_apps show-all">{{ showAllApps }}</span>
+			<span v-if="isHidden" class="toggle_apps show-less">{{ showLessApps }}</span>
+		</div>
+		<div class="app-container">
+			<a v-for="entry in entries"
+				:key="entry.message"
+				class="item"
+				:href="entry.href">
+				<div class="color-icons" :class="entry.name" />
+				<div class="item-label"> {{ entry.name }}</div>
+			</a>
+		</div>
+		<div v-if="isHidden" class="app-container">
+			<a v-for="entry in external"
+				:key="entry.message"
+				class="item"
+				:href="entry.href">
+				<div class="color-icons" :class="entry.name" />
+				<div class="item-label"> {{ entry.name }}</div>
+			</a>
+		</div>
+	</div>
 </template>
 
 <script>
-import axios from '@nextcloud/axios';
-import { generateUrl } from '@nextcloud/router';
+
+import axios from '@nextcloud/axios'
+import { generateUrl } from '@nextcloud/router'
 
 export default {
   name: 'AllApps',
-  data () {
+  data() {
     return {
       isHidden: false,
       entries: [],
       external: [],
       userInfo: [],
-      showAllApps : OC.L10N.translate("ecloud-dashboard", "Show All Apps"),
-      showLessApps : OC.L10N.translate("ecloud-dashboard", "Show Less Apps"),
-      WelcomeBack : OC.L10N.translate("ecloud-dashboard", "Welcome back")
+      showAllApps: OC.L10N.translate('ecloud-dashboard', 'Show All Apps'),
+      showLessApps: OC.L10N.translate('ecloud-dashboard', 'Show Less Apps'),
+      WelcomeBack: OC.L10N.translate('ecloud-dashboard', 'Welcome back'),
     }
   },
-  mounted() {
-    this.getEntries(),
+mounted() {
+    this.getEntries()
     this.getDetails()
   },
   methods: {
@@ -46,16 +55,16 @@ export default {
       axios
         .get('apps')
         .then(response => {
-          this.entries = response.data.apps;
+          this.entries = response.data.apps
           this.entries = this.entries.map(entry => {
             entry.active = window.location.pathname.includes(
               entry.href
             )
-            return entry;
-          });
-          this.external = this.entries.slice(6);
-          this.entries = this.entries.slice(0,6);
-        });
+            return entry
+          })
+          this.external = this.entries.slice(6)
+          this.entries = this.entries.slice(0, 6)
+        })
     },
     getDetails() {
       axios
@@ -63,14 +72,14 @@ export default {
         .then(response => {
           this.userInfo = response.data.data
         })
-    }
-  }
+    },
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.welcome__label{    
+.welcome__label{
   margin-left: 2%;
 }
 .toggle_apps{

@@ -1,63 +1,102 @@
 <template>
-  <div class="row margin0">
-    <div class="row margin0">
-      <div class="row margintop10">
-        <b class="storage">{{storage}}</b>
-        <div class="progress">
-          <div class="progress-bar" 
-          v-bind:style="{ width: totalSpaceUsedInPercentage + '%' }" 
-          style="background-color: rgb(204, 228, 255) !important ">
-          </div>
-        </div>
-        <div class="upgrade__main_div">
-          <div class="usage-info">{{usageinfo}}</div>
-          <div class="upgrade-storage__div">
-            <a v-bind:href="redirectURL" id="upgrad-btn" >
-              {{upgradeStorage}}
-            </a>  
-          </div>
-        </div>
-      </div>
-      <div  class="row margin0"> 
-          <div class="col-lg-12  instructions">
-            <div class="row margin0">
-                <div class="storage-space-div col-lg-1 align-center"> <img width="25" height="25" src="../assets/redeem.png" alt="Storage Space"/> </div>
-                <div class="storage-space-div width90">
-                  <div class="instructions__label">{{getCredits}}</div>
-                  <div class="instructions__sublabel">{{openAnAccount}}</div>
-                  <div class="urllink"><a href="https://doc.e.foundation/support-topics/referral-program">{{inviteYourFriends}}</a></div>
-                </div>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
+	<div class="row margin0">
+		<div class="row margin0">
+			<div class="row margintop10">
+				<b class="storage">{{ storage }}</b>
+				<div class="progress">
+					<div class="progress-bar"
+						:style="{ width: totalSpaceUsedInPercentage + '%' }"
+						style="background-color: rgb(204, 228, 255) !important " />
+				</div>
+				<div class="upgrade__main_div">
+					<div class="usage-info">
+						{{ usageinfo }}
+					</div>
+					<div class="upgrade-storage__div">
+						<a id="upgrad-btn" :href="storageLink">
+							{{ upgradeStorage }}
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row margin0">
+				<div class="col-lg-12  instructions">
+					<div class="row margin0">
+						<div id="storage-redeem" class="storage-space-div width90">
+							<div class="instructions__label">
+								{{ getCredits }}
+							</div>
+							<div class="instructions__sublabel">
+								{{ openAnAccount }}
+							</div>
+							<div class="urllink">
+								<a href="https://doc.e.foundation/support-topics/referral-program">{{ inviteYourFriends }}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
-
 
 <script>
 
-import axios from '@nextcloud/axios';
+import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 
 export default {
   name: 'StorageLayout',
   components: {
   },
-  data () {
+  data() {
     return {
       storageInfo: [],
-      groups : [],
-      redirectURL : '',
-      storage : OC.L10N.translate("ecloud-dashboard", "Storage"),
-      upgradeStorage : OC.L10N.translate("ecloud-dashboard", "Upgrade Storage"),
-      getCredits : OC.L10N.translate("ecloud-dashboard", "getCredits"),
-      openAnAccount : OC.L10N.translate("ecloud-dashboard", "openAnAccount"), 
-      inviteYourFriends : OC.L10N.translate("ecloud-dashboard", "Invite Your Friends")
+      groups: [],
+      redirectURL: '',
+	  storageLink: '',
+      storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
+      upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
+      getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
+      openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
+      inviteYourFriends: OC.L10N.translate('ecloud-dashboard', 'Invite Your Friends'),
     }
   },
+  computed: {
+    totalSpaceUsedInPercentage() {
+      const percent = (this.storageInfo.used * 100) / this.storageInfo.quota
+      return percent.toFixed(2)
+    },
+    usageinfo() {
+        try {
+          const decimals = 2
+          const k = 1024
+          const dm = decimals < 0 ? 0 : decimals
+          const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+          const humanUsed = this.storageInfo.used
+          const humanQuota = this.storageInfo.quota
+
+          const i = Math.floor(Math.log(humanUsed) / Math.log(k))
+          const humanReadableUsed = (parseFloat((humanUsed / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i])
+
+          const j = Math.floor(Math.log(humanQuota) / Math.log(k))
+          const humanReadableQuota = (parseFloat((humanQuota / Math.pow(k, j)).toFixed(dm)) + ' ' + sizes[j])
+
+          let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
+          percent = percent.toFixed(2)
+          if (this.storageInfo.quota > 0) {
+            return humanReadableUsed + ' of ' + humanReadableQuota + '(' + percent + '%)' + ' used'
+          } else {
+            return humanReadableUsed + ' used'
+          }
+        } catch (err) {
+          return err.message
+        }
+    },
+  },
   mounted() {
-    this.getGroups(),
+    this.getGroups()
     this.getDetails()
   },
   methods: {
@@ -72,53 +111,17 @@ export default {
       axios
         .get('apps/get-groups')
         .then(response => {
-          this.groups = response.data.groups;
-          this.redirectURL = 'https://doc.e.foundation/support-topics/referral-program';
-        
-          if(this.groups.includes("Premium") || this.groups.includes("premium") ){
+          this.groups = response.data.groups
+          this.storageLink = response.data.storageLink
+		  this.redirectURL = 'https://doc.e.foundation/support-topics/referral-program'
+          if (this.groups.includes('Premium') || this.groups.includes('premium')) {
               this.redirectURL = response.data.link + '/my-account/referral_coupons/'
           }
-          
         })
-    }
-  },
-  computed: {
-    totalSpaceUsedInPercentage() {
-      let percent = (this.storageInfo.used * 100 ) / this.storageInfo.quota
-      return percent.toFixed(2)
     },
-    usageinfo(){
-        try {
-          const decimals = 2;
-          const k = 1024;
-          const dm = decimals < 0 ? 0 : decimals;
-          const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-          var humanUsed = this.storageInfo.used;
-          var humanQuota = this.storageInfo.quota;
-
-          const i = Math.floor(Math.log(humanUsed) / Math.log(k));
-          var humanReadableUsed = (parseFloat((humanUsed / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]);
-
-          const j = Math.floor(Math.log(humanQuota) / Math.log(k));
-          var humanReadableQuota = (parseFloat((humanQuota / Math.pow(k, j)).toFixed(dm)) + ' ' + sizes[j]);
-
-          var percent = (this.storageInfo.used * 100 ) / this.storageInfo.quota;
-          percent = percent.toFixed(2);
-          if (this.storageInfo.quota > 0) {
-            return humanReadableUsed+' of '+humanReadableQuota+ '('+percent+'%)' + ' used';
-          }else{
-            return humanReadableUsed+' used';
-          }
-        }
-        catch(err) {
-          return err.message;
-        }     
-    }
-  }
+  },
 }
 </script>
-
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -135,7 +138,7 @@ li {
 }
 a {
   color: #42b983;
-} 
+}
 .instructions{
   display: inline-block;
   border: 1px solid;
@@ -182,7 +185,7 @@ a {
 }
 .storage{
   font-size: 16px;
-  font-weight: 600;    
+  font-weight: 600;
   margin-bottom: 10px;
 }
 .usage-info{
@@ -243,9 +246,14 @@ a {
 }
 .storage-space-div{
   float: left;
-  padding: 10px;
 }
 .width90{
   width: 90%;
+}
+#storage-redeem{
+	background-image: url('../assets/redeem.png');
+	background-repeat: no-repeat;
+    background-position: 5% 5%;
+    padding-left: 10%;
 }
 </style>

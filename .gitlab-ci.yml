@@ -1,5 +1,6 @@
 stages:
     - prepare
+    - test
     - build
     - deploy
 
@@ -25,6 +26,11 @@ install-node-deps:
     only:
         changes:
             - package*.json
+
+lint:
+    stage: test
+    script:
+        - npm run lint
 
 build-frontend:
     stage: build
