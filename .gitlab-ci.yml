@@ -38,7 +38,7 @@ build-frontend:
         - npm run lint -- --fix
         - npm run build
         - mkdir -p dist/$CI_PROJECT_NAME
-        - cp -a appinfo css img l10n lib templates js dist/$CI_PROJECT_NAME
+        - cp -a appinfo css l10n lib templates js dist/$CI_PROJECT_NAME
     artifacts:
         paths:
             - dist/
