@@ -77,6 +77,7 @@ class Util
             $iconName = preg_split('/.svg/', $iconName)[0] .'-new';
             $entry["icon"] = "/svg/" . $entry["id"] . "/" . $iconName;
             $entry["iconOffsetY"] = 0;
+            $entry["className"] = ucfirst($entry["id"]);
             $entriesByHref[$entry["href"]] = $entry;
         }
         /*

@@ -12,7 +12,7 @@
 				:key="entry.message"
 				class="item"
 				:href="entry.href">
-				<div class="color-icons" :class="entry.name" />
+				<div class="color-icons" :class="entry.className" />
 				<div class="item-label"> {{ entry.name }}</div>
 			</a>
 		</div>
@@ -21,7 +21,7 @@
 				:key="entry.message"
 				class="item"
 				:href="entry.href">
-				<div class="color-icons" :class="entry.name" />
+				<div class="color-icons" :class="entry.className" />
 				<div class="item-label"> {{ entry.name }}</div>
 			</a>
 		</div>
