@@ -68,20 +68,10 @@ export default {
 		},
 		usageinfo() {
 			try {
-				const decimals = 2
-				const k = 1024
-				const dm = decimals < 0 ? 0 : decimals
-				const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-
 				const humanUsed = this.storageInfo.used
 				const humanQuota = this.storageInfo.quota
-
-				const i = Math.floor(Math.log(humanUsed) / Math.log(k))
-				const humanReadableUsed = (parseFloat((humanUsed / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i])
-
-				const j = Math.floor(Math.log(humanQuota) / Math.log(k))
-				const humanReadableQuota = (parseFloat((humanQuota / Math.pow(k, j)).toFixed(dm)) + ' ' + sizes[j])
-
+				const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
+				const humanReadableQuota = OC.Util.humanFileSize(humanQuota)
 				let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
 				percent = percent.toFixed(2)
 				if (this.storageInfo.quota > 0) {
