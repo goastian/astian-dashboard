@@ -52,11 +52,25 @@ class AppsController extends Controller
      * @NoAdminRequired
      * @return JSONResponse
      */
-    public function getGroups()
+    public function getRedirections()
     {
         $response = new JSONResponse();
-		$entries = array( 'groups' =>$this->util->getGroups() );     
+        
+        //getting Group data
+        $groupData = $this->util->getGroups();   
+
+		//getting redirection links
 		$redirectData = $this->getRedirectLink();
+
+		$redirectURL = 'https://doc.e.foundation/support-topics/referral-program'; //default
+
+		if (in_array("Premium", $groupData) || in_array("premium", $groupData))
+		{
+		  	$redirectURL =  str_replace('/ecloud-subscriptions', '', $redirectData['link']) . '/my-account/referral_coupons/';
+		}
+		
+		$entries = array( 'redirectURL' => $redirectURL );  
+
         return  $response->setData(array_merge( $redirectData, $entries));;
     }
 	public function getRedirectLink()

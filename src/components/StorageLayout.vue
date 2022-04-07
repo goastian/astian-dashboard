@@ -52,7 +52,6 @@ export default {
 	data() {
 		return {
 			storageInfo: [],
-			groups: [],
 			redirectURL: '',
 	  storageLink: '',
 			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
@@ -96,7 +95,7 @@ export default {
 		},
 	},
 	mounted() {
-		this.getGroups()
+		this.getRedirections()
 		this.getDetails()
 	},
 	methods: {
@@ -107,16 +106,12 @@ export default {
 					this.storageInfo = response.data.data
 				})
 		},
-		getGroups() {
+		getRedirections() {
 			axios
-				.get('apps/get-groups')
+				.get('apps/get-redirections')
 				.then(response => {
-					this.groups = response.data.groups
 					this.storageLink = response.data.storageLink
-		  		this.redirectURL = 'https://doc.e.foundation/support-topics/referral-program'
-					if (this.groups.includes('Premium') || this.groups.includes('premium')) {
-						this.redirectURL = response.data.link + '/my-account/referral_coupons/'
-					}
+					this.redirectURL = response.data.redirectURL
 				})
 		},
 	},
