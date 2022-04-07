@@ -132,7 +132,7 @@ a {
   border-radius: 5px;
   padding: 20px 5px;
   font-size: 12px;
-  margin-top: 2%;
+  margin-top: 20px;
 }
 .instructions__label{
   font-size: 12px;
@@ -238,7 +238,22 @@ a {
 #storage-redeem{
 	background-image: url('../assets/redeem.svg');
 	background-repeat: no-repeat;
-    background-position: 5% 5%;
-    padding-left: 10%;
+  background-position: 5% 5%;
+  padding-left: 10%;
 }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 768px) {
+  #storage-redeem{
+      background-position: top center;
+	padding-top: 50px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #storage-redeem{
+    background-position: 5% 5%;
+  padding-top: unset;
+  }
+}
+
 </style>
