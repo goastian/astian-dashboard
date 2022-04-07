@@ -30,7 +30,7 @@
 								{{ openAnAccount }}
 							</div>
 							<div class="urllink">
-								<a href="https://doc.e.foundation/support-topics/referral-program">{{ inviteYourFriends }}</a>
+								<a :href="redirectURL">{{ inviteYourFriends }}</a>
 							</div>
 						</div>
 					</div>
@@ -113,7 +113,7 @@ export default {
 				.then(response => {
 					this.groups = response.data.groups
 					this.storageLink = response.data.storageLink
-		  this.redirectURL = 'https://doc.e.foundation/support-topics/referral-program'
+		  		this.redirectURL = 'https://doc.e.foundation/support-topics/referral-program'
 					if (this.groups.includes('Premium') || this.groups.includes('premium')) {
 						this.redirectURL = response.data.link + '/my-account/referral_coupons/'
 					}
