@@ -236,7 +236,7 @@ a {
   width: 90%;
 }
 #storage-redeem{
-	background-image: url('../assets/redeem.png');
+	background-image: url('../assets/redeem.svg');
 	background-repeat: no-repeat;
     background-position: 5% 5%;
     padding-left: 10%;
