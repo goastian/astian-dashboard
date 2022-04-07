@@ -75,7 +75,7 @@ export default {
 				let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
 				percent = percent.toFixed(2)
 				if (this.storageInfo.quota > 0) {
-					return humanReadableUsed + ' of ' + humanReadableQuota + '(' + percent + '%)' + ' used'
+					return humanReadableUsed + ' of ' + humanReadableQuota + ' (' + percent + '%)' + ' used'
 				} else {
 					return humanReadableUsed + ' used'
 				}
