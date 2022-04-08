@@ -6,7 +6,7 @@
 				<div class="progress">
 					<div class="progress-bar"
 						:style="{ width: totalSpaceUsedInPercentage + '%' }"
-						style="background-color: rgb(204, 228, 255) !important " />
+						style="background-color: #0086FF !important " />
 				</div>
 				<div class="upgrade__main_div">
 					<div class="usage-info">
