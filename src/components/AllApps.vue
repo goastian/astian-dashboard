@@ -1,7 +1,7 @@
 <template>
 	<div class="new-icons">
 		<div class="welcome__label">
-			<b>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</b>
+			<h2>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</h2>
 		</div>
 		<div @click="isHidden = !isHidden">
 			<span v-if="!isHidden" class="toggle_apps show-all">{{ showAllApps }}</span>
@@ -80,7 +80,7 @@ mounted() {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .welcome__label{
-  margin-left: 2%;
+  margin-left: 0;
 }
 .toggle_apps{
   font-family: 'Roboto', sans-serif;
@@ -90,7 +90,7 @@ mounted() {
   background-repeat: no-repeat;
   background-position: right;
   padding-right: 20px;
-  margin-right: 30px;
+  margin-right: 0px;
   margin-bottom: 20px;
   background-size: 10px;
   cursor: pointer;
