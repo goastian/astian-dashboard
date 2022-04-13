@@ -9,7 +9,7 @@
  */
 return [
     'routes' => [
-       ['name' => 'apps#index', 'url' => '/apps', 'verb' => 'GET'],
+       ['name' => 'apps#index', 'url' => '/get-apps', 'verb' => 'GET'],
        ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
        ['name' => 'apps#getStorageInfo', 'url' => '/apps/get-storageinfo', 'verb' => 'GET'],
        ['name' => 'apps#getRedirections', 'url' => '/apps/get-redirections', 'verb' => 'GET']       
