@@ -53,7 +53,7 @@ mounted() {
   methods: {
     getEntries() {
       axios
-        .get('get-apps')
+        .get(generateUrl('/apps/ecloud-dashboard/get-apps'))
         .then(response => {
           this.entries = response.data.apps
           this.entries = this.entries.map(entry => {

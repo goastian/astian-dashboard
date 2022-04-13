@@ -98,7 +98,7 @@ export default {
 		},
 		getRedirections() {
 			axios
-				.get('apps/get-redirections')
+				.get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
 				.then(response => {
 					this.storageLink = response.data.storageLink
 					this.redirectURL = response.data.redirectURL
