@@ -135,11 +135,11 @@ a {
   margin-top: 20px;
 }
 .instructions__label{
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
 }
 .instructions__sublabel{
-  font-size: 10px;
+  font-size: 13px;
 }
 .padding0:first-child {
   padding-right: 12px;
@@ -167,15 +167,17 @@ a {
 .urllink{
   text-transform: uppercase;
   margin-top: 10px;
+  margin-right: 5%;
 }
 .storage{
-  font-size: 16px;
+  letter-spacing: 1px;
+  font-size: 17px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .usage-info{
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 500;
   color: #949DA1;
   float: left;
 }
@@ -188,6 +190,8 @@ a {
   color: white;
   border: 1px solid white;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 .upgrade__main_div{
   padding-right: 0;
@@ -236,23 +240,24 @@ a {
   width: 90%;
 }
 #storage-redeem{
-	background-image: url('../assets/redeem.svg');
-	background-repeat: no-repeat;
-  background-position: 5% 5%;
+  background-image: url('../assets/redeem.svg');
+  background-repeat: no-repeat;
+  background-position: 3% 0;
   padding-left: 10%;
+  width: 100%;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 768px) {
   #storage-redeem{
-      background-position: top center;
+    background-position: top center;
 	padding-top: 50px;
   }
 }
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   #storage-redeem{
-    background-position: 5% 5%;
-  padding-top: unset;
+    background-position: 3% 0;
+    padding-top: unset;
   }
 }
 

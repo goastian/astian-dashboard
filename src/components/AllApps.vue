@@ -81,11 +81,14 @@ mounted() {
 <style scoped>
 .welcome__label{
   margin-left: 0;
+  letter-spacing: 1px;
 }
 .toggle_apps{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
   float: right;
-  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 12px;
   color: #0086FF;
   background-repeat: no-repeat;
   background-position: right;

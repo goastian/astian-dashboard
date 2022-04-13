@@ -18,10 +18,13 @@ export default {
 </script>
 
 <style>
-
+.app-ecloud-dashboard {
+    background-color: white;
+}
 #edashboard-app {
     width: 70%;
     margin: 10% auto;
+    font-family: 'Roboto';
 }
 .welcome-label{
   color: #333333;
