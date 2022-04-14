@@ -130,7 +130,7 @@ mounted() {
 }
 @media only screen and (max-width: 768px) {
 	.item {
-		margin: 8%;
+		width: 33%;
 	}
 }
 /* Medium devices (landscape tablets, 768px and up) */
