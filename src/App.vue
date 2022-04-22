@@ -1,31 +1,31 @@
 <template>
-	<div id="edashboard-app">
-		<AllApps />
-		<StorageLayout />
-	</div>
+  <div id="edashboard-app">
+    <AllApps />
+    <StorageLayout />
+  </div>
 </template>
 <script>
 import AllApps from './components/AllApps.vue'
 import StorageLayout from './components/StorageLayout.vue'
 export default {
-	name: 'App',
-	components: {
-		AllApps,
-		StorageLayout,
-	},
-}
-</script>
-
-<script>
-import AllApps from "./components/AllApps.vue";
-import StorageLayout from "./components/StorageLayout.vue";
-export default {
-  name: "App",
+  name: 'App',
   components: {
     AllApps,
     StorageLayout,
   },
-};
+}
+</script>
+
+<script>
+import AllApps from './components/AllApps.vue'
+import StorageLayout from './components/StorageLayout.vue'
+export default {
+  name: 'App',
+  components: {
+    AllApps,
+    StorageLayout,
+  },
+}
 </script>
 
 <style>
@@ -36,7 +36,7 @@ export default {
 #edashboard-app {
   width: 920px;
   margin: 10% auto;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
 
 @media only screen and (max-width: 920px) {

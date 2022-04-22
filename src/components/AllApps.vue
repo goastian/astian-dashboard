@@ -79,5 +79,63 @@ export default {
 }
 </script>
 <style scoped="">
-    .welcome__label { margin-left: 0; letter-spacing: 1px; } .toggle_apps { font-family: 'Roboto'; float: right; font-weight: 600; letter-spacing: 1px; font-size: 12px; color: #0086FF; background-repeat: no-repeat; background-position: right; padding-right: 20px; margin-right: 0px; margin-bottom: 20px; background-size: 10px; cursor: pointer; text-transform: uppercase; } .show-all { background-image: url('../assets/down.png'); } .show-less { background-image: url('../assets/up.png'); } .item-label { font-size: 14px; padding-top: 10px; font-weight: 500; } .item-sublabel { font-size: 10px; color: #949DA1; } .app-container { display: table; table-layout: fixed; width: 100%; box-sizing: border-box; } .item { vertical-align: middle; text-align: center; width: 16.6666667%; float: left; margin-top: 10px; margin-bottom: 10px; } @media only screen and (max-width: 768px) { .item { width: 33%; } } /* Medium devices (landscape tablets, 768px and up) */ @media only screen and (min-width: 768px) { .item { margin: auto; } }
+.welcome__label {
+  margin-left: 0;
+  letter-spacing: 1px;
+}
+.toggle_apps {
+  font-family: 'Roboto';
+  float: right;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 12px;
+  color: #0086ff;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 20px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  background-size: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.show-all {
+  background-image: url('../assets/down.png');
+}
+.show-less {
+  background-image: url('../assets/up.png');
+}
+.item-label {
+  font-size: 14px;
+  padding-top: 10px;
+  font-weight: 500;
+}
+.item-sublabel {
+  font-size: 10px;
+  color: #949da1;
+}
+.app-container {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  box-sizing: border-box;
+}
+.item {
+  vertical-align: middle;
+  text-align: center;
+  width: 16.6666667%;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .item {
+    width: 33%;
+  }
+} /* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .item {
+    margin: auto;
+  }
+}
 </style>
