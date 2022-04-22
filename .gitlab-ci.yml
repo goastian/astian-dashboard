@@ -30,7 +30,7 @@ install-node-deps:
 lint:
     stage: test
     script:
-        - npm run lint
+        - npm run lint --fix
 
 build-frontend:
     stage: build
