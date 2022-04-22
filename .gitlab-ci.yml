@@ -30,11 +30,12 @@ install-node-deps:
 lint:
     stage: test
     script:
-        - npm run lint
+        - npm run lint -- --fix
 
 build-frontend:
     stage: build
     script:
+        - npm run lint -- --fix
         - npm run build
         - mkdir -p dist/$CI_PROJECT_NAME
         - cp -a appinfo css l10n lib templates js dist/$CI_PROJECT_NAME
