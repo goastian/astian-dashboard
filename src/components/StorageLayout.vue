@@ -1,5 +1,8 @@
 <template>
   <div class="row margin0">
+    <div class="row margin0 storage-layout">
+      <hr>
+    </div>
     <div class="row margin0">
       <div class="row margintop10">
         <b class="storage">{{ storage }}</b>
@@ -216,21 +219,23 @@ a {
 .instructions {
   display: inline-block;
   border: 1px solid;
-  margin: 20px 5px;
+  margin: 20px 0px;
   border-color: #d7d7d7;
-  border-radius: 5px;
+  border-radius: 12px;
   padding: 20px 5px;
   font-size: 12px;
   margin-top: 20px;
 }
 
 .instructions__label {
-  font-size: 15px;
+  font-family: 'Roboto';
+  font-size: 20px;
   font-weight: bold;
 }
 
 .instructions__sublabel {
-  font-size: 13px;
+  font-family: 'Roboto';
+  font-size: 16px;
 }
 
 .padding0:first-child {
@@ -255,7 +260,7 @@ a {
   color: #0d6efd !important;
   text-decoration: none;
   font-weight: 800;
-  font-size: 12px;
+  font-size: 15px;
   float: right;
   text-transform: uppercase;
 }
@@ -267,13 +272,18 @@ a {
 }
 
 .storage {
-  letter-spacing: 1px;
-  font-size: 17px;
+  font-family: 'Roboto';
+  font-style: normal;
   font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 24px;
+  line-height: 100%;
+  color: #333333;
   margin-bottom: 10px;
 }
 
 .usage-info {
+  font-family: 'Roboto';
   font-size: 13px;
   font-weight: 500;
   color: #949da1;
@@ -282,15 +292,17 @@ a {
 
 .upgrade-storage__div #upgrad-btn {
   float: right;
+  font-style: normal;
+  font-family: 'Roboto';
   background: #0086ff;
-  padding: 5px 15px;
-  border-radius: 4px;
-  font-size: 10px;
-  color: white;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
   border: 1px solid white;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
+  letter-spacing: 1.25px;
+  font-weight: 500;
 }
 
 .upgrade__main_div {
@@ -353,6 +365,20 @@ a {
   background-position: 3% 0;
   padding-left: 10%;
   width: 100%;
+}
+
+.storage-layout hr{
+  position: static;
+  width: 920px;
+  height: 1px;
+  left: 0px;
+  top: 0px;
+    border: 1px solid #f4f4f4;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 10px 0px;
 }
 
 /* Extra small devices (phones, 600px and down) */

@@ -82,13 +82,20 @@ export default {
 .welcome__label {
   margin-left: 0;
   letter-spacing: 1px;
+  line-height: 100%;
+}
+.welcome__label h2{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
 }
 .toggle_apps {
   font-family: 'Roboto';
   float: right;
   font-weight: 600;
   letter-spacing: 1px;
-  font-size: 12px;
+  font-size: 15px;
   color: #0086ff;
   background-repeat: no-repeat;
   background-position: right;
@@ -106,15 +113,21 @@ export default {
   background-image: url('../assets/up.png');
 }
 .item-label {
-  font-size: 14px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
   padding-top: 10px;
-  font-weight: 500;
+  color: #333333;
+  margin: 0px 10px;
 }
 .item-sublabel {
   font-size: 10px;
   color: #949da1;
 }
 .app-container {
+    margin: 20px 0;
   display: table;
   table-layout: fixed;
   width: 100%;
