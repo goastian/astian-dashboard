@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Welcome back" : "Content de vous revoir",
     "Storage": "Espace de stockage",
-    "getCredits": "Obtenez jusqu'à 40€ de crédits pour votre stockage cloud en invitant vos amis !",
+    "getCredits": "Obtenez jusqu'à 2€ de crédits pour votre stockage cloud en invitant vos amis !",
     "openAnAccount": "Pour chaque ami qui ouvre un compte, vous gagnerez tous les deux 2€ à utiliser pour le stockage cloud sur ecloud.",
     "Invite Your Friends": "Parrainez vos amis",
     "Apps": "Applications",
