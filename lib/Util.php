@@ -73,9 +73,12 @@ class Util
         }
 
         foreach ($entries as &$entry) {
-            $iconName = basename($entry["icon"]);
-            $iconName = preg_split('/.svg/', $iconName)[0] .'-new';
-            $entry["icon"] = "/svg/" . $entry["id"] . "/" . $iconName;
+			if (strpos($entry["id"], "external_index") !== 0) {
+                $entry["style"] = "";
+			}else{
+				$entry["style"] = "background-image: url('". $entry["icon"] ."')";				
+			}
+
             $entry["iconOffsetY"] = 0;
             $entriesByHref[$entry["href"]] = $entry;
         }

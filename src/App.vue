@@ -1,18 +1,18 @@
 <template>
-  <div id="edashboard-app">
-    <AllApps />
-    <StorageLayout />
-  </div>
+	<div id="edashboard-app">
+		<AllApps />
+		<StorageLayout />
+	</div>
 </template>
 <script>
 import AllApps from './components/AllApps.vue'
 import StorageLayout from './components/StorageLayout.vue'
 export default {
-  name: 'App',
-  components: {
-    AllApps,
-    StorageLayout,
-  },
+	name: 'App',
+	components: {
+		AllApps,
+		StorageLayout,
+	},
 }
 </script>
 

@@ -1,122 +1,122 @@
 <template>
-  <div class="row margin0">
-    <div class="row margin0 storage-layout">
-      <hr>
-    </div>
-    <div class="row margin0">
-      <div class="row margintop10">
-        <b class="storage">{{ storage }}</b>
-        <div class="progress">
-          <div
-            class="progress-bar"
-            :style="{ width: totalSpaceUsedInPercentage + '%' }"
-            style="background-color: #0086ff !important" />
-        </div>
-        <div class="upgrade__main_div">
-          <div class="usage-info">
-            {{ usageinfo }}
-          </div>
-          <div class="upgrade-storage__div">
-            <a id="upgrad-btn" :href="storageLink">
-              {{ upgradeStorage }}
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="row margin0">
-        <div class="col-lg-12 instructions">
-          <div class="row margin0">
-            <div id="storage-redeem" class="storage-space-div width90">
-              <div class="instructions__label">
-                {{ getCredits }}
-              </div>
-              <div class="instructions__sublabel">
-                {{ openAnAccount }}
-              </div>
-              <div class="urllink">
-                <a :href="redirectURL">{{ inviteYourFriends }}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="row margin0">
+		<div class="row margin0 storage-layout">
+			<hr>
+		</div>
+		<div class="row margin0">
+			<div class="row margintop10">
+				<b class="storage">{{ storage }}</b>
+				<div class="progress">
+					<div
+						class="progress-bar"
+						:style="{ width: totalSpaceUsedInPercentage + '%' }"
+						style="background-color: #0086ff !important" />
+				</div>
+				<div class="upgrade__main_div">
+					<div class="usage-info">
+						{{ usageinfo }}
+					</div>
+					<div class="upgrade-storage__div">
+						<a id="upgrad-btn" :href="storageLink">
+							{{ upgradeStorage }}
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row margin0">
+				<div class="col-lg-12 instructions">
+					<div class="row margin0">
+						<div id="storage-redeem" class="storage-space-div width90">
+							<div class="instructions__label">
+								{{ getCredits }}
+							</div>
+							<div class="instructions__sublabel">
+								{{ openAnAccount }}
+							</div>
+							<div class="urllink">
+								<a :href="redirectURL">{{ inviteYourFriends }}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 <script>
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 
 export default {
-  name: 'StorageLayout',
-  components: {},
-  data() {
-    return {
-      storageInfo: [],
-      redirectURL: '',
-      storageLink: '',
-      storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
-      upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
-      getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
-      openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
-      inviteYourFriends: OC.L10N.translate(
-        'ecloud-dashboard',
-        'Invite Your Friends'
-      ),
-    }
-  },
-  computed: {
-    totalSpaceUsedInPercentage() {
-      const percent = (this.storageInfo.used * 100) / this.storageInfo.quota
-      return percent.toFixed(2)
-    },
-    usageinfo() {
-      try {
-        const humanUsed = this.storageInfo.used
-        const humanQuota = this.storageInfo.quota
-        const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
-        const humanReadableQuota = OC.Util.humanFileSize(humanQuota)
-        let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
-        percent = percent.toFixed(2)
-        if (this.storageInfo.quota > 0) {
-          return (
-            humanReadableUsed
+	name: 'StorageLayout',
+	components: {},
+	data() {
+		return {
+			storageInfo: [],
+			redirectURL: '',
+			storageLink: '',
+			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
+			upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
+			getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
+			openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
+			inviteYourFriends: OC.L10N.translate(
+				'ecloud-dashboard',
+				'Invite Your Friends'
+			),
+		}
+	},
+	computed: {
+		totalSpaceUsedInPercentage() {
+			const percent = (this.storageInfo.used * 100) / this.storageInfo.quota
+			return percent.toFixed(2)
+		},
+		usageinfo() {
+			try {
+				const humanUsed = this.storageInfo.used
+				const humanQuota = this.storageInfo.quota
+				const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
+				const humanReadableQuota = OC.Util.humanFileSize(humanQuota)
+				let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
+				percent = percent.toFixed(2)
+				if (this.storageInfo.quota > 0) {
+					return (
+						humanReadableUsed
             + ' of '
             + humanReadableQuota
             + ' ('
             + percent
             + '%)'
             + ' used'
-          )
-        } else {
-          return humanReadableUsed + ' used'
-        }
-      } catch (err) {
-        return err.message
-      }
-    },
-  },
-  mounted() {
-    this.getRedirections()
-    this.getDetails()
-  },
-  methods: {
-    getDetails() {
-      axios
-        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
-        .then((response) => {
-          this.storageInfo = response.data.data
-        })
-    },
-    getRedirections() {
-      axios
-        .get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
-        .then((response) => {
-          this.storageLink = response.data.storageLink
-          this.redirectURL = response.data.redirectURL
-        })
-    },
-  },
+					)
+				} else {
+					return humanReadableUsed + ' used'
+				}
+			} catch (err) {
+				return err.message
+			}
+		},
+	},
+	mounted() {
+		this.getRedirections()
+		this.getDetails()
+	},
+	methods: {
+		getDetails() {
+			axios
+				.get(generateUrl('/apps/files/ajax/getstoragestats.php'))
+				.then((response) => {
+					this.storageInfo = response.data.data
+				})
+		},
+		getRedirections() {
+			axios
+				.get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
+				.then((response) => {
+					this.storageLink = response.data.storageLink
+					this.redirectURL = response.data.redirectURL
+				})
+		},
+	},
 }
 </script>
 
@@ -228,9 +228,11 @@ a {
 }
 
 .instructions__label {
-  font-family: 'Roboto';
-  font-size: 20px;
-  font-weight: bold;
+    font-family: 'Roboto';
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
 }
 
 .instructions__sublabel {
