@@ -232,12 +232,14 @@ a {
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
+    color: #333333;
 }
 
 .instructions__sublabel {
   font-family: 'Roboto';
   font-size: 16px;
+  color: #333333;
 }
 
 .padding0:first-child {
@@ -259,10 +261,10 @@ a {
 }
 
 .urllink a {
-  color: #0d6efd !important;
+  color: #0075E0 !important;
   text-decoration: none;
   font-weight: 800;
-  font-size: 15px;
+  font-size: 13px;
   float: right;
   text-transform: uppercase;
 }
@@ -270,7 +272,7 @@ a {
 .urllink {
   text-transform: uppercase;
   margin-top: 10px;
-  margin-right: 5%;
+  margin-right: 3%;
 }
 
 .storage {
@@ -278,7 +280,7 @@ a {
   font-style: normal;
   font-weight: 600;
   letter-spacing: 1px;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 100%;
   color: #333333;
   margin-bottom: 10px;
@@ -298,9 +300,9 @@ a {
   font-family: 'Roboto';
   background: #0086ff;
   color: #FFFFFF;
-  padding: 10px 20px;
+  padding: 8px 15px 5px 15px;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 13px;
   border: 1px solid white;
   text-transform: uppercase;
   letter-spacing: 1.25px;

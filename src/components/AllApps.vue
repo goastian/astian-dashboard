@@ -88,14 +88,15 @@ export default {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 600;
-  font-size: 26px;
+  font-size: 24px;
+  color: #333333;
 }
 .toggle_apps {
   font-family: 'Roboto';
   float: right;
   font-weight: 600;
   letter-spacing: 1px;
-  font-size: 15px;
+  font-size: 13px;
   color: #0086ff;
   background-repeat: no-repeat;
   background-position: right;
@@ -116,7 +117,7 @@ export default {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 100%;
   padding-top: 10px;
   color: #333333;
