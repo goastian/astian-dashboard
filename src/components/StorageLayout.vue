@@ -17,7 +17,7 @@
 						{{ usageinfo }}
 					</div>
 					<div class="upgrade-storage__div">
-						<a id="upgrad-btn" :href="storageLink">
+						<a id="upgrade-btn" :href="storageLink">
 							{{ upgradeStorage }}
 						</a>
 					</div>
@@ -294,7 +294,7 @@ a {
   float: left;
 }
 
-.upgrade-storage__div #upgrad-btn {
+.upgrade-storage__div #upgrade-btn {
   float: right;
   font-style: normal;
   font-family: 'Roboto';
