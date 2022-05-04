@@ -80,12 +80,12 @@ class AppsController extends Controller
 		'link'
 		);
 		
-		if (!filter_var($link, FILTER_VALIDATE_URL)) {
-		throw new LinkNotURLException(
-			$this->localization->t(
-			'The given link is not a URL'
-			)
-		);
+		if ($link != '' && !filter_var($link, FILTER_VALIDATE_URL)) {
+			throw new LinkNotURLException(
+				$this->localization->t(
+				'The given link is not a URL'
+				)
+			);
 		}
 		$userQuota = $this->userSession->getUser()->getQuota();
 		$userQuota = str_replace(' ', '', $userQuota);
