@@ -27,7 +27,7 @@
 				:key="entry.message"
 				class="item"
 				:href="entry.href">
-				<div class="color-icons" :class="entry.id" v-bind:style="entry.style" />
+				<div class="color-icons" :class="entry.id" :style="entry.style" />
 				<div class="item-label">{{ entry.name }}</div>
 			</a>
 		</div>

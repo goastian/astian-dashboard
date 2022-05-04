@@ -16,7 +16,7 @@
 					<div class="usage-info">
 						{{ usageinfo }}
 					</div>
-					<div class="upgrade-storage__div">
+					<div v-if="isHidden" class="upgrade-storage__div">
 						<a id="upgrade-btn" :href="storageLink">
 							{{ upgradeStorage }}
 						</a>
@@ -53,6 +53,7 @@ export default {
 	data() {
 		return {
 			storageInfo: [],
+			isHidden: false,
 			redirectURL: '',
 			storageLink: '',
 			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
@@ -114,6 +115,9 @@ export default {
 				.then((response) => {
 					this.storageLink = response.data.storageLink
 					this.redirectURL = response.data.redirectURL
+					if (response.data.link === '') {
+						this.isHidden = true
+					}
 				})
 		},
 	},
