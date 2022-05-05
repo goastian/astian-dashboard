@@ -35,7 +35,7 @@ export default {
 
 #edashboard-app {
   width: 920px;
-  margin: 10% auto;
+  margin: 7% auto;
   font-family: 'Roboto';
 }
 
