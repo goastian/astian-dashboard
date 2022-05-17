@@ -1,5 +1,5 @@
 <?php
-namespace OCA\Edashboard\Controller;
+namespace OCA\EcloudDashboard\Controller;
 
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -13,7 +13,6 @@ class PageController extends Controller {
 		parent::__construct($AppName, $request);
 		$this->userId = $UserId;
 	}
-
 	/**
 	 * CAUTION: the @Stuff turns off security checks; for this page no admin is
 	 *          required and no CSRF check. If you don't know what CSRF is, read
@@ -25,6 +24,6 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		return new TemplateResponse('edashboard', 'ecloud-dashboard');  // templates/index.php
+		return new TemplateResponse('ecloud-dashboard', 'edashboard');  // templates/edashboard.php
 	}
 }

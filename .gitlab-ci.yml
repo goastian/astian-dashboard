@@ -30,21 +30,24 @@ install-node-deps:
 lint:
     stage: test
     script:
-        - npm run lint
+        - npm run lint -- --fix
 
 build-frontend:
     stage: build
     script:
+        - npm run lint -- --fix
         - npm run build
-        - mkdir -p dist/ecloud-dashboard
-        - cp -a appinfo css l10n lib templates js dist/ecloud-dashboard
+        - mkdir -p dist/$CI_PROJECT_NAME
+        - cp -a appinfo css l10n lib templates js dist/$CI_PROJECT_NAME
     artifacts:
         paths:
-            - dist/ecloud-dashboard
+            - dist/
 
-.deploy:ecloud-dashboard:
+.deploy:nextcloud-app:
     image: ubuntu:focal
     stage: deploy
+    dependencies: 
+      - build-frontend
     before_script:
       - mkdir $HOME/.ssh
       - chmod 700 ~/.ssh
@@ -53,18 +56,19 @@ build-frontend:
       - echo "$SSH_KNOWN_HOSTS" > $HOME/.ssh/known_hosts
       - chmod 600 ~/.ssh/id_ed25519
       - chmod 644 ~/.ssh/known_hosts ~/.ssh/id_ed25519.pub
-      - apt-get update && apt-get install -y openssh-client
+      - apt-get update && apt-get install -y openssh-client rsync
     script:
       - echo "Deploying to $CI_ENVIRONMENT_NAME ($DEPLOYMENT_HOST)"
-      - ssh $SSH_USER@$DEPLOYMENT_HOST "git clone --depth 1 $CI_REPOSITORY_URL --branch $DEPLOYMENT_BRANCH --single-branch /tmp/${CI_JOB_ID}/ecloud-dashboard && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:disable ecloud-dashboard && sudo rsync -avzh --chown www-data:www-data --delete --exclude '.git*' /tmp/${CI_JOB_ID}/ecloud-dashboard ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable ecloud-dashboard"
-
+      - rsync -avzh dist/ $SSH_USER@$DEPLOYMENT_HOST:/tmp/${CI_JOB_ID}
+      - ssh $SSH_USER@$DEPLOYMENT_HOST "sudo rsync -avzh --chown www-data:www-data --delete /tmp/${CI_JOB_ID}/$CI_PROJECT_NAME ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable $CI_PROJECT_NAME"
 
 deploy:dev01:
-    extends: .deploy:ecloud-dashboard
+    extends: .deploy:nextcloud-app
     only:
       - master
       - main
       - production
+      - auto-deployments
     environment:
       name: dev/01
       url: https://dev.eeo.one/
@@ -73,7 +77,7 @@ deploy:dev01:
       CONTAINER_NAME: dev01_nextcloud
 
 deploy:dev02:
-  extends: .deploy:ecloud-dashboard
+  extends: .deploy:nextcloud-app
   when: manual
   only:
     - master
@@ -87,7 +91,7 @@ deploy:dev02:
     CONTAINER_NAME: dev02_nextcloud
 
 deploy:dev03:
-  extends: .deploy:ecloud-dashboard
+  extends: .deploy:nextcloud-app
   when: manual
   only:
     - master
@@ -101,7 +105,7 @@ deploy:dev03:
     CONTAINER_NAME: dev03_nextcloud
 
 deploy:staging:
-  extends: .deploy:ecloud-dashboard
+  extends: .deploy:nextcloud-app
   when: manual
   only:
     - master
