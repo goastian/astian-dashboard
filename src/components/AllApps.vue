@@ -1,176 +1,155 @@
-
 <template>
-  <div>  
-    <div v-on:click="isHidden = !isHidden">
-      <span v-if="!isHidden" class="toggle_apps show-all">SHOW ALL APPS</span>
-      <span v-if="isHidden" class="toggle_apps show-less">SHOW LESS APPS</span>
-    </div> 
-    
-    <div  class="app-container"> 
-      <div class="item">
-        <img width="60" height="60" src="../assets/files.png" />
-        <div class="item-label">Drive</div>
-        <div class="item-sublabel">405 MB</div>
-      </div>
-
-     <div class="item">
-      <img width="60" height="60" src="../assets/email.png" />
-      <div class="item-label">Email</div>
-      <div class="item-sublabel">9 MB</div>
-    </div>
-
-     <div class="item">
-      <img width="60" height="60" src="../assets/calendar.png" />
-      <div class="item-label">Calendar</div>
-      <div class="item-sublabel">144 MB</div>
-    </div>
-
-     <div class="item">
-      <img width="60" height="60" src="../assets/photos.png" />
-      <div class="item-label">Photos</div>
-      <div class="item-sublabel">0.44 MB</div>
-    </div>
-
-     <div class="item">
-      <img width="60" height="60" src="../assets/tasks.png" />
-      <div class="item-label">Tasks</div>
-      <div class="item-sublabel">18 MB</div>
-    </div>
-    
-     <div class="item">
-      <img width="60" height="60" src="../assets/notes.png" />
-      <div class="item-label">Notes</div>
-      <div class="item-sublabel">2.7 MB</div>
-    </div>
-    </div>
-
-    <div v-if="isHidden"  class="app-container">
-      <div class="item">
-        <img width="60" height="60" src="../assets/Docs.png" />
-        <div class="item-label">Docs</div>
-        <div class="item-sublabel">11.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/Spreadsheet.png" />
-        <div class="item-label">Spreadsheet</div>
-        <div class="item-sublabel">1.26 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/presentation.png" />
-        <div class="item-label">Presentation</div>
-        <div class="item-sublabel">25.2 MB</div>
-      </div>
-
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/Bookmarks.png" />
-        <div class="item-label">Bookmarks</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/contacts.png" />
-        <div class="item-label">Contacts</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/News.png" />
-        <div class="item-label">News</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/Activity.png" />
-        <div class="item-label">Activity</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/Carnet.png" />
-        <div class="item-label">Carnet</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/Deck.png" />
-        <div class="item-label">Deck</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      <div class="item">
-        <img width="60" height="60" src="../assets/Gitlab.png" />
-        <div class="item-label">Gitlab</div>
-        <div class="item-sublabel">2.7 MB</div>
-      </div>
-
-      
-    </div>
-</div>
-
-
+	<div class="new-icons">
+		<div class="welcome__label">
+			<h2>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</h2>
+		</div>
+		<div @click="isHidden = !isHidden">
+			<span v-if="!isHidden" class="toggle_apps show-all">{{
+				showAllApps
+			}}</span>
+			<span v-if="isHidden" class="toggle_apps show-less">{{
+				showLessApps
+			}}</span>
+		</div>
+		<div class="app-container">
+			<a
+				v-for="entry in entries"
+				:key="entry.message"
+				class="item"
+				:href="entry.href">
+				<div class="color-icons" :class="entry.id" :style="entry.style" />
+				<div class="item-label">{{ entry.name }}</div>
+			</a>
+		</div>
+		<div v-if="isHidden" class="app-container">
+			<a
+				v-for="entry in external"
+				:key="entry.message"
+				class="item"
+				:href="entry.href">
+				<div class="color-icons" :class="entry.id" :style="entry.style" />
+				<div class="item-label">{{ entry.name }}</div>
+			</a>
+		</div>
+	</div>
 </template>
-
 <script>
+import axios from '@nextcloud/axios'
+import { generateUrl } from '@nextcloud/router'
+
 export default {
-  name: 'AllApps',
-  props: {
-    msg: String
-  }
-  ,
-  data () {
-    return {
-      isHidden: false
-    }
-  }
+	name: 'AllApps',
+	data() {
+		return {
+			isHidden: false,
+			entries: [],
+			external: [],
+			userInfo: [],
+			showAllApps: OC.L10N.translate('ecloud-dashboard', 'Show All Apps'),
+			showLessApps: OC.L10N.translate('ecloud-dashboard', 'Show Less Apps'),
+			WelcomeBack: OC.L10N.translate('ecloud-dashboard', 'Welcome back'),
+		}
+	},
+	mounted() {
+		this.getEntries()
+		this.getDetails()
+	},
+	methods: {
+		getEntries() {
+			axios
+				.get(generateUrl('/apps/ecloud-dashboard/get-apps'))
+				.then((response) => {
+					this.entries = response.data.apps
+					this.entries = this.entries.map((entry) => {
+						entry.active = window.location.pathname.includes(entry.href)
+						return entry
+					})
+					this.external = this.entries.slice(6)
+					this.entries = this.entries.slice(0, 6)
+				})
+		},
+		getDetails() {
+			axios
+				.get(generateUrl('/apps/files/ajax/getstoragestats.php'))
+				.then((response) => {
+					this.userInfo = response.data.data
+				})
+		},
+	},
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.toggle_apps{
+<style scoped="">
+.welcome__label {
+  margin-left: 0;
+  letter-spacing: 1px;
+  line-height: 100%;
+}
+.welcome__label h2{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  color: #333333;
+}
+.toggle_apps {
+  font-family: 'Roboto';
   float: right;
-  font-size: 10px;
-  color: #0086FF;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 13px;
+  color: #0086ff;
   background-repeat: no-repeat;
   background-position: right;
   padding-right: 20px;
-  margin-right: 30px;
+  margin-right: 0px;
   margin-bottom: 20px;
   background-size: 10px;
   cursor: pointer;
+  text-transform: uppercase;
 }
-.show-all{
+.show-all {
   background-image: url('../assets/down.png');
 }
-.show-less{
+.show-less {
   background-image: url('../assets/up.png');
 }
-.item-label{
-  font-size: 14px;
+.item-label {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
   padding-top: 10px;
-  font-weight: 500;
+  color: #333333;
+  margin: 0px 10px;
 }
-.item-sublabel{
+.item-sublabel {
   font-size: 10px;
-  color: #949DA1;
+  color: #949da1;
 }
 .app-container {
+    margin: 20px 0;
   display: table;
   table-layout: fixed;
   width: 100%;
   box-sizing: border-box;
-  /* border-spacing: 10px; */
 }
 .item {
-    /* display: table-cell; */
   vertical-align: middle;
   text-align: center;
   width: 16.6666667%;
   float: left;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .item {
+    width: 33%;
+  }
+} /* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .item {
+    margin: auto;
+  }
 }
 </style>
