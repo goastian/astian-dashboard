@@ -46,7 +46,7 @@ build-frontend:
 .deploy:nextcloud-app:
     image: ubuntu:focal
     stage: deploy
-    dependencies: 
+    dependencies:
       - build-frontend
     before_script:
       - mkdir $HOME/.ssh
@@ -58,31 +58,29 @@ build-frontend:
       - chmod 644 ~/.ssh/known_hosts ~/.ssh/id_ed25519.pub
       - apt-get update && apt-get install -y openssh-client rsync
     script:
-      - echo "Deploying to $CI_ENVIRONMENT_NAME ($DEPLOYMENT_HOST)"
+      - echo "Deploying $CI_PROJECT_NAME of $CI_PROJECT_PATH_SLUG to $CI_ENVIRONMENT_NAME ($DEPLOYMENT_HOST)"
       - rsync -avzh dist/ $SSH_USER@$DEPLOYMENT_HOST:/tmp/${CI_JOB_ID}
       - ssh $SSH_USER@$DEPLOYMENT_HOST "sudo rsync -avzh --chown www-data:www-data --delete /tmp/${CI_JOB_ID}/$CI_PROJECT_NAME ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable $CI_PROJECT_NAME"
 
 deploy:dev01:
-    extends: .deploy:nextcloud-app
-    only:
-      - master
-      - main
-      - production
-      - auto-deployments
-    environment:
-      name: dev/01
-      url: https://dev.eeo.one/
-    variables:
-      DEPLOYMENT_BRANCH: $CI_COMMIT_BRANCH
-      CONTAINER_NAME: dev01_nextcloud
+  extends: .deploy:nextcloud-app
+  when: manual
+  only:
+    - /^dev\/.*$/
+    - main
+  environment:
+    name: dev/01
+    url: https://dev.eeo.one/
+  variables:
+    DEPLOYMENT_BRANCH: $CI_COMMIT_BRANCH
+    CONTAINER_NAME: dev01_nextcloud
 
 deploy:dev02:
   extends: .deploy:nextcloud-app
   when: manual
   only:
-    - master
+    - /^dev\/.*$/
     - main
-    - production
   environment:
     name: dev/02
     url: https://ecloud02.dev.eeo.one
@@ -94,9 +92,8 @@ deploy:dev03:
   extends: .deploy:nextcloud-app
   when: manual
   only:
-    - master
+    - /^dev\/.*$/
     - main
-    - production
   environment:
     name: dev/03
     url: https://ecloud03.dev.eeo.one
@@ -108,7 +105,6 @@ deploy:staging:
   extends: .deploy:nextcloud-app
   when: manual
   only:
-    - master
     - main
     - production
   environment:
