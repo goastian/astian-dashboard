@@ -15,7 +15,7 @@ class UnsetEmailTemplate implements IRepairStep {
 	}
 
 	public function getName() {
-		return 'Reset the email template to default';
+		return 'Reset the email template to default'; 
 	}
 
 	public function run(IOutput $output) {
