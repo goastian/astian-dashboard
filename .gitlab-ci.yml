@@ -68,7 +68,7 @@ deploy:dev01:
       - master
       - main
       - production
-      - auto-deployments
+      - change-dashboard-redirection
     environment:
       name: dev/01
       url: https://dev.eeo.one/
