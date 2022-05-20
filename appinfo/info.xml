@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>home</id>
+    <id>ecloud-dashboard</id>
     <name>Murena dashboard</name>
     <summary>Murena Dashboard</summary>
     <description><![CDATA[Murena Dashboard]]></description>
@@ -17,7 +17,7 @@
     <navigations>
         <navigation>
             <name>Murena Dashboard</name>
-            <route>home.page.index</route>
+            <route>ecloud-dashboard.page.index</route>
         </navigation>
     </navigations>
     <repair-steps>
