@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>ecloud-dashboard</id>
-    <name>ECloud dashboard</name>
-    <summary>/e/ Cloud Dashboard</summary>
-    <description><![CDATA[/e/ Cloud Dashboard]]></description>
-    <version>0.0.3</version>
+    <id>home</id>
+    <name>Murena dashboard</name>
+    <summary>Murena Dashboard</summary>
+    <description><![CDATA[Murena Dashboard]]></description>
+    <version>0.0.4</version>
     <licence>agpl</licence>
-    <author mail="ronak@e.email" >Ronak Patel</author>
+    <author mail="dev@e.email">ECORP SAS</author>
     <namespace>EcloudDashboard</namespace>
     <category>dashboard</category>
-    <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
+    <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/home/-/issues</bugs>
     <dependencies>
         <nextcloud min-version="21" max-version="22"/>
     </dependencies>
     <navigations>
         <navigation>
-            <name>Ecloud Dashboard</name>
-            <route>ecloud-dashboard.page.index</route>
+            <name>Murena Dashboard</name>
+            <route>home.page.index</route>
         </navigation>
     </navigations>
     <repair-steps>

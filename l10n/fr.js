@@ -1,5 +1,5 @@
 OC.L10N.register(
-	"ecloud-dashboard",
+	"home",
     {
     "Welcome back" : "Content de vous revoir",
     "Storage": "Espace de stockage",

@@ -45,9 +45,9 @@ export default {
 			entries: [],
 			external: [],
 			userInfo: [],
-			showAllApps: OC.L10N.translate('ecloud-dashboard', 'Show All Apps'),
-			showLessApps: OC.L10N.translate('ecloud-dashboard', 'Show Less Apps'),
-			WelcomeBack: OC.L10N.translate('ecloud-dashboard', 'Welcome back'),
+			showAllApps: OC.L10N.translate('home', 'Show All Apps'),
+			showLessApps: OC.L10N.translate('home', 'Show Less Apps'),
+			WelcomeBack: OC.L10N.translate('home', 'Welcome back'),
 		}
 	},
 	mounted() {
@@ -57,7 +57,7 @@ export default {
 	methods: {
 		getEntries() {
 			axios
-				.get(generateUrl('/apps/ecloud-dashboard/get-apps'))
+				.get(generateUrl('/apps/home/get-apps'))
 				.then((response) => {
 					this.entries = response.data.apps
 					this.entries = this.entries.map((entry) => {

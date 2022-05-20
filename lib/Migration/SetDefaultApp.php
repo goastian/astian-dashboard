@@ -19,6 +19,6 @@ class SetDefaultApp implements IRepairStep {
 	}
 
 	public function run(IOutput $output) {
-		$this->config->setSystemValue('defaultapp', 'ecloud-dashboard,dashboard');
+		$this->config->setSystemValue('defaultapp', 'home,dashboard');
 	}
 }

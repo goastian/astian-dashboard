@@ -1,5 +1,5 @@
 OC.L10N.register(
-    "ecloud-dashboard",
+    "home",
     {
     "Welcome back" : "Welcome back",
     "Storage": "Storage",

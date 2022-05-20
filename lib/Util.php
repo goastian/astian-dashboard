@@ -97,7 +97,7 @@ class Util
             }
         }
        unset($entriesByHref['/apps/dashboard/']);
-       unset($entriesByHref['/apps/ecloud-dashboard/']);
+       unset($entriesByHref['/apps/home/']);
        $entries = array_values($entriesByHref);
        
        return array( 'apps' => $entries  );

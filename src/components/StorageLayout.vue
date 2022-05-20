@@ -56,12 +56,12 @@ export default {
 			isHidden: false,
 			redirectURL: '',
 			storageLink: '',
-			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
-			upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
-			getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
-			openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
+			storage: OC.L10N.translate('home', 'Storage'),
+			upgradeStorage: OC.L10N.translate('home', 'Upgrade Storage'),
+			getCredits: OC.L10N.translate('home', 'getCredits'),
+			openAnAccount: OC.L10N.translate('home', 'openAnAccount'),
 			inviteYourFriends: OC.L10N.translate(
-				'ecloud-dashboard',
+				'home',
 				'Invite Your Friends'
 			),
 		}
@@ -111,7 +111,7 @@ export default {
 		},
 		getRedirections() {
 			axios
-				.get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
+				.get(generateUrl('/apps/home/apps/get-redirections'))
 				.then((response) => {
 					this.storageLink = response.data.storageLink
 					this.redirectURL = response.data.redirectURL
@@ -136,12 +136,12 @@ export default {
       storageInfo: [],
       redirectURL: '',
       storageLink: '',
-      storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
-      upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
-      getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
-      openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
+      storage: OC.L10N.translate('home', 'Storage'),
+      upgradeStorage: OC.L10N.translate('home', 'Upgrade Storage'),
+      getCredits: OC.L10N.translate('home', 'getCredits'),
+      openAnAccount: OC.L10N.translate('home', 'openAnAccount'),
       inviteYourFriends: OC.L10N.translate(
-        'ecloud-dashboard',
+        'home',
         'Invite Your Friends'
       ),
     }
@@ -191,7 +191,7 @@ export default {
     },
     getRedirections() {
       axios
-        .get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
+        .get(generateUrl('/apps/home/apps/get-redirections'))
         .then((response) => {
           this.storageLink = response.data.storageLink
           this.redirectURL = response.data.redirectURL

@@ -8,7 +8,7 @@ class Application extends App
 {
     public function __construct(array $urlParams = array())
     {
-        $appName = "ecloud-dashboard";
+        $appName = "home";
         parent::__construct($appName, $urlParams);
     }
 }
