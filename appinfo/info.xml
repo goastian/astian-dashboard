@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>ecloud-dashboard</id>
+    <id>home</id>
     <name>Murena dashboard</name>
     <summary>Murena Dashboard</summary>
     <description><![CDATA[Murena Dashboard]]></description>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <licence>agpl</licence>
     <author mail="dev@e.email">ECORP SAS</author>
     <namespace>EcloudDashboard</namespace>
@@ -17,7 +17,7 @@
     <navigations>
         <navigation>
             <name>Murena Dashboard</name>
-            <route>ecloud-dashboard.page.index</route>
+            <route>home.page.index</route>
         </navigation>
     </navigations>
     <repair-steps>
