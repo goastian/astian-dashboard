@@ -27,30 +27,29 @@ install-node-deps:
         changes:
             - package*.json
 
+include:
+  - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
+    ref: dev/template
+    file: "nc-apps-build-frontend.yml"
+  - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
+    ref: dev/template
+    file: "nc-apps-deploy.yml"
+  - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
+    ref: dev/template
+    file: "nc-apps-lint.yml"
+
 lint:
-    stage: test
-    script:
-        - npm run lint -- --fix
+  stage: test
+  script:
+    - npm run lint -- --fix
+
 
 build-frontend:
-    stage: build
-    script:
-        - npm run lint -- --fix
-        - npm run build
-        - mkdir -p dist/$CI_PROJECT_NAME
-        - cp -a appinfo css l10n lib templates js dist/$CI_PROJECT_NAME
-    artifacts:
-        paths:
-            - dist/
-
-include:
-    - project: 'e/infra/selfhost/nextcloud-apps/ci-templates'
-      ref: dev/template
-      file: 'auto-deploy-pipelines.yml'
+  stage: build
 
 .deploy:nextcloud-app:
-    stage: deploy
-    dependencies:
-      - build-frontend
-    after_script:
-      - ssh $SSH_USER@$DEPLOYMENT_HOST "sudo rsync -avzh --chown www-data:www-data --delete /tmp/${CI_JOB_ID}/$CI_PROJECT_NAME ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable $CI_PROJECT_NAME"
+  stage: deploy
+  dependencies:
+    - build-frontend
+  after_script:
+    - ssh $SSH_USER@$DEPLOYMENT_HOST "sudo rsync -avzh --chown www-data:www-data --delete /tmp/${CI_JOB_ID}/$CI_PROJECT_NAME ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable $CI_PROJECT_NAME"
