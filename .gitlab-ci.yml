@@ -29,11 +29,11 @@ install-node-deps:
 
 include:
   - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
+    ref: dev/template
+    file: "nc-apps-build-frontend.yml"
+  - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
     ref: dev/nc-apps-checkout-deploy
     file: "nc-apps-checkout-deploy.yml"
-  - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
-    ref: dev/template
-    file: "nc-apps-deploy.yml"
   - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
     ref: dev/template
     file: "nc-apps-lint.yml"
@@ -47,7 +47,7 @@ lint:
 build-frontend:
   stage: build
 
-.deploy:nextcloud-app-by-checkout:
+.deploy:nextcloud-app:
   stage: deploy
   dependencies:
     - build-frontend
