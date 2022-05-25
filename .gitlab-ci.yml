@@ -47,7 +47,7 @@ lint:
 build-frontend:
   stage: build
 
-.deploy:nextcloud-app:
+.deploy:nextcloud-app-by-checkout:
   stage: deploy
   dependencies:
     - build-frontend
