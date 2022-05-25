@@ -140,7 +140,7 @@ export default {
   float: left;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding: 15px 0;
+  padding: 20px 0;
 }
 @media only screen and (max-width: 768px) {
   .item {
