@@ -128,7 +128,6 @@ export default {
   color: #949da1;
 }
 .app-container {
-    margin: 20px 0;
   display: table;
   table-layout: fixed;
   width: 100%;
@@ -141,6 +140,7 @@ export default {
   float: left;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 15px 0;
 }
 @media only screen and (max-width: 768px) {
   .item {
