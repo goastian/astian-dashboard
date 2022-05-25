@@ -20,12 +20,4 @@
             <route>ecloud-dashboard.page.index</route>
         </navigation>
     </navigations>
-    <repair-steps>
-		<install>
-			<step>OCA\EcloudDashboard\Migration\SetDefaultApp</step>
-		</install>
-		<uninstall>
-			<step>OCA\EcloudDashboard\Migration\UnsetDefaultApp</step>
-		</uninstall>
-	</repair-steps>
 </info>
