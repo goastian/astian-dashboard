@@ -7,7 +7,7 @@
     <description><![CDATA[Murena Cloud Dashboard]]></description>
     <version>1.0.1</version>
     <licence>agpl</licence>
-    <author mail="dev@murena.io" >Ronak Patel</author>
+    <author mail="dev@murena.io">Murena</author>
     <namespace>EcloudDashboard</namespace>
     <category>dashboard</category>
     <bugs>https://gitlab.e.foundation/e/infra/ecloud/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
