@@ -55,7 +55,6 @@ export default {
 			storageInfo: [],
 			redirectURL: '',
 			storageLink: '',
-			link: '',
 			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
 			upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
 			getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
@@ -115,7 +114,6 @@ export default {
 				.then((response) => {
 					this.storageLink = response.data.storageLink
 					this.redirectURL = response.data.redirectURL
-					this.link = response.data.link
 				})
 		},
 	},
