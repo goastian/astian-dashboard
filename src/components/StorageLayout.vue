@@ -16,7 +16,7 @@
 					<div class="usage-info">
 						{{ usageinfo }}
 					</div>
-					<div v-if="storageInfo.quota > 0" class="upgrade-storage__div">
+					<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
 						<a id="upgrade-btn" :href="storageLink">
 							{{ upgradeStorage }}
 						</a>
@@ -112,7 +112,7 @@ export default {
 			axios
 				.get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
 				.then((response) => {
-					this.storageLink = response.data.storageLink
+					this.storageLink = response.data.storageLink || ''
 					this.redirectURL = response.data.redirectURL
 				})
 		},
