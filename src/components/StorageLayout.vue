@@ -16,7 +16,7 @@
 					<div class="usage-info">
 						{{ usageinfo }}
 					</div>
-					<div v-if="isHidden" class="upgrade-storage__div">
+					<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
 						<a id="upgrade-btn" :href="storageLink">
 							{{ upgradeStorage }}
 						</a>
@@ -53,7 +53,6 @@ export default {
 	data() {
 		return {
 			storageInfo: [],
-			isHidden: false,
 			redirectURL: '',
 			storageLink: '',
 			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
@@ -113,11 +112,8 @@ export default {
 			axios
 				.get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
 				.then((response) => {
-					this.storageLink = response.data.storageLink
+					this.storageLink = response.data.storageLink || ''
 					this.redirectURL = response.data.redirectURL
-					if (response.data.link === '') {
-						this.isHidden = true
-					}
 				})
 		},
 	},
