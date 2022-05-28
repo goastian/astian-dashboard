@@ -16,7 +16,7 @@
 					<div class="usage-info">
 						{{ usageinfo }}
 					</div>
-					<div v-if="link" class="upgrade-storage__div">
+					<div v-if="storageInfo.quota > 0" class="upgrade-storage__div">
 						<a id="upgrade-btn" :href="storageLink">
 							{{ upgradeStorage }}
 						</a>
