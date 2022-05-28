@@ -1,6 +1,6 @@
 {
 	"name": "ecloud-dashboard",
-	"version": "0.1.0",
+	"version": "1.0.1",
 	"private": true,
 	"description": "Place this app in **nextcloud/custom_apps/**",
 	"main": "js/main.js",
@@ -15,8 +15,8 @@
 		"test": "jest",
 		"test:coverage": "jest --coverage"
 	},
-	"homepage": "https://github.com/nextcloud/aliases",
-	"author": "Georg Ehrke",
+	"homepage": "https://gitlab.e.foundation/e/infra/ecloud/nextcloud-apps/ecloud-dashboard",
+	"author": "Murena",
 	"license": "AGPL-3.0-or-later",
 	"dependencies": {
 		"@babel/polyfill": "^7.11.5",
