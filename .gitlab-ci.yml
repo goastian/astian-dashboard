@@ -5,11 +5,3 @@ include:
   - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
     ref: main
     file: "nc-apps-deploy.yml"
-
-lint:
-  script:
-    - npm run lint -- --fix
-
-.deploy:nextcloud-app-by-checkout:
-  after_script:
-    - ssh $SSH_USER@$DEPLOYMENT_HOST "sudo rsync -avzh --chown www-data:www-data --delete /tmp/${CI_JOB_ID}/$CI_PROJECT_NAME ${DEPLOYMENT_PATH}/html/custom_apps/ && rm -rf /tmp/${CI_JOB_ID} && sudo docker exec -u www-data $CONTAINER_NAME /var/www/html/occ app:enable $CI_PROJECT_NAME"
