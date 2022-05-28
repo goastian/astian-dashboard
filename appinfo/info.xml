@@ -5,9 +5,9 @@
     <name>ECloud dashboard</name>
     <summary>/e/ Cloud Dashboard</summary>
     <description><![CDATA[/e/ Cloud Dashboard]]></description>
-    <version>0.0.2</version>
+    <version>1.0.1</version>
     <licence>agpl</licence>
-    <author mail="ronak@e.email" >Ronak Patel</author>
+    <author mail="dev@murena.io" >Ronak Patel</author>
     <namespace>EcloudDashboard</namespace>
     <category>dashboard</category>
     <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
