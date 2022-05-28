@@ -3,14 +3,14 @@
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>ecloud-dashboard</id>
     <name>ECloud dashboard</name>
-    <summary>/e/ Cloud Dashboard</summary>
-    <description><![CDATA[/e/ Cloud Dashboard]]></description>
+    <summary>Murena Cloud Dashboard</summary>
+    <description><![CDATA[Murena Cloud Dashboard]]></description>
     <version>1.0.1</version>
     <licence>agpl</licence>
     <author mail="dev@murena.io" >Ronak Patel</author>
     <namespace>EcloudDashboard</namespace>
     <category>dashboard</category>
-    <bugs>https://gitlab.e.foundation/e/infra/selfhost/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
+    <bugs>https://gitlab.e.foundation/e/infra/ecloud/nextcloud-apps/ecloud-dashboard/-/issues</bugs>
     <dependencies>
         <nextcloud min-version="21" max-version="22"/>
     </dependencies>
