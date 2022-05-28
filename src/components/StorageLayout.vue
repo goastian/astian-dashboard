@@ -112,7 +112,7 @@ export default {
 			axios
 				.get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
 				.then((response) => {
-					this.storageLink = response.data.storageLink || ''
+					this.storageLink = response.data.storageLink || ''
 					this.redirectURL = response.data.redirectURL
 				})
 		},
