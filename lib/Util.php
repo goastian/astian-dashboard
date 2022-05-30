@@ -23,6 +23,7 @@ class Util
     private $navigationManager;
     private $appManager;
     private $root;
+    private $l10nFac;
     /** @var IGroupManager */
     private $groupManager;
 
@@ -39,6 +40,8 @@ class Util
         IGroupManager $groupManager,
         IUserManager $userManager,
         IUserSession $userSession,
+        IAppManager $appManager,
+        IFactory $l10nFac,
         $userId
     ) {
         $this->userId = $userId;
@@ -46,9 +49,40 @@ class Util
         $this->navigationManager = $navigationManager;
         $this->groupManager = $groupManager;
         $this->userManager = $userManager;
+        $this->appManager = $appManager;
+        $this->l10nFac = $l10nFac;
         $this->userSession = $userSession;
     }
 
+    private function getOnlyOfficeEntries()
+    {
+        $l = $this->l10nFac->get("onlyoffice");
+        $onlyOfficeEntries = array(
+            array(
+                "id" => "onlyoffice_docx",
+                "icon" => "/svg/core/filetypes/x-office-document",
+                "name" => $l->t("Document"),
+            ),
+            array(
+                "id" => "onlyoffice_xlsx",
+                "icon" => "/svg/core/filetypes/x-office-spreadsheet",
+                "name" => $l->t("Spreadsheet"),
+            ),
+            array(
+                "id" => "onlyoffice_pptx",
+                "icon" => "/svg/core/filetypes/x-office-presentation",
+                "name" => $l->t("Presentation"),
+            ),
+        );
+        $onlyOfficeEntries = array_map(function ($entry) {
+            $entry["type"] = "onlyoffice";
+            $entry["active"] = false;
+            $entry["href"] = "/apps/onlyoffice/ajax/new";
+            return $entry;
+        }, $onlyOfficeEntries);
+
+        return $onlyOfficeEntries;
+    }
     public function getOrder()
     {
         $order_raw = $this->config->getUserValue($this->userId, 'ecloud-launcher', 'order');
@@ -99,6 +133,11 @@ class Util
        unset($entriesByHref['/apps/dashboard/']);
        unset($entriesByHref['/apps/ecloud-dashboard/']);
        $entries = array_values($entriesByHref);
+       
+       if ($this->appManager->isEnabledForUser("onlyoffice")) {
+        $office_entries = $this->getOnlyOfficeEntries();
+        $entries = array_merge($office_entries, $entries);
+       }
        
        return array( 'apps' => $entries  );
     }
