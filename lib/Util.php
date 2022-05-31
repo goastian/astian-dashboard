@@ -136,7 +136,7 @@ class Util
        
        if ($this->appManager->isEnabledForUser("onlyoffice")) {
         $office_entries = $this->getOnlyOfficeEntries();
-        $entries = array_merge($entries, $office_entries);
+        $entries = array_merge($office_entries, $entries);
        }
        
        return array( 'apps' => $entries  );
