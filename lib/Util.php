@@ -85,7 +85,7 @@ class Util
     }
     public function getOrder()
     {
-        $order_raw = $this->config->getUserValue($this->userId, 'ecloud-launcher', 'order');
+        $order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
         // If order raw empty try to get from 'apporder' app config
         $order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
         // If order raw is still empty, return empty array
@@ -105,6 +105,12 @@ class Util
         foreach ($entries as &$entry) {
             $entriesByHref[$entry["href"]] = $entry;
         }
+		if ($this->appManager->isEnabledForUser("onlyoffice")) {
+			$office_entries = $this->getOnlyOfficeEntries();
+			foreach ($office_entries as &$of_entry) {
+				$entriesByHref[$of_entry["href"]] = $of_entry;
+			}
+		}
 
         foreach ($entries as &$entry) {
 			if (strpos($entry["id"], "external_index") !== 0) {
@@ -132,13 +138,9 @@ class Util
         }
        unset($entriesByHref['/apps/dashboard/']);
        unset($entriesByHref['/apps/ecloud-dashboard/']);
+       unset($entriesByHref['']);
        $entries = array_values($entriesByHref);
-       
-       if ($this->appManager->isEnabledForUser("onlyoffice")) {
-        $office_entries = $this->getOnlyOfficeEntries();
-        $entries = array_merge($office_entries, $entries);
-       }
-       
+
        return array( 'apps' => $entries  );
     }
     /**
