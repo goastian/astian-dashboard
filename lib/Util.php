@@ -77,7 +77,7 @@ class Util
         $onlyOfficeEntries = array_map(function ($entry) {
             $entry["type"] = "onlyoffice";
             $entry["active"] = false;
-            $entry["href"] = "/apps/onlyoffice/ajax/new";
+			$entry["href"] = "/apps/onlyoffice/ajax/new?type=".$entry["id"];
             return $entry;
         }, $onlyOfficeEntries);
 
