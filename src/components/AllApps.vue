@@ -79,7 +79,6 @@ export default {
 				})
 		},
 		handleOfficeClick(entry, e) {
-			console.log(entry)
 			if (entry.type === 'onlyoffice') {
 				e.preventDefault()
 				const newWindow = window.open('about:blank', '_blank')
