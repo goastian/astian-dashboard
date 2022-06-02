@@ -16,7 +16,8 @@
 				v-for="entry in entries"
 				:key="entry.message"
 				class="item"
-				:href="entry.href">
+				:href="entry.href"
+				@click="handleOfficeClick(entry, $event)">
 				<div class="color-icons" :class="entry.id" :style="entry.style" />
 				<div class="item-label">{{ entry.name }}</div>
 			</a>
@@ -26,7 +27,8 @@
 				v-for="entry in external"
 				:key="entry.message"
 				class="item"
-				:href="entry.href">
+				:href="entry.href"
+				@click="handleOfficeClick(entry, $event)">
 				<div class="color-icons" :class="entry.id" :style="entry.style" />
 				<div class="item-label">{{ entry.name }}</div>
 			</a>
@@ -36,6 +38,7 @@
 <script>
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
+import { showError } from '@nextcloud/dialogs'
 
 export default {
 	name: 'AllApps',
@@ -74,6 +77,51 @@ export default {
 				.then((response) => {
 					this.userInfo = response.data.data
 				})
+		},
+		handleOfficeClick(entry, e) {
+			console.log(entry)
+			if (entry.type === 'onlyoffice') {
+				e.preventDefault()
+				const newWindow = window.open('about:blank', '_blank')
+				axios.get('/apps/murena_launcher/getDocumentsFolder').then(function(response) {
+					const dir = response.data.dir
+					if (dir && dir.length) {
+						let docName = 'untitled'
+						if (entry.id === 'onlyoffice_docx') {
+							docName += '.docx'
+						}
+						if (entry.id === 'onlyoffice_pptx') {
+							docName += '.pptx'
+						}
+						if (entry.id === 'onlyoffice_xlsx') {
+							docName += '.xlsx'
+						}
+						axios
+							.post(entry.href, {
+								name: docName,
+								dir,
+							})
+							.then(function(response) {
+								if (response.data.id) {
+									newWindow.location.href = '/apps/onlyoffice/' + response.data.id
+								} else if (response.data.error && response.data.error.length) {
+									showError(response.data.error)
+									newWindow.close()
+								}
+							}).catch(function() {
+								showError(entry.t('murena_launcher', 'Error when trying to connect to ONLYOFFICE'))
+								newWindow.close()
+							})
+					}
+				}).catch(function(error) {
+					if (error.response && error.response.data) {
+						const errorMessage = error.response.data.error
+						showError(errorMessage)
+					}
+					newWindow.close()
+				})
+
+			}
 		},
 	},
 }
