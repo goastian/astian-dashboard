@@ -104,9 +104,6 @@ class Util
             $office_entries = $this->getOnlyOfficeEntries();
             $entries = array_merge($entries , $office_entries);
         }
-        foreach ($entries as &$entry) {
-            $entriesByHref[$entry["href"]] = $entry;
-        }
 
         foreach ($entries as &$entry) {
             if (strpos($entry["id"], "external_index") !== 0) {
