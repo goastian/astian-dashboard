@@ -108,12 +108,6 @@ class Util
         foreach ($entries as &$entry) {
             $entriesByHref[$entry["href"]] = $entry;
         }
-		if ($this->appManager->isEnabledForUser("onlyoffice")) {
-			$office_entries = $this->getOnlyOfficeEntries();
-			foreach ($office_entries as &$of_entry) {
-				$entriesByHref[$of_entry["href"]] = $of_entry;
-			}
-		}
 
         foreach ($entries as &$entry) {
 			if (strpos($entry["id"], "external_index") !== 0) {
