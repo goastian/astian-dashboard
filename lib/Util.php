@@ -100,13 +100,13 @@ class Util
         $entries = array_values($this->navigationManager->getAll());
         $order = $this->getOrder();
         $entriesByHref = array();
-		if ($this->appManager->isEnabledForUser("onlyoffice")) {
+        if ($this->appManager->isEnabledForUser("onlyoffice")) {
 			$office_entries = $this->getOnlyOfficeEntries();
 			$entries = array_merge($entries , $office_entries);
-		}
-		foreach ($entries as &$entry) {
+        }
+        foreach ($entries as &$entry) {
 			$entriesByHref[$entry["href"]] = $entry;
-		}
+        }
 
         foreach ($entries as &$entry) {
 			if (strpos($entry["id"], "external_index") !== 0) {
