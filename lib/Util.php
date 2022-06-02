@@ -99,9 +99,12 @@ class Util
     {
         $entries = array_values($this->navigationManager->getAll());
         $order = $this->getOrder();
-        $external = array();
         $entriesByHref = array();
-        // slice
+        
+		if ($this->appManager->isEnabledForUser("onlyoffice")) {
+			$office_entries = $this->getOnlyOfficeEntries();
+			$entries = array_merge($entries , $office_entries);
+		}
         foreach ($entries as &$entry) {
             $entriesByHref[$entry["href"]] = $entry;
         }
