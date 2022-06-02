@@ -101,26 +101,19 @@ class Util
         $order = $this->getOrder();
         $entriesByHref = array();
         if ($this->appManager->isEnabledForUser("onlyoffice")) {
-			$office_entries = $this->getOnlyOfficeEntries();
-			$entries = array_merge($entries , $office_entries);
+            $office_entries = $this->getOnlyOfficeEntries();
+            $entries = array_merge($entries , $office_entries);
         }
         foreach ($entries as &$entry) {
-			$entriesByHref[$entry["href"]] = $entry;
+            $entriesByHref[$entry["href"]] = $entry;
         }
-		
-		if ($this->appManager->isEnabledForUser("onlyoffice")) {
-			$office_entries = $this->getOnlyOfficeEntries();
-			foreach ($office_entries as &$of_entry) {
-				$entriesByHref[$of_entry["href"]] = $of_entry;
-			}
-		}
 
         foreach ($entries as &$entry) {
-			if (strpos($entry["id"], "external_index") !== 0) {
+            if (strpos($entry["id"], "external_index") !== 0) {
                 $entry["style"] = "";
-			}else{
-				$entry["style"] = "background-image: url('". $entry["icon"] ."')";				
-			}
+            }else{
+                $entry["style"] = "background-image: url('". $entry["icon"] ."')";				
+            }
 
             $entry["iconOffsetY"] = 0;
             $entriesByHref[$entry["href"]] = $entry;
@@ -146,6 +139,7 @@ class Util
 
        return array( 'apps' => $entries  );
     }
+
     /**
      * returns a sorted list of the user's group GIDs
      *
