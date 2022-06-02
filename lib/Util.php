@@ -107,6 +107,7 @@ class Util
 		foreach ($entries as &$entry) {
 			$entriesByHref[$entry["href"]] = $entry;
 		}
+
         foreach ($entries as &$entry) {
 			if (strpos($entry["id"], "external_index") !== 0) {
                 $entry["style"] = "";
