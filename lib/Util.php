@@ -77,7 +77,7 @@ class Util
         $onlyOfficeEntries = array_map(function ($entry) {
             $entry["type"] = "onlyoffice";
             $entry["active"] = false;
-            $entry["href"] = "/apps/onlyoffice/ajax/new";
+            $entry["href"] = "/apps/onlyoffice/ajax/new?id=".$entry["id"];
             return $entry;
         }, $onlyOfficeEntries);
 
@@ -99,19 +99,18 @@ class Util
     {
         $entries = array_values($this->navigationManager->getAll());
         $order = $this->getOrder();
-        $external = array();
         $entriesByHref = array();
-        // slice
-        foreach ($entries as &$entry) {
-            $entriesByHref[$entry["href"]] = $entry;
+        if ($this->appManager->isEnabledForUser("onlyoffice")) {
+            $office_entries = $this->getOnlyOfficeEntries();
+            $entries = array_merge($entries , $office_entries);
         }
 
         foreach ($entries as &$entry) {
-			if (strpos($entry["id"], "external_index") !== 0) {
+            if (strpos($entry["id"], "external_index") !== 0) {
                 $entry["style"] = "";
-			}else{
-				$entry["style"] = "background-image: url('". $entry["icon"] ."')";				
-			}
+            }else{
+                $entry["style"] = "background-image: url('". $entry["icon"] ."')";				
+            }
 
             $entry["iconOffsetY"] = 0;
             $entriesByHref[$entry["href"]] = $entry;
@@ -132,15 +131,12 @@ class Util
         }
        unset($entriesByHref['/apps/dashboard/']);
        unset($entriesByHref['/apps/ecloud-dashboard/']);
+       unset($entriesByHref['']);
        $entries = array_values($entriesByHref);
-       
-       if ($this->appManager->isEnabledForUser("onlyoffice")) {
-        $office_entries = $this->getOnlyOfficeEntries();
-        $entries = array_merge($entries, $office_entries);
-       }
-       
+
        return array( 'apps' => $entries  );
     }
+
     /**
      * returns a sorted list of the user's group GIDs
      *
