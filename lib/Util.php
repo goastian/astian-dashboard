@@ -77,7 +77,7 @@ class Util
         $onlyOfficeEntries = array_map(function ($entry) {
             $entry["type"] = "onlyoffice";
             $entry["active"] = false;
-			$entry["href"] = "/apps/onlyoffice/ajax/new?id=".$entry["id"];
+            $entry["href"] = "/apps/onlyoffice/ajax/new?id=".$entry["id"];
             return $entry;
         }, $onlyOfficeEntries);
 
@@ -85,7 +85,7 @@ class Util
     }
     public function getOrder()
     {
-        $order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
+        $order_raw = $this->config->getUserValue($this->userId, 'ecloud-launcher', 'order');
         // If order raw empty try to get from 'apporder' app config
         $order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
         // If order raw is still empty, return empty array
