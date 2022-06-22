@@ -373,7 +373,7 @@ a {
 
 .storage-layout hr{
   position: static;
-  width: 920px;
+  width: 100%;
   height: 1px;
   left: 0px;
   top: 0px;
