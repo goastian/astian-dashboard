@@ -196,10 +196,13 @@ export default {
   .item {
     width: 33%;
   }
+}
+@media only screen and (max-width: 600px) {
   .item-label {
     font-size: small;
   }
-} /* Medium devices (landscape tablets, 768px and up) */
+}
+/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .item {
     margin: auto;
