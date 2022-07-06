@@ -168,7 +168,10 @@ export default {
   line-height: 100%;
   padding-top: 10px;
   color: #333333;
-  margin: 0px 10px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 .item-sublabel {
   font-size: 10px;
@@ -192,6 +195,9 @@ export default {
 @media only screen and (max-width: 768px) {
   .item {
     width: 33%;
+  }
+  .item-label {
+    font-size: small;
   }
 } /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
