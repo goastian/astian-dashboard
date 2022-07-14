@@ -45,6 +45,11 @@ export default {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  #edashboard-app {
+    width: 90%;
+  }
+}
 /* Medium devices (landscape tablets, 920px and up) */
 
 @media only screen and (min-width: 920px) {
