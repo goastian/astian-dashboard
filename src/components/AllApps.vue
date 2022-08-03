@@ -3,7 +3,8 @@
 		<div class="welcome__label">
 			<h2>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</h2>
 		</div>
-		<div @click="isHidden = !isHidden">
+		<div v-if="AppDataloading" class="loader" />
+		<div v-if="!AppDataloading" @click="isHidden = !isHidden">
 			<span v-if="!isHidden" class="toggle_apps show-all">{{
 				showAllApps
 			}}</span>
@@ -11,7 +12,7 @@
 				showLessApps
 			}}</span>
 		</div>
-		<div class="app-container">
+		<div v-if="!AppDataloading" class="app-container">
 			<a
 				v-for="entry in entries"
 				:key="entry.message"
@@ -44,6 +45,7 @@ export default {
 	name: 'AllApps',
 	data() {
 		return {
+			AppDataloading: false,
 			isHidden: false,
 			entries: [],
 			external: [],
@@ -59,9 +61,11 @@ export default {
 	},
 	methods: {
 		getEntries() {
+			this.loading = true
 			axios
 				.get(generateUrl('/apps/ecloud-dashboard/get-apps'))
 				.then((response) => {
+					this.loading = false
 					this.entries = response.data.apps
 					this.entries = this.entries.map((entry) => {
 						entry.active = window.location.pathname.includes(entry.href)
@@ -206,6 +210,24 @@ export default {
 @media only screen and (min-width: 768px) {
   .item {
     margin: auto;
+  }
+}
+
+.loader {
+  border: 16px solid #f86710;
+  border-top: 16px solid #000000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>
