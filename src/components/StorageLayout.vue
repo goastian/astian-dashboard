@@ -13,11 +13,8 @@
 						style="background-color: #0086ff !important" />
 				</div>
 				<div class="upgrade__main_div">
-					<div class="usage-info"  v-if="!storageInfo.length">
+					<div class="usage-info">
 						{{ usageinfo }}
-					</div>
-					<div class="usage-info"  v-if="storageInfo.length">
-						Loading...
 					</div>
 					<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
 						<a id="upgrade-btn" :href="storageLink">
@@ -56,6 +53,7 @@ export default {
 	data() {
 		return {
 			storageInfo: [],
+			storageFetchStatus: false,
 			redirectURL: '',
 			storageLink: '',
 			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
@@ -75,6 +73,9 @@ export default {
 		},
 		usageinfo() {
 			try {
+				if (!this.storageFetchStatus) {
+					return 'Loading...'
+				}
 				const humanUsed = this.storageInfo.used
 				const humanQuota = this.storageInfo.quota
 				const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
@@ -105,10 +106,12 @@ export default {
 	},
 	methods: {
 		getDetails() {
+			this.storageFetchStatus = false
 			axios
 				.get(generateUrl('/apps/files/ajax/getstoragestats.php'))
 				.then((response) => {
 					this.storageInfo = response.data.data
+					this.storageFetchStatus = true
 				})
 		},
 		getRedirections() {
