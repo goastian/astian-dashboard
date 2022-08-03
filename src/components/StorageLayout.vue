@@ -13,8 +13,11 @@
 						style="background-color: #0086ff !important" />
 				</div>
 				<div class="upgrade__main_div">
-					<div class="usage-info">
+					<div class="usage-info"  v-if="!storageInfo.length">
 						{{ usageinfo }}
+					</div>
+					<div class="usage-info"  v-if="storageInfo.length">
+						Loading...
 					</div>
 					<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
 						<a id="upgrade-btn" :href="storageLink">
@@ -117,83 +120,6 @@ export default {
 				})
 		},
 	},
-}
-</script>
-
-<script>
-import axios from '@nextcloud/axios'
-import { generateUrl } from '@nextcloud/router'
-
-export default {
-  name: 'StorageLayout',
-  components: {},
-  data() {
-    return {
-      storageInfo: [],
-      redirectURL: '',
-      storageLink: '',
-      storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
-      upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
-      getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
-      openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
-      inviteYourFriends: OC.L10N.translate(
-        'ecloud-dashboard',
-        'Invite Your Friends'
-      ),
-    }
-  },
-  computed: {
-    totalSpaceUsedInPercentage() {
-      const percent = (this.storageInfo.used * 100) / this.storageInfo.quota
-      return percent.toFixed(2)
-    },
-    usageinfo() {
-      try {
-        const humanUsed = this.storageInfo.used
-        const humanQuota = this.storageInfo.quota
-        const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
-        const humanReadableQuota = OC.Util.humanFileSize(humanQuota)
-        let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
-        percent = percent.toFixed(2)
-        if (this.storageInfo.quota > 0) {
-          return (
-            humanReadableUsed +
-            ' of ' +
-            humanReadableQuota +
-            ' (' +
-            percent +
-            '%)' +
-            ' used'
-          )
-        } else {
-          return humanReadableUsed + ' used'
-        }
-      } catch (err) {
-        return err.message
-      }
-    },
-  },
-  mounted() {
-    this.getRedirections()
-    this.getDetails()
-  },
-  methods: {
-    getDetails() {
-      axios
-        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
-        .then((response) => {
-          this.storageInfo = response.data.data
-        })
-    },
-    getRedirections() {
-      axios
-        .get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
-        .then((response) => {
-          this.storageLink = response.data.storageLink
-          this.redirectURL = response.data.redirectURL
-        })
-    },
-  },
 }
 </script>
 
