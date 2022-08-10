@@ -5,17 +5,17 @@
 				<li class="uiskeleton-post o-media">
 					<div class="o-media__body">
 						<div class="o-vertical-spacing">
-							<h3 class="uiskeleton-post__headline">
-								<span class="skeleton-box" style="width:10%;height: 1.2em;"></span>
+							<h3 class="uiskeleton-post__headline headline_1">
+								<span class="skeleton-box width10"></span>
 							</h3>
 							<div class="uiskeleton-post__meta">
-								<span class="skeleton-box" style="width: 100%;height: 5px;"></span>
+								<span class="skeleton-box width100"></span>
 							</div>
-							<h3 class="uiskeleton-post__headline">
-								<span class="skeleton-box" style="width:10%;height: 0.80em;"></span>
+							<h3 class="uiskeleton-post__headline headline_2">
+								<span class="skeleton-box width10"></span>
 							</h3>
 							<div class="o-media__figure">
-								<span class="skeleton-box" style="width: 95%;height: 80px;"></span>
+								<span class="skeleton-box width95"></span>
 							</div>
 						</div>
 					</div>
@@ -409,4 +409,26 @@ a {
 .align__end{
   text-align: end;
 }
+.width100{
+  width: 100%;
+}
+.width10{
+  width: 10%;
+}
+.width95{
+  width: 95%;
+}
+.headline_1 .skeleton-box{
+  height: 1.2em
+}
+.uiskeleton-post__meta .skeleton-box{
+  height: 0.2em
+}
+.headline_2 .skeleton-box{
+  height: 0.80em
+}
+.o-media__figure .skeleton-box{
+  height: 3.2em
+}
+
 </style>

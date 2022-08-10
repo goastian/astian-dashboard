@@ -6,18 +6,18 @@
 					<div class="o-media__body">
 						<div class="o-vertical-spacing">
 							<h3 class="uiskeleton-post__headline">
-								<span class="skeleton-box" style="width:30%;height: 1.2em;"></span>
+								<span class="skeleton-box skeleton-headline__name"></span>
 							</h3>
 							<div class="uiskeleton-post__meta align__end">
-								<span class="skeleton-box" style="width:70px;"></span>
+								<span class="skeleton-box width-2_8"></span>
 							</div>
 							<div class="o-media__figure">
-								<span class="skeleton-box" style="width:100px;height:80px;"></span>
-								<span class="skeleton-box" style="width:100px;height:80px;"></span>
-								<span class="skeleton-box" style="width:100px;height:80px;"></span>
-								<span class="skeleton-box" style="width:100px;height:80px;"></span>
-								<span class="skeleton-box" style="width:100px;height:80px;"></span>
-								<span class="skeleton-box" style="width:100px;height:80px;"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
 							</div>
 						</div>
 					</div>
@@ -290,5 +290,18 @@ export default {
 }
 .align__end{
   text-align: end;
+}
+.skeleton-img
+{
+  width: 12%;
+  height: 5em;
+}
+.width-2_8
+{
+  width:2.8em;
+}
+.skeleton-headline__name{
+  width:30%;
+  height: 1.2em;
 }
 </style>
