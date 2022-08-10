@@ -1,40 +1,64 @@
 <template>
-	<div class="row margin0">
-		<div class="row margin0 storage-layout">
-			<hr>
+	<div class="storage-main-div">
+		<div v-if="!storageFetchStatus">
+			<ul class="o-vertical-spacing o-vertical-spacing--l">
+				<li class="blog-post o-media">
+					<div class="o-media__body">
+						<div class="o-vertical-spacing">
+							<h3 class="blog-post__headline">
+								<span class="skeleton-box" style="width:10%;height: 1.2em;"></span>
+							</h3>
+							<div class="blog-post__meta">
+								<span class="skeleton-box" style="width: 100%;height: 5px;"></span>
+							</div>
+							<h3 class="blog-post__headline">
+								<span class="skeleton-box" style="width:10%;height: 0.80em;"></span>
+							</h3>
+							<div class="o-media__figure">
+								<span class="skeleton-box" style="width: 95%;height: 80px;"></span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
-		<div class="row margin0">
-			<div class="row margintop10">
-				<b class="storage">{{ storage }}</b>
-				<div class="progress">
-					<div
-						class="progress-bar"
-						:style="{ width: totalSpaceUsedInPercentage + '%' }"
-						style="background-color: #0086ff !important" />
-				</div>
-				<div class="upgrade__main_div">
-					<div class="usage-info">
-						{{ usageinfo }}
-					</div>
-					<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
-						<a id="upgrade-btn" :href="storageLink">
-							{{ upgradeStorage }}
-						</a>
-					</div>
-				</div>
+		<div class="row margin0" v-if="storageFetchStatus">
+			<div class="row margin0 storage-layout">
+				<hr>
 			</div>
 			<div class="row margin0">
-				<div class="col-lg-12 instructions">
-					<div class="row margin0">
-						<div id="storage-redeem" class="storage-space-div width90">
-							<div class="instructions__label">
-								{{ getCredits }}
-							</div>
-							<div class="instructions__sublabel">
-								{{ openAnAccount }}
-							</div>
-							<div class="urllink">
-								<a :href="redirectURL">{{ inviteYourFriends }}</a>
+				<div class="row margintop10">
+					<b class="storage">{{ storage }}</b>
+					<div class="progress">
+						<div
+							class="progress-bar"
+							:style="{ width: totalSpaceUsedInPercentage + '%' }"
+							style="background-color: #0086ff !important" />
+					</div>
+					<div class="upgrade__main_div">
+						<div class="usage-info">
+							{{ usageinfo }}
+						</div>
+						<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
+							<a id="upgrade-btn" :href="storageLink">
+								{{ upgradeStorage }}
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="row margin0">
+					<div class="col-lg-12 instructions">
+						<div class="row margin0">
+							<div id="storage-redeem" class="storage-space-div width90">
+								<div class="instructions__label">
+									{{ getCredits }}
+								</div>
+								<div class="instructions__sublabel">
+									{{ openAnAccount }}
+								</div>
+								<div class="urllink">
+									<a :href="redirectURL">{{ inviteYourFriends }}</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -73,9 +97,6 @@ export default {
 		},
 		usageinfo() {
 			try {
-				if (!this.storageFetchStatus) {
-					return 'Loading...'
-				}
 				const humanUsed = this.storageInfo.used
 				const humanQuota = this.storageInfo.quota
 				const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
@@ -330,5 +351,62 @@ a {
     background-position: 3% 0;
     padding-top: unset;
   }
+}
+.skeleton-box {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: #DDDBDD;
+}
+.skeleton-box::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0));
+  -webkit-animation: shimmer 3s infinite;
+          animation: shimmer 3s infinite;
+  content: "";
+}
+@-webkit-keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.blog-post__headline {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.blog-post__meta {
+  font-size: 0.85em;
+  color: #6b6b6b;
+}
+.o-media {
+  display: flex;
+}
+.o-media__body {
+  flex-grow: 1;
+}
+.o-vertical-spacing > * + * {
+  margin-top: 0.70em;
+}
+.o-vertical-spacing--l > * + * {
+  margin-top: 2em;
+}
+.o-media__figure span {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.align__end{
+  text-align: end;
 }
 </style>
