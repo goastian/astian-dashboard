@@ -2,13 +2,13 @@
 	<div class="main---div">
 		<div v-if="!entries.length">
 			<ul class="o-vertical-spacing o-vertical-spacing--l">
-				<li class="blog-post o-media">
+				<li class="uiskeleton-post o-media">
 					<div class="o-media__body">
 						<div class="o-vertical-spacing">
-							<h3 class="blog-post__headline">
+							<h3 class="uiskeleton-post__headline">
 								<span class="skeleton-box" style="width:30%;height: 1.2em;"></span>
 							</h3>
-							<div class="blog-post__meta align__end">
+							<div class="uiskeleton-post__meta align__end">
 								<span class="skeleton-box" style="width:70px;"></span>
 							</div>
 							<div class="o-media__figure">
@@ -264,11 +264,11 @@ export default {
   }
 }
 
-.blog-post__headline {
+.uiskeleton-post__headline {
   font-size: 1.25em;
   font-weight: bold;
 }
-.blog-post__meta {
+.uiskeleton-post__meta {
   font-size: 0.85em;
   color: #6b6b6b;
 }
@@ -285,8 +285,8 @@ export default {
   margin-top: 2em;
 }
 .o-media__figure span {
-  margin-left: 25px;
-  margin-right: 25px;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 .align__end{
   text-align: end;
