@@ -358,6 +358,7 @@ a {
   position: relative;
   overflow: hidden;
   background-color: #DDDBDD;
+  border-radius: 5px;
 }
 .skeleton-box::after {
   position: absolute;
