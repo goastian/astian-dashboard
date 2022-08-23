@@ -1,37 +1,63 @@
 <template>
-	<div class="new-icons">
-		<div class="welcome__label">
-			<h2>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</h2>
+	<div class="main---div">
+		<div v-if="!entries.length">
+			<ul class="o-vertical-spacing o-vertical-spacing--l">
+				<li class="uiskeleton-post o-media">
+					<div class="o-media__body">
+						<div class="o-vertical-spacing">
+							<h3 class="uiskeleton-post__headline">
+								<span class="skeleton-box skeleton-headline__name"></span>
+							</h3>
+							<div class="uiskeleton-post__meta align__end">
+								<span class="skeleton-box width-2_8"></span>
+							</div>
+							<div class="o-media__figure">
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img"></span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
-		<div @click="isHidden = !isHidden">
-			<span v-if="!isHidden" class="toggle_apps show-all">{{
-				showAllApps
-			}}</span>
-			<span v-if="isHidden" class="toggle_apps show-less">{{
-				showLessApps
-			}}</span>
-		</div>
-		<div class="app-container">
-			<a
-				v-for="entry in entries"
-				:key="entry.message"
-				class="item"
-				:href="entry.href"
-				@click="handleOfficeClick(entry, $event)">
-				<div class="color-icons" :class="entry.id" :style="entry.style" />
-				<div class="item-label">{{ entry.name }}</div>
-			</a>
-		</div>
-		<div v-if="isHidden" class="app-container">
-			<a
-				v-for="entry in external"
-				:key="entry.message"
-				class="item"
-				:href="entry.href"
-				@click="handleOfficeClick(entry, $event)">
-				<div class="color-icons" :class="entry.id" :style="entry.style" />
-				<div class="item-label">{{ entry.name }}</div>
-			</a>
+		<div class="new-icons" v-if="entries.length">
+			<div class="welcome__label">
+				<h2>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</h2>
+			</div>
+			<div @click="isHidden = !isHidden">
+				<span v-if="!isHidden" class="toggle_apps show-all">{{
+					showAllApps
+				}}</span>
+				<span v-if="isHidden" class="toggle_apps show-less">{{
+					showLessApps
+				}}</span>
+			</div>
+			<div class="app-container">
+				<a
+					v-for="entry in entries"
+					:key="entry.message"
+					class="item"
+					:href="entry.href"
+					@click="handleOfficeClick(entry, $event)">
+					<div class="color-icons" :class="entry.id" :style="entry.style" />
+					<div class="item-label">{{ entry.name }}</div>
+				</a>
+			</div>
+			<div v-if="isHidden" class="app-container">
+				<a
+					v-for="entry in external"
+					:key="entry.message"
+					class="item"
+					:href="entry.href"
+					@click="handleOfficeClick(entry, $event)">
+					<div class="color-icons" :class="entry.id" :style="entry.style" />
+					<div class="item-label">{{ entry.name }}</div>
+				</a>
+			</div>
 		</div>
 	</div>
 </template>
@@ -207,5 +233,76 @@ export default {
   .item {
     margin: auto;
   }
+}
+.skeleton-box {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: #DDDBDD;
+  border-radius: 5px;
+}
+.skeleton-box::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0));
+  -webkit-animation: shimmer 3s infinite;
+          animation: shimmer 3s infinite;
+  content: "";
+}
+@-webkit-keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.uiskeleton-post__headline {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.uiskeleton-post__meta {
+  font-size: 0.85em;
+  color: #6b6b6b;
+}
+.o-media {
+  display: flex;
+}
+.o-media__body {
+  flex-grow: 1;
+}
+.o-vertical-spacing > * + * {
+  margin-top: 3em;
+}
+.o-vertical-spacing--l > * + * {
+  margin-top: 2em;
+}
+.o-media__figure span {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.align__end{
+  text-align: end;
+}
+.skeleton-img
+{
+  width: 12%;
+  height: 5em;
+}
+.width-2_8
+{
+  width:2.8em;
+}
+.skeleton-headline__name{
+  width:30%;
+  height: 1.2em;
 }
 </style>
