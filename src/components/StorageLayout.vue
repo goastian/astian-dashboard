@@ -1,40 +1,64 @@
 <template>
-	<div class="row margin0">
-		<div class="row margin0 storage-layout">
-			<hr>
+	<div class="storage-main-div">
+		<div v-if="!storageFetchStatus">
+			<ul class="o-vertical-spacing o-vertical-spacing--l">
+				<li class="uiskeleton-post o-media">
+					<div class="o-media__body">
+						<div class="o-vertical-spacing">
+							<h3 class="uiskeleton-post__headline headline_1">
+								<span class="skeleton-box width10"></span>
+							</h3>
+							<div class="uiskeleton-post__meta">
+								<span class="skeleton-box width100"></span>
+							</div>
+							<h3 class="uiskeleton-post__headline headline_2">
+								<span class="skeleton-box width10"></span>
+							</h3>
+							<div class="o-media__figure">
+								<span class="skeleton-box width95"></span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
-		<div class="row margin0">
-			<div class="row margintop10">
-				<b class="storage">{{ storage }}</b>
-				<div class="progress">
-					<div
-						class="progress-bar"
-						:style="{ width: totalSpaceUsedInPercentage + '%' }"
-						style="background-color: #0086ff !important" />
-				</div>
-				<div class="upgrade__main_div">
-					<div class="usage-info">
-						{{ usageinfo }}
-					</div>
-					<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
-						<a id="upgrade-btn" :href="storageLink">
-							{{ upgradeStorage }}
-						</a>
-					</div>
-				</div>
+		<div class="row margin0" v-if="storageFetchStatus">
+			<div class="row margin0 storage-layout">
+				<hr>
 			</div>
 			<div class="row margin0">
-				<div class="col-lg-12 instructions">
-					<div class="row margin0">
-						<div id="storage-redeem" class="storage-space-div width90">
-							<div class="instructions__label">
-								{{ getCredits }}
-							</div>
-							<div class="instructions__sublabel">
-								{{ openAnAccount }}
-							</div>
-							<div class="urllink">
-								<a :href="redirectURL">{{ inviteYourFriends }}</a>
+				<div class="row margintop10">
+					<b class="storage">{{ storage }}</b>
+					<div class="progress">
+						<div
+							class="progress-bar"
+							:style="{ width: totalSpaceUsedInPercentage + '%' }"
+							style="background-color: #0086ff !important" />
+					</div>
+					<div class="upgrade__main_div">
+						<div class="usage-info">
+							{{ usageinfo }}
+						</div>
+						<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
+							<a id="upgrade-btn" :href="storageLink">
+								{{ upgradeStorage }}
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="row margin0">
+					<div class="col-lg-12 instructions">
+						<div class="row margin0">
+							<div id="storage-redeem" class="storage-space-div width90">
+								<div class="instructions__label">
+									{{ getCredits }}
+								</div>
+								<div class="instructions__sublabel">
+									{{ openAnAccount }}
+								</div>
+								<div class="urllink">
+									<a :href="redirectURL">{{ inviteYourFriends }}</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -53,6 +77,7 @@ export default {
 	data() {
 		return {
 			storageInfo: [],
+			storageFetchStatus: false,
 			redirectURL: '',
 			storageLink: '',
 			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
@@ -102,10 +127,12 @@ export default {
 	},
 	methods: {
 		getDetails() {
+			this.storageFetchStatus = false
 			axios
 				.get(generateUrl('/apps/files/ajax/getstoragestats.php'))
 				.then((response) => {
 					this.storageInfo = response.data.data
+					this.storageFetchStatus = true
 				})
 		},
 		getRedirections() {
@@ -117,83 +144,6 @@ export default {
 				})
 		},
 	},
-}
-</script>
-
-<script>
-import axios from '@nextcloud/axios'
-import { generateUrl } from '@nextcloud/router'
-
-export default {
-  name: 'StorageLayout',
-  components: {},
-  data() {
-    return {
-      storageInfo: [],
-      redirectURL: '',
-      storageLink: '',
-      storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
-      upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
-      getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
-      openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
-      inviteYourFriends: OC.L10N.translate(
-        'ecloud-dashboard',
-        'Invite Your Friends'
-      ),
-    }
-  },
-  computed: {
-    totalSpaceUsedInPercentage() {
-      const percent = (this.storageInfo.used * 100) / this.storageInfo.quota
-      return percent.toFixed(2)
-    },
-    usageinfo() {
-      try {
-        const humanUsed = this.storageInfo.used
-        const humanQuota = this.storageInfo.quota
-        const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
-        const humanReadableQuota = OC.Util.humanFileSize(humanQuota)
-        let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
-        percent = percent.toFixed(2)
-        if (this.storageInfo.quota > 0) {
-          return (
-            humanReadableUsed +
-            ' of ' +
-            humanReadableQuota +
-            ' (' +
-            percent +
-            '%)' +
-            ' used'
-          )
-        } else {
-          return humanReadableUsed + ' used'
-        }
-      } catch (err) {
-        return err.message
-      }
-    },
-  },
-  mounted() {
-    this.getRedirections()
-    this.getDetails()
-  },
-  methods: {
-    getDetails() {
-      axios
-        .get(generateUrl('/apps/files/ajax/getstoragestats.php'))
-        .then((response) => {
-          this.storageInfo = response.data.data
-        })
-    },
-    getRedirections() {
-      axios
-        .get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
-        .then((response) => {
-          this.storageLink = response.data.storageLink
-          this.redirectURL = response.data.redirectURL
-        })
-    },
-  },
 }
 </script>
 
@@ -402,4 +352,84 @@ a {
     padding-top: unset;
   }
 }
+.skeleton-box {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: #DDDBDD;
+  border-radius: 5px;
+}
+.skeleton-box::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0));
+  -webkit-animation: shimmer 3s infinite;
+          animation: shimmer 3s infinite;
+  content: "";
+}
+@-webkit-keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.uiskeleton-post__headline {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.uiskeleton-post__meta {
+  font-size: 0.85em;
+  color: #6b6b6b;
+}
+.o-media {
+  display: flex;
+}
+.o-media__body {
+  flex-grow: 1;
+}
+.o-vertical-spacing > * + * {
+  margin-top: 0.70em;
+}
+.o-vertical-spacing--l > * + * {
+  margin-top: 2em;
+}
+.o-media__figure span {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.align__end{
+  text-align: end;
+}
+.width100{
+  width: 100%;
+}
+.width10{
+  width: 10%;
+}
+.width95{
+  width: 95%;
+}
+.headline_1 .skeleton-box{
+  height: 1.2em
+}
+.uiskeleton-post__meta .skeleton-box{
+  height: 0.2em
+}
+.headline_2 .skeleton-box{
+  height: 0.80em
+}
+.o-media__figure .skeleton-box{
+  height: 3.2em
+}
+
 </style>
