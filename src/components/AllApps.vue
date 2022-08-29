@@ -99,7 +99,7 @@ export default {
 		},
 		getDetails() {
 			axios
-				.get(generateUrl('/apps/files/ajax/getstoragestats?dir=/'))
+				.get(generateUrl('/apps/files/ajax/getstoragestats'))
 				.then((response) => {
 					this.userInfo = response.data.data
 				})
