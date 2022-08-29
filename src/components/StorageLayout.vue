@@ -129,7 +129,7 @@ export default {
 		getDetails() {
 			this.storageFetchStatus = false
 			axios
-				.get(generateUrl('/apps/files/ajax/getstoragestats.php'))
+				.get(generateUrl('/apps/files/ajax/getstoragestats'))
 				.then((response) => {
 					this.storageInfo = response.data.data
 					this.storageFetchStatus = true
