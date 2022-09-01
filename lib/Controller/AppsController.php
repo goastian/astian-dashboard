@@ -90,11 +90,17 @@ class AppsController extends Controller
 		$userQuota = $this->userSession->getUser()->getQuota();
 		$userQuota = str_replace(' ', '', $userQuota);
 		
-		$storageLink = $link . ((strpos($link, '?') !== false) ? '&' : '?') .
-		'username=' . urlencode($this->request->getCookie($this->cookieUsername)) .
-		'&token=' . urlencode($this->request->getCookie($this->cookieToken)) .
-		'&current-quota=' . $userQuota .
-		'&from=nextcloud';
+		if ( empty($this->request->getCookie($this->cookieUsername)) || empty($this->request->getCookie($this->cookieToken))) {
+			$storageLink = $link;
+		} else {
+			$storageLink = $link . ((strpos($link, '?') !== false) ? '&' : '?') .
+			'username=' . urlencode($this->request->getCookie($this->cookieUsername)) .
+			'&token=' . urlencode($this->request->getCookie($this->cookieToken)) .
+			'&current-quota=' . $userQuota .
+			'&from=nextcloud';
+		}
+
+
 
 		return array('storageLink' => $storageLink , 'link' => $link);
 	}
