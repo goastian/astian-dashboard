@@ -40,7 +40,7 @@
 							{{ usageinfo }}
 						</div>
 						<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
-							<a id="upgrade-btn" :href="storageLink">
+							<a id="upgrade-btn" target="_blank" :href="storageLink">
 								{{ upgradeStorage }}
 							</a>
 						</div>
@@ -57,7 +57,7 @@
 									{{ openAnAccount }}
 								</div>
 								<div class="urllink">
-									<a :href="redirectURL">{{ inviteYourFriends }}</a>
+									<a :href="redirectURL" target="_blank">{{ inviteYourFriends }}</a>
 								</div>
 							</div>
 						</div>
