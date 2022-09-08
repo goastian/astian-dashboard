@@ -108,8 +108,10 @@ class Util
         foreach ($entries as &$entry) {
             if (strpos($entry["id"], "external_index") !== 0) {
                 $entry["style"] = "";
+                $entry["target"] = "";
             }else{
-                $entry["style"] = "background-image: url('". $entry["icon"] ."')";				
+                $entry["style"] = "background-image: url('". $entry["icon"] ."')";
+                $entry["target"] = "_blank";		
             }
 
             $entry["iconOffsetY"] = 0;
