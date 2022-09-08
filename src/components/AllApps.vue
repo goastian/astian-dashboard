@@ -42,6 +42,7 @@
 					:key="entry.message"
 					class="item"
 					:href="entry.href"
+					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
 					<div class="color-icons" :class="entry.id" :style="entry.style" />
 					<div class="item-label">{{ entry.name }}</div>
@@ -53,6 +54,7 @@
 					:key="entry.message"
 					class="item"
 					:href="entry.href"
+					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
 					<div class="color-icons" :class="entry.id" :style="entry.style" />
 					<div class="item-label">{{ entry.name }}</div>
