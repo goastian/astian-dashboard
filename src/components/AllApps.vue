@@ -109,7 +109,7 @@ export default {
 		handleOfficeClick(entry, e) {
 			if (entry.type === 'onlyoffice') {
 				e.preventDefault()
-				const newWindow = window.open('about:blank', '_blank')
+				const newWindow = window.open('about:blank', '_self')
 				axios.get('/apps/murena_launcher/getDocumentsFolder').then(function(response) {
 					const dir = response.data.dir
 					if (dir && dir.length) {
