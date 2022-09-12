@@ -113,9 +113,9 @@ class Util
                 $entry["style"] = "background-image: url('". $entry["icon"] ."')";
                 $entry["target"] = "_blank";		
             }
-			if($entry["type"] === 'onlyoffice'){
-				$entry["target"] = "";
-			}
+            if($entry["type"] === 'onlyoffice'){
+            	$entry["target"] = "";
+            }
 
             $entry["iconOffsetY"] = 0;
             $entriesByHref[$entry["href"]] = $entry;
