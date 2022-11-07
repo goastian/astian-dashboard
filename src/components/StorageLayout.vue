@@ -6,23 +6,23 @@
 					<div class="o-media__body">
 						<div class="o-vertical-spacing">
 							<h3 class="uiskeleton-post__headline headline_1">
-								<span class="skeleton-box width10"></span>
+								<span class="skeleton-box width10" />
 							</h3>
 							<div class="uiskeleton-post__meta">
-								<span class="skeleton-box width100"></span>
+								<span class="skeleton-box width100" />
 							</div>
 							<h3 class="uiskeleton-post__headline headline_2">
-								<span class="skeleton-box width10"></span>
+								<span class="skeleton-box width10" />
 							</h3>
 							<div class="o-media__figure">
-								<span class="skeleton-box width95"></span>
+								<span class="skeleton-box width95" />
 							</div>
 						</div>
 					</div>
 				</li>
 			</ul>
 		</div>
-		<div class="row margin0" v-if="storageFetchStatus">
+		<div v-if="storageFetchStatus" class="row margin0">
 			<div class="row margin0 storage-layout">
 				<hr>
 			</div>
@@ -30,8 +30,7 @@
 				<div class="row margintop10">
 					<b class="storage">{{ storage }}</b>
 					<div class="progress">
-						<div
-							class="progress-bar"
+						<div class="progress-bar"
 							:style="{ width: totalSpaceUsedInPercentage + '%' }"
 							style="background-color: #0086ff !important" />
 					</div>
@@ -70,6 +69,7 @@
 <script>
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
+import { humanFileSize } from '@nextcloud/files'
 
 export default {
 	name: 'StorageLayout',
@@ -99,8 +99,8 @@ export default {
 			try {
 				const humanUsed = this.storageInfo.used
 				const humanQuota = this.storageInfo.quota
-				const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
-				const humanReadableQuota = OC.Util.humanFileSize(humanQuota)
+				const humanReadableUsed = humanFileSize.formatFileSize(humanUsed)
+				const humanReadableQuota = humanFileSize.formatFileSize(humanQuota)
 				let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
 				percent = percent.toFixed(2)
 				if (this.storageInfo.quota > 0) {

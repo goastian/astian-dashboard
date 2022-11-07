@@ -6,25 +6,25 @@
 					<div class="o-media__body">
 						<div class="o-vertical-spacing">
 							<h3 class="uiskeleton-post__headline">
-								<span class="skeleton-box skeleton-headline__name"></span>
+								<span class="skeleton-box skeleton-headline__name" />
 							</h3>
 							<div class="uiskeleton-post__meta align__end">
-								<span class="skeleton-box width-2_8"></span>
+								<span class="skeleton-box width-2_8" />
 							</div>
 							<div class="o-media__figure">
-								<span class="skeleton-box skeleton-img"></span>
-								<span class="skeleton-box skeleton-img"></span>
-								<span class="skeleton-box skeleton-img"></span>
-								<span class="skeleton-box skeleton-img"></span>
-								<span class="skeleton-box skeleton-img"></span>
-								<span class="skeleton-box skeleton-img"></span>
+								<span class="skeleton-box skeleton-img" />
+								<span class="skeleton-box skeleton-img" />
+								<span class="skeleton-box skeleton-img" />
+								<span class="skeleton-box skeleton-img" />
+								<span class="skeleton-box skeleton-img" />
+								<span class="skeleton-box skeleton-img" />
 							</div>
 						</div>
 					</div>
 				</li>
 			</ul>
 		</div>
-		<div class="new-icons" v-if="entries.length">
+		<div v-if="entries.length" class="new-icons">
 			<div class="welcome__label">
 				<h2>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</h2>
 			</div>
@@ -37,8 +37,7 @@
 				}}</span>
 			</div>
 			<div class="app-container">
-				<a
-					v-for="entry in entries"
+				<a v-for="entry in entries"
 					:key="entry.message"
 					class="item"
 					:href="entry.href"
@@ -49,8 +48,7 @@
 				</a>
 			</div>
 			<div v-if="isHidden" class="app-container">
-				<a
-					v-for="entry in external"
+				<a v-for="entry in external"
 					:key="entry.message"
 					class="item"
 					:href="entry.href"

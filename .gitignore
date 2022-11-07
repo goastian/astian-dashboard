@@ -1,6 +1,22 @@
-.php_cs.cache
-node_modules
+.DS_Store
+node_modules/
+dist/
+js/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Editor directories and files
 .idea
-.npm
-dist
-js
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+.marginalia
+build/
+coverage/
+vendor/
+translationtool.phar
+.php-cs-fixer.cache
+.phpunit.result.cache
+junit.xml
