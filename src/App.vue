@@ -1,5 +1,5 @@
 <template>
-	<div id="edashboard-app">
+	<div id="dashboard-app">
 		<AllApps />
 		<StorageLayout />
 	</div>
