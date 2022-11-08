@@ -69,6 +69,7 @@
 <script>
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
+import { formatFileSize } from '@nextcloud/files'
 
 export default {
 	name: 'StorageLayout',
@@ -98,8 +99,8 @@ export default {
 			try {
 				const humanUsed = this.storageInfo.used
 				const humanQuota = this.storageInfo.quota
-				const humanReadableUsed = OC.Util.humanFileSize(humanUsed)
-				const humanReadableQuota = OC.Util.humanFileSize(humanQuota)
+				const humanReadableUsed = formatFileSize(humanUsed)
+				const humanReadableQuota = formatFileSize(humanQuota)
 				let percent = (this.storageInfo.used * 100) / this.storageInfo.quota
 				percent = percent.toFixed(2)
 				if (this.storageInfo.quota > 0) {
