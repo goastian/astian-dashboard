@@ -1,4 +1,4 @@
 <?php
-script('ecloud-dashboard', 'edashboard_main');
+script('ecloud-dashboard', 'ecloud-dashboard-main');
 ?>
 <div id="app" class="container"></div>
