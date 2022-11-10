@@ -1,5 +1,5 @@
 <template>
-	<div id="edashboard-app">
+	<div id="dashboard-app">
 		<AllApps />
 		<StorageLayout />
 	</div>
@@ -33,27 +33,27 @@ export default {
   background-color: white;
 }
 
-#edashboard-app {
+#dashboard-app {
   width: 920px;
   margin: 7% auto;
   font-family: 'Roboto';
 }
 
 @media only screen and (max-width: 920px) {
-  #edashboard-app {
+  #dashboard-app {
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  #edashboard-app {
+  #dashboard-app {
     width: 90%;
   }
 }
 /* Medium devices (landscape tablets, 920px and up) */
 
 @media only screen and (min-width: 920px) {
-  #edashboard-app {
+  #dashboard-app {
     width: 920px;
   }
 }
