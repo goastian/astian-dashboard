@@ -55,3 +55,8 @@ or:
     phpunit -c phpunit.integration.xml
 
 for integration tests
+
+## Make ecloud-dashboard app as default dashboard
+
+- To make default dashboard, add `'defaultapp' => 'ecloud-dashboard'` changes in `/config/config.php`. 
+
