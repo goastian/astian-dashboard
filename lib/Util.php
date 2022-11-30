@@ -96,7 +96,8 @@ class Util {
 			$office_entries = $this->getOnlyOfficeEntries();
 			$entries = array_merge($entries, $office_entries);
 		}
-
+		$betaGroupName = $this->config->getSystemValue("beta_group_name");
+		$isBeta = $this->checkIsBetaUser();
 		foreach ($entries as &$entry) {
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["style"] = "";
@@ -107,6 +108,15 @@ class Util {
 			}
 
 			$entry["iconOffsetY"] = 0;
+			$entry["betaClass"] = '';
+			if ($isBeta) {
+				$enabledValue = $this->config->getAppValue($entry['id'], 'enabled', 'no');
+				if ($enabledValue !== 'no' && $enabledValue !== 'yes') {
+					if (strpos($enabledValue, $betaGroupName)) {
+						$entry["betaClass"] = 'beta-app';
+					}
+				} 
+			}
 			$entriesByHref[$entry["href"]] = $entry;
 		}
 		/*
@@ -143,5 +153,15 @@ class Util {
 			return [];
 		}
 		return $this->groupManager->getUserGroupIds($user);
+	}
+
+	private function checkIsBetaUser() {
+		$user = $this->userSession->getUser();
+		$usersGroups = $this->groupManager->getUserGroupIds($user);
+		$betaGroupName = $this->config->getSystemValue("beta_group_name");
+		if (in_array($betaGroupName, $usersGroups)) {
+			return true;
+		}
+		return false;
 	}
 }
