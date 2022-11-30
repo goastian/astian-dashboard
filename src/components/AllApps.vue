@@ -313,7 +313,7 @@ a.item.beta-app {
 .beta-app:after {
 	content: "BETA";
     position: absolute;
-    top: 0;
+    top: 15%;
     background-color: #007fff;
     color: white;
     font-size: 12px;
