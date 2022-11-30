@@ -115,7 +115,7 @@ class Util {
 					if (strpos($enabledValue, $betaGroupName)) {
 						$entry["betaClass"] = 'beta-app';
 					}
-				} 
+				}
 			}
 			$entriesByHref[$entry["href"]] = $entry;
 		}
