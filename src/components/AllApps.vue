@@ -316,7 +316,7 @@ a.item.beta-app {
     top: 0;
     background-color: #007fff;
     color: white;
-    font-size: 12px; 
+    font-size: 12px;
     border-radius: 10px;
     line-height: normal;
     padding: 2px 10px;
