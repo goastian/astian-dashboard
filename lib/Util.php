@@ -136,7 +136,7 @@ class Util {
 		unset($entriesByHref['/apps/dashboard/']);
 		unset($entriesByHref['/apps/ecloud-dashboard/']);
 		unset($entriesByHref['']);
-		if ($isBeta) {
+		if ($isBeta && array_key_exists("/apps/snappymail/", $entriesByHref)) {
 			unset($entriesByHref['/apps/rainloop/']);
 		}
 		$entries = array_values($entriesByHref);
