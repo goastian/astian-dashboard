@@ -112,7 +112,7 @@ class Util {
 			if ($isBeta) {
 				$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
 				if ($appEnabledGroups !== 'no' && $appEnabledGroups !== 'yes') {
-					if (strpos($appEnabledGroups, $betaGroupName)) {
+					if (str_contains($appEnabledGroups, $betaGroupName)) {
 						$entry["betaClass"] = 'beta-app';
 					}
 				}
