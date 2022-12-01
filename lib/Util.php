@@ -97,7 +97,7 @@ class Util {
 			$entries = array_merge($entries, $office_entries);
 		}
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
-		$isBeta = $this->checkIsBetaUser();
+		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["style"] = "";
@@ -110,9 +110,9 @@ class Util {
 			$entry["iconOffsetY"] = 0;
 			$entry["betaClass"] = '';
 			if ($isBeta) {
-				$enabledValue = $this->config->getAppValue($entry['id'], 'enabled', 'no');
-				if ($enabledValue !== 'no' && $enabledValue !== 'yes') {
-					if (strpos($enabledValue, $betaGroupName)) {
+				$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
+				if ($appEnabledGroups !== 'no' && $appEnabledGroups !== 'yes') {
+					if (strpos($appEnabledGroups, $betaGroupName)) {
 						$entry["betaClass"] = 'beta-app';
 					}
 				}
@@ -136,6 +136,9 @@ class Util {
 		unset($entriesByHref['/apps/dashboard/']);
 		unset($entriesByHref['/apps/ecloud-dashboard/']);
 		unset($entriesByHref['']);
+		if ($isBeta) {
+			unset($entriesByHref['/apps/rainloop/']);
+		}
 		$entries = array_values($entriesByHref);
 
 		return array( 'apps' => $entries  );
@@ -155,7 +158,7 @@ class Util {
 		return $this->groupManager->getUserGroupIds($user);
 	}
 
-	private function checkIsBetaUser() {
+	private function isBetaUser() {
 		$user = $this->userSession->getUser();
 		$usersGroups = $this->groupManager->getUserGroupIds($user);
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
