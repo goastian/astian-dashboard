@@ -162,9 +162,6 @@ class Util {
 		$user = $this->userSession->getUser();
 		$usersGroups = $this->groupManager->getUserGroupIds($user);
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
-		if (in_array($betaGroupName, $usersGroups)) {
-			return true;
-		}
-		return false;
+		return in_array($betaGroupName, $usersGroups);
 	}
 }
