@@ -159,9 +159,8 @@ class Util {
 	}
 
 	private function isBetaUser() {
-		$user = $this->userSession->getUser();
-		$usersGroups = $this->groupManager->getUserGroupIds($user);
+		$uid = $this->userSession->getUser()->getUID();
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
-		return in_array($betaGroupName, $usersGroups);
+		return $this->groupManager->isInGroup($uid, $betaGroupName);
 	}
 }
