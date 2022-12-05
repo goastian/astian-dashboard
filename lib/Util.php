@@ -108,10 +108,10 @@ class Util {
 			}
 
 			$entry["iconOffsetY"] = 0;
-			$entry["is_beta"] = '';
+			$entry["is_beta"] = 0;
 			$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
 			if ($isBeta && str_contains($appEnabledGroups, $betaGroupName)) {
-				$entry["is_beta"] = 'beta-app';
+				$entry["is_beta"] = 1;
 			}
 			$entriesByHref[$entry["href"]] = $entry;
 		}
