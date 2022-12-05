@@ -40,7 +40,7 @@
 				<a v-for="entry in entries"
 					:key="entry.message"
 					class="item"
-					:class="entry.betaClass"
+					v-bind:class="{ 'beta-app': entry.is_beta }"
 					:href="entry.href"
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
@@ -52,7 +52,7 @@
 				<a v-for="entry in external"
 					:key="entry.message"
 					class="item"
-					:class="entry.betaClass"
+					v-bind:class="{ 'beta-app': entry.is_beta }"
 					:href="entry.href"
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">

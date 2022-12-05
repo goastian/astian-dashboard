@@ -108,14 +108,10 @@ class Util {
 			}
 
 			$entry["iconOffsetY"] = 0;
-			$entry["betaClass"] = '';
-			if ($isBeta) {
-				$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
-				if ($appEnabledGroups !== 'no' && $appEnabledGroups !== 'yes') {
-					if (str_contains($appEnabledGroups, $betaGroupName)) {
-						$entry["betaClass"] = 'beta-app';
-					}
-				}
+			$entry["is_beta"] = '';
+			$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
+			if ($isBeta && str_contains($appEnabledGroups, $betaGroupName)) {
+				$entry["is_beta"] = 'beta-app';
 			}
 			$entriesByHref[$entry["href"]] = $entry;
 		}
