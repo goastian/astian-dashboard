@@ -96,7 +96,8 @@ class Util {
 			$office_entries = $this->getOnlyOfficeEntries();
 			$entries = array_merge($entries, $office_entries);
 		}
-
+		$betaGroupName = $this->config->getSystemValue("beta_group_name");
+		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["style"] = "";
@@ -107,6 +108,11 @@ class Util {
 			}
 
 			$entry["iconOffsetY"] = 0;
+			$entry["is_beta"] = 0;
+			$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
+			if ($isBeta && str_contains($appEnabledGroups, $betaGroupName)) {
+				$entry["is_beta"] = 1;
+			}
 			$entriesByHref[$entry["href"]] = $entry;
 		}
 		/*
@@ -126,6 +132,9 @@ class Util {
 		unset($entriesByHref['/apps/dashboard/']);
 		unset($entriesByHref['/apps/ecloud-dashboard/']);
 		unset($entriesByHref['']);
+		if ($isBeta && array_key_exists("/apps/snappymail/", $entriesByHref)) {
+			unset($entriesByHref['/apps/rainloop/']);
+		}
 		$entries = array_values($entriesByHref);
 
 		return array( 'apps' => $entries  );
@@ -143,5 +152,11 @@ class Util {
 			return [];
 		}
 		return $this->groupManager->getUserGroupIds($user);
+	}
+
+	private function isBetaUser() {
+		$uid = $this->userSession->getUser()->getUID();
+		$betaGroupName = $this->config->getSystemValue("beta_group_name");
+		return $this->groupManager->isInGroup($uid, $betaGroupName);
 	}
 }
