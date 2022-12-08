@@ -83,7 +83,7 @@ class Util {
 		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
 		// If order raw is still empty, return empty array
 		if (!$order_raw) {
-			$order_raw = self::DEFAULT_ORDER;
+			$order = self::DEFAULT_ORDER;
 		} else {
 			$order = json_decode($order_raw);
 		}
