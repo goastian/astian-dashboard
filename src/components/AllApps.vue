@@ -40,6 +40,7 @@
 				<a v-for="entry in entries"
 					:key="entry.message"
 					class="item"
+					v-bind:class="{ 'beta-app': entry.is_beta }"
 					:href="entry.href"
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
@@ -51,6 +52,7 @@
 				<a v-for="entry in external"
 					:key="entry.message"
 					class="item"
+					v-bind:class="{ 'beta-app': entry.is_beta }"
 					:href="entry.href"
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
@@ -304,5 +306,20 @@ export default {
 .skeleton-headline__name{
   width:30%;
   height: 1.2em;
+}
+a.item.beta-app {
+    position: relative;
+}
+.beta-app:after {
+	content: "BETA";
+    position: absolute;
+    top: 15%;
+    background-color: #007fff;
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    line-height: normal;
+    padding: 2px 10px;
+    font-weight: 800;
 }
 </style>

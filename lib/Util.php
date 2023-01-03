@@ -78,14 +78,25 @@ class Util {
 		return $onlyOfficeEntries;
 	}
 	public function getOrder() {
-		$order_raw = $this->config->getUserValue($this->userId, 'ecloud-launcher', 'order');
+		$order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
 		// If order raw empty try to get from 'apporder' app config
 		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
 		// If order raw is still empty, return empty array
 		if (!$order_raw) {
-			return self::DEFAULT_ORDER;
+			$order = self::DEFAULT_ORDER;
+		} else {
+			$order = json_decode($order_raw);
 		}
-		$order = json_decode($order_raw);
+		
+		$isBeta = $this->isBetaUser();
+		// Replace rainloop entry with snappymail at same position
+		if ($isBeta && $this->appManager->isEnabledForUser("snappymail")) {
+			if (array_keys($order, '/apps/snappymail/')) {
+				unset($order['/apps/rainloop/']);
+			} else {
+				$order[array_search('/apps/rainloop/', $order)] = '/apps/snappymail/';
+			}
+		}
 		return $order;
 	}
 	public function getAppEntries() {
@@ -96,8 +107,13 @@ class Util {
 			$office_entries = $this->getOnlyOfficeEntries();
 			$entries = array_merge($entries, $office_entries);
 		}
-
+		$betaGroupName = $this->config->getSystemValue("beta_group_name");
+		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
+			// skip rainloop entry if snappymail is enabled
+			if ($entry["id"] === "rainloop" && $isBeta && $this->appManager->isEnabledForUser("snappymail")) {
+				continue;
+			}
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["style"] = "";
 				$entry["target"] = "";
@@ -107,6 +123,11 @@ class Util {
 			}
 
 			$entry["iconOffsetY"] = 0;
+			$entry["is_beta"] = 0;
+			$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
+			if ($isBeta && str_contains($appEnabledGroups, $betaGroupName)) {
+				$entry["is_beta"] = 1;
+			}
 			$entriesByHref[$entry["href"]] = $entry;
 		}
 		/*
@@ -143,5 +164,11 @@ class Util {
 			return [];
 		}
 		return $this->groupManager->getUserGroupIds($user);
+	}
+
+	private function isBetaUser() {
+		$uid = $this->userSession->getUser()->getUID();
+		$betaGroupName = $this->config->getSystemValue("beta_group_name");
+		return $this->groupManager->isInGroup($uid, $betaGroupName);
 	}
 }
