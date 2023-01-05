@@ -109,7 +109,6 @@ export default {
 		handleOfficeClick(entry, e) {
 			if (entry.type === 'onlyoffice') {
 				e.preventDefault()
-				const newWindow = window.open('about:blank', '_blank')
 				axios.get('/apps/murena_launcher/getDocumentsFolder').then(function(response) {
 					const dir = response.data.dir
 					if (dir && dir.length) {
@@ -130,14 +129,12 @@ export default {
 							})
 							.then(function(response) {
 								if (response.data.id) {
-									newWindow.location.href = '/apps/onlyoffice/' + response.data.id
+									window.open('/apps/onlyoffice/' + response.data.id, '_self')
 								} else if (response.data.error && response.data.error.length) {
 									showError(response.data.error)
-									newWindow.close()
 								}
 							}).catch(function() {
 								showError(entry.t('murena_launcher', 'Error when trying to connect to ONLYOFFICE'))
-								newWindow.close()
 							})
 					}
 				}).catch(function(error) {
@@ -145,7 +142,6 @@ export default {
 						const errorMessage = error.response.data.error
 						showError(errorMessage)
 					}
-					newWindow.close()
 				})
 
 			}
