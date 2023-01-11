@@ -79,8 +79,8 @@ export default {
 		return {
 			storageInfo: [],
 			storageFetchStatus: false,
-			shopReferralProgramUrl: loadState('shopReferralProgramUrl'),
-			increaseStorageUrl: loadState('increaseStorageUrl'),
+			shopReferralProgramUrl: loadState('ecloud-dashboard', 'shopReferralProgramUrl'),
+			increaseStorageUrl: loadState('ecloud-dashboard', 'increaseStorageUrl'),
 		}
 	},
 	computed: {

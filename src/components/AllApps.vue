@@ -67,8 +67,8 @@ export default {
 	data() {
 		return {
 			showAllApps: false,
-			entries: loadState('entries'),
-			displayName: loadState('displayName'),
+			entries: loadState('ecloud-dashboard', 'entries'),
+			displayName: loadState('ecloud-dashboard', 'displayName'),
 		}
 	},
 	methods: {
