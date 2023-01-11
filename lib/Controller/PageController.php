@@ -41,7 +41,7 @@ class PageController extends Controller {
 		$this->initialState->provideInitialState('shopReferralProgramUrl', $referralUrl);
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
 		$this->initialState->provideInitialState('entries', $entries);
-		$this->initialState->provideIntialState('displayName', $displayName);
+		$this->initialState->provideInitialState('displayName', $displayName);
 		return new TemplateResponse('ecloud-dashboard', 'dashboard');
 	}
 }
