@@ -11,7 +11,6 @@ use OCP\IUserSession;
 use OCA\EcloudDashboard\Util;
 
 class PageController extends Controller {
-
 	/** @var IInitialState */
 	private $initialState;
 
@@ -34,15 +33,14 @@ class PageController extends Controller {
 	 */
 	public function index() {
 		$referralUrl = $this->config->getSystemValue('shop_referral_program_url', '');
-		$storageUrl = $this->config->getAppValue('increasestoragebutton', 'link' ,'');
+		$storageUrl = $this->config->getAppValue('increasestoragebutton', 'link', '');
 		$entries = $this->util->getAppEntries();
 		$displayName = $this->userSession->getUser()->getDisplayName();
 
 		$this->initialState->provideInitialState('shopReferralProgramUrl', $referralUrl);
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
 		$this->initialState->provideInitialState('entries', $entries);
-		$this->initialState->provideIntialState('displayName',$displayName);
-		return new TemplateResponse('ecloud-dashboard', 'dashboard');  
+		$this->initialState->provideIntialState('displayName', $displayName);
+		return new TemplateResponse('ecloud-dashboard', 'dashboard');
 	}
-
 }
