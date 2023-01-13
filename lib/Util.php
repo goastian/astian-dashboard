@@ -149,7 +149,7 @@ class Util {
 		unset($entriesByHref['']);
 		$entries = array_values($entriesByHref);
 
-		return array( 'apps' => $entries  );
+		return $entries;
 	}
 
 	/**

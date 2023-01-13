@@ -28,7 +28,7 @@
 			</div>
 			<div class="row margin0">
 				<div class="row margintop10">
-					<b class="storage">{{ storage }}</b>
+					<b class="storage">{{ t('ecloud-dashboard', 'Storage') }}</b>
 					<div class="progress">
 						<div class="progress-bar"
 							:style="{ width: totalSpaceUsedInPercentage + '%' }"
@@ -38,25 +38,25 @@
 						<div class="usage-info">
 							{{ usageinfo }}
 						</div>
-						<div v-if="storageLink && storageInfo.quota > 0" class="upgrade-storage__div">
-							<a id="upgrade-btn" target="_blank" :href="storageLink">
-								{{ upgradeStorage }}
+						<div v-if="increaseStorageUrl.length && storageInfo.quota > 0" class="upgrade-storage__div">
+							<a id="upgrade-btn" target="_blank" :href="increaseStorageUrl">
+								{{ t('ecloud-dashboard', 'Upgrade Storage') }}
 							</a>
 						</div>
 					</div>
 				</div>
-				<div class="row margin0">
+				<div v-if="shopReferralProgramUrl.length" class="row margin0">
 					<div class="col-lg-12 instructions">
 						<div class="row margin0">
 							<div id="storage-redeem" class="storage-space-div width90">
 								<div class="instructions__label">
-									{{ getCredits }}
+									{{ t('ecloud-dashboard', 'getCredits') }}
 								</div>
 								<div class="instructions__sublabel">
-									{{ openAnAccount }}
+									{{ t('ecloud-dashboard', 'openAnAccount') }}
 								</div>
 								<div class="urllink">
-									<a :href="redirectURL" target="_blank">{{ inviteYourFriends }}</a>
+									<a :href="shopReferralProgramUrl" target="_blank">{{ t('ecloud-dashboard', 'Invite Your Friends') }}</a>
 								</div>
 							</div>
 						</div>
@@ -70,6 +70,7 @@
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 import { formatFileSize } from '@nextcloud/files'
+import { loadState } from '@nextcloud/initial-state'
 
 export default {
 	name: 'StorageLayout',
@@ -78,16 +79,8 @@ export default {
 		return {
 			storageInfo: [],
 			storageFetchStatus: false,
-			redirectURL: '',
-			storageLink: '',
-			storage: OC.L10N.translate('ecloud-dashboard', 'Storage'),
-			upgradeStorage: OC.L10N.translate('ecloud-dashboard', 'Upgrade Storage'),
-			getCredits: OC.L10N.translate('ecloud-dashboard', 'getCredits'),
-			openAnAccount: OC.L10N.translate('ecloud-dashboard', 'openAnAccount'),
-			inviteYourFriends: OC.L10N.translate(
-				'ecloud-dashboard',
-				'Invite Your Friends'
-			),
+			shopReferralProgramUrl: loadState('ecloud-dashboard', 'shopReferralProgramUrl'),
+			increaseStorageUrl: loadState('ecloud-dashboard', 'increaseStorageUrl'),
 		}
 	},
 	computed: {
@@ -122,25 +115,16 @@ export default {
 		},
 	},
 	mounted() {
-		this.getRedirections()
-		this.getDetails()
+		this.getStorageUsageDetails()
 	},
 	methods: {
-		getDetails() {
+		getStorageUsageDetails() {
 			this.storageFetchStatus = false
 			axios
 				.get(generateUrl('/apps/files/ajax/getstoragestats'))
 				.then((response) => {
 					this.storageInfo = response.data.data
 					this.storageFetchStatus = true
-				})
-		},
-		getRedirections() {
-			axios
-				.get(generateUrl('/apps/ecloud-dashboard/apps/get-redirections'))
-				.then((response) => {
-					this.storageLink = response.data.storageLink || ''
-					this.redirectURL = response.data.redirectURL
 				})
 		},
 	},
