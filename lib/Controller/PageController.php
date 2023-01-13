@@ -5,25 +5,43 @@ namespace OCA\EcloudDashboard\Controller;
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Services\IInitialState;
+use OCP\IConfig;
+use OCP\IUserSession;
+use OCA\EcloudDashboard\Util;
 
 class PageController extends Controller {
-	private $userId;
+	/** @var IInitialState */
+	private $initialState;
 
-	public function __construct($AppName, IRequest $request, $UserId) {
-		parent::__construct($AppName, $request);
-		$this->userId = $UserId;
+	/** @var IConfig */
+	private $config;
+	
+	/** @var IUserSession */
+	private $userSession;
+
+	public function __construct($appName, IRequest $request, IInitialState $initialState, IConfig $config, IUserSession $userSession, Util $util) {
+		$this->initialState = $initialState;
+		$this->config = $config;
+		$this->util = $util;
+		$this->userSession = $userSession;
+		parent::__construct($appName, $request);
 	}
+
 	/**
-	 * CAUTION: the @Stuff turns off security checks; for this page no admin is
-	 *          required and no CSRF check. If you don't know what CSRF is, read
-	 *          it up in the docs or you might create a security hole. This is
-	 *          basically the only required method to add this exemption, don't
-	 *          add it to any other method if you don't exactly know what it does
-	 *
-	 * @NoAdminRequired
 	 * @NoCSRFRequired
+	 * @NoAdminRequired
 	 */
 	public function index() {
-		return new TemplateResponse('ecloud-dashboard', 'dashboard');  // templates/dashboard.php
+		$referralUrl = $this->config->getSystemValue('shop_referral_program_url', '');
+		$storageUrl = $this->config->getAppValue('increasestoragebutton', 'link', '');
+		$entries = $this->util->getAppEntries();
+		$displayName = $this->userSession->getUser()->getDisplayName();
+
+		$this->initialState->provideInitialState('shopReferralProgramUrl', $referralUrl);
+		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
+		$this->initialState->provideInitialState('entries', $entries);
+		$this->initialState->provideInitialState('displayName', $displayName);
+		return new TemplateResponse('ecloud-dashboard', 'dashboard');
 	}
 }

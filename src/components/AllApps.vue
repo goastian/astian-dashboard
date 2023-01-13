@@ -26,21 +26,16 @@
 		</div>
 		<div v-if="entries.length" class="new-icons">
 			<div class="welcome__label">
-				<h2>{{ WelcomeBack }} {{ userInfo.ownerDisplayName }}</h2>
+				<h2>{{ t('ecloud-dashboard', 'Welcome back') }} {{ displayName }}</h2>
 			</div>
-			<div @click="isHidden = !isHidden">
-				<span v-if="!isHidden" class="toggle_apps show-all">{{
-					showAllApps
-				}}</span>
-				<span v-if="isHidden" class="toggle_apps show-less">{{
-					showLessApps
-				}}</span>
+			<div @click="showAllApps = !showAllApps">
+				<span v-if="!showAllApps" class="toggle_apps show-all">{{ t('ecloud-dashboard', 'Show All Apps') }}</span>
+				<span v-if="showAllApps" class="toggle_apps show-less">{{ t('ecloud-dashboard', 'Show Less Apps') }}</span>
 			</div>
 			<div class="app-container">
-				<a v-for="entry in entries"
+				<a v-for="entry in entries.slice(0,6)"
 					:key="entry.message"
-					class="item"
-					v-bind:class="{ 'beta-app': entry.is_beta }"
+					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
@@ -48,11 +43,10 @@
 					<div class="item-label">{{ entry.name }}</div>
 				</a>
 			</div>
-			<div v-if="isHidden" class="app-container">
-				<a v-for="entry in external"
+			<div v-if="showAllApps" class="app-container">
+				<a v-for="entry in entries.slice(6)"
 					:key="entry.message"
-					class="item"
-					v-bind:class="{ 'beta-app': entry.is_beta }"
+					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
@@ -65,47 +59,19 @@
 </template>
 <script>
 import axios from '@nextcloud/axios'
-import { generateUrl } from '@nextcloud/router'
 import { showError } from '@nextcloud/dialogs'
+import { loadState } from '@nextcloud/initial-state'
 
 export default {
 	name: 'AllApps',
 	data() {
 		return {
-			isHidden: false,
-			entries: [],
-			external: [],
-			userInfo: [],
-			showAllApps: OC.L10N.translate('ecloud-dashboard', 'Show All Apps'),
-			showLessApps: OC.L10N.translate('ecloud-dashboard', 'Show Less Apps'),
-			WelcomeBack: OC.L10N.translate('ecloud-dashboard', 'Welcome back'),
+			showAllApps: false,
+			entries: loadState('ecloud-dashboard', 'entries'),
+			displayName: loadState('ecloud-dashboard', 'displayName'),
 		}
 	},
-	mounted() {
-		this.getEntries()
-		this.getDetails()
-	},
 	methods: {
-		getEntries() {
-			axios
-				.get(generateUrl('/apps/ecloud-dashboard/get-apps'))
-				.then((response) => {
-					this.entries = response.data.apps
-					this.entries = this.entries.map((entry) => {
-						entry.active = window.location.pathname.includes(entry.href)
-						return entry
-					})
-					this.external = this.entries.slice(6)
-					this.entries = this.entries.slice(0, 6)
-				})
-		},
-		getDetails() {
-			axios
-				.get(generateUrl('/apps/files/ajax/getstoragestats'))
-				.then((response) => {
-					this.userInfo = response.data.data
-				})
-		},
 		handleOfficeClick(entry, e) {
 			if (entry.type === 'onlyoffice') {
 				e.preventDefault()
@@ -134,7 +100,7 @@ export default {
 									showError(response.data.error)
 								}
 							}).catch(function() {
-								showError(entry.t('murena_launcher', 'Error when trying to connect to ONLYOFFICE'))
+								showError(t('murena_launcher', 'Error when trying to connect to ONLYOFFICE'))
 							})
 					}
 				}).catch(function(error) {
