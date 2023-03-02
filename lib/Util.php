@@ -83,11 +83,14 @@ class Util {
 		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
 		// If order raw is still empty, return empty array
 		if (!$order_raw) {
-			$order = self::DEFAULT_ORDER;
-		} else {
-			$order = json_decode($order_raw);
+			return self::DEFAULT_ORDER;
+		} 
+
+		if (str_contains("/apps/rainloop/", $order_raw)) {
+			str_replace("/apps/rainloop/", "/apps/snappymail/", $order_raw);
 		}
-		return $order;
+
+		return json_decode($order_raw);
 	}
 	public function getAppEntries() {
 		$entries = array_values($this->navigationManager->getAll());
