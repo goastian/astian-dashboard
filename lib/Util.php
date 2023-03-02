@@ -85,11 +85,6 @@ class Util {
 		if (!$order_raw) {
 			return self::DEFAULT_ORDER;
 		}
-
-		if (str_contains("/apps/rainloop/", $order_raw)) {
-			$order_raw = str_replace("/apps/rainloop/", "/apps/snappymail/", $order_raw);
-		}
-
 		return json_decode($order_raw);
 	}
 	public function getAppEntries() {
