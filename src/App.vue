@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .app-ecloud-dashboard {
 	z-index: 1000;
 	background-color: var(--color-main-background) !important;
@@ -37,12 +37,12 @@ export default {
 	min-height: 100%;
 }
 
-.app-ecloud-dashboard #dashboard-app .new-icons .welcome__label h2,
-.app-ecloud-dashboard #dashboard-app .new-icons .app-container .item .item-label,
-.app-ecloud-dashboard #dashboard-app .storage-main-div .storage,
-.app-ecloud-dashboard #dashboard-app .storage-main-div .upgrade__main_div .usage-info,
-.app-ecloud-dashboard #dashboard-app #storage-redeem .instructions__label,
-.app-ecloud-dashboard #dashboard-app #storage-redeem .instructions__sublabel {
+::v-deep .new-icons .welcome__label h2,
+::v-deep .new-icons .app-container .item .item-label,
+::v-deep .storage-main-div .storage,
+::v-deep .storage-main-div .upgrade__main_div .usage-info,
+::v-deep #storage-redeem .instructions__label,
+::v-deep #storage-redeem .instructions__sublabel {
 	color: var(--color-main-text);
 }
 
