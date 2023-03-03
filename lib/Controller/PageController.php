@@ -20,6 +20,8 @@ class PageController extends Controller {
 	/** @var IUserSession */
 	private $userSession;
 
+	private $util;
+
 	public function __construct($appName, IRequest $request, IInitialState $initialState, IConfig $config, IUserSession $userSession, Util $util) {
 		$this->initialState = $initialState;
 		$this->config = $config;
