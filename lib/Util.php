@@ -28,7 +28,7 @@ class Util {
 	/** @var IUserSession */
 	private $userSession;
 
-	private const DEFAULT_ORDER = array("/apps/files/", "/apps/rainloop/", "/apps/contacts/", "/apps/calendar/", "/apps/notes/", "/apps/tasks/", "/apps/photos/");
+	private const DEFAULT_ORDER = array("/apps/files/", "/apps/snappymail/", "/apps/contacts/", "/apps/calendar/", "/apps/notes/", "/apps/tasks/", "/apps/photos/");
 	public function __construct(
 		IConfig $config,
 		INavigationManager $navigationManager,
@@ -83,21 +83,9 @@ class Util {
 		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
 		// If order raw is still empty, return empty array
 		if (!$order_raw) {
-			$order = self::DEFAULT_ORDER;
-		} else {
-			$order = json_decode($order_raw);
+			return self::DEFAULT_ORDER;
 		}
-		
-		$isBeta = $this->isBetaUser();
-		// Replace rainloop entry with snappymail at same position
-		if ($isBeta && $this->appManager->isEnabledForUser("snappymail")) {
-			if (array_keys($order, '/apps/snappymail/')) {
-				unset($order['/apps/rainloop/']);
-			} else {
-				$order[array_search('/apps/rainloop/', $order)] = '/apps/snappymail/';
-			}
-		}
-		return $order;
+		return json_decode($order_raw);
 	}
 	public function getAppEntries() {
 		$entries = array_values($this->navigationManager->getAll());
@@ -110,10 +98,6 @@ class Util {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
-			// skip rainloop entry if snappymail is enabled
-			if ($entry["id"] === "rainloop" && $isBeta && $this->appManager->isEnabledForUser("snappymail")) {
-				continue;
-			}
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["style"] = "";
 				$entry["target"] = "";
