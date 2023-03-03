@@ -28,9 +28,22 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .app-ecloud-dashboard {
-  background-color: white;
+	z-index: 1000;
+	background-color: var(--color-main-background) !important;
+	position: relative;
+	flex-basis: 100vw;
+	min-height: 100%;
+}
+
+::v-deep .new-icons .welcome__label h2,
+::v-deep .new-icons .app-container .item .item-label,
+::v-deep .storage-main-div .storage,
+::v-deep .storage-main-div .upgrade__main_div .usage-info,
+::v-deep #storage-redeem .instructions__label,
+::v-deep #storage-redeem .instructions__sublabel {
+	color: var(--color-main-text);
 }
 
 #dashboard-app {
