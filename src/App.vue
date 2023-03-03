@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .app-ecloud-dashboard {
 	z-index: 1000;
 	background-color: var(--color-main-background) !important;
