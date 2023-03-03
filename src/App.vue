@@ -29,10 +29,6 @@ export default {
 </script>
 
 <style>
-.app-ecloud-dashboard {
-  background-color: white;
-}
-
 #dashboard-app {
   width: 920px;
   margin: 7% auto;
