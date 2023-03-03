@@ -1,15 +1,16 @@
 .app-ecloud-dashboard {
-    z-index: 1000;
-    background-color: var(--color-main-background) !important;
-    position: relative;
-    flex-basis: 100vw;
-    min-height: 100%;
+	z-index: 1000;
+	background-color: var(--color-main-background) !important;
+	position: relative;
+	flex-basis: 100vw;
+	min-height: 100%;
 }
+
 .app-ecloud-dashboard #dashboard-app .new-icons .welcome__label h2,
 .app-ecloud-dashboard #dashboard-app .new-icons .app-container .item .item-label,
 .app-ecloud-dashboard #dashboard-app .storage-main-div .storage,
 .app-ecloud-dashboard #dashboard-app .storage-main-div .upgrade__main_div .usage-info,
 .app-ecloud-dashboard #dashboard-app #storage-redeem .instructions__label,
 .app-ecloud-dashboard #dashboard-app #storage-redeem .instructions__sublabel {
-    color: var(--color-main-text);
+	color: var(--color-main-text);
 }
