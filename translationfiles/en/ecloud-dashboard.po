@@ -49,39 +49,39 @@ msgstr ""
 #. TRANSLATORS src/components/AllApps.vue:29
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:2
 msgid "Welcome back"
-msgstr ""
+msgstr "Welcome back"
 
 #. TRANSLATORS src/components/AllApps.vue:32
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:4
 msgid "Show All Apps"
-msgstr ""
+msgstr "Show All Apps"
 
 #. TRANSLATORS src/components/AllApps.vue:33
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:6
 msgid "Show Less Apps"
-msgstr ""
+msgstr "Show Less Apps"
 
 #. TRANSLATORS src/components/StorageLayout.vue:31
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:10
 msgid "Storage"
-msgstr ""
+msgstr "Storage"
 
 #. TRANSLATORS src/components/StorageLayout.vue:43
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:12
 msgid "Upgrade Storage"
-msgstr ""
+msgstr "Upgrade Storage"
 
 #. TRANSLATORS src/components/StorageLayout.vue:53
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:14
 msgid "getCredits"
-msgstr ""
+msgstr "Get up to 40€ of credits for your cloud storage by inviting your friends!"
 
 #. TRANSLATORS src/components/StorageLayout.vue:56
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:16
 msgid "openAnAccount"
-msgstr ""
+msgstr "For every friend who opens an account, you will earn 2€ to be used for cloud storage on ecloud."
 
 #. TRANSLATORS src/components/StorageLayout.vue:59
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:18
 msgid "Invite Your Friends"
-msgstr ""
+msgstr "Invite Your Friends"
