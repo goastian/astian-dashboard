@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
 "POT-Creation-Date: 2023-03-20 18:15+0530\n"
-"PO-Revision-Date: 2023-03-20 16:54+0000\n"
+"PO-Revision-Date: 2023-03-20 16:56+0000\n"
 "Last-Translator: Nivesh Krishna <nivesh@e.email>\n"
 "Language-Team: English <https://i18n.e.foundation/projects/ecloud/"
 "murena-dashboard/en/>\n"
@@ -27,7 +27,7 @@ msgstr "Error when trying to connect to ONLYOFFICE"
 
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:58
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:63
 msgid "Spreadsheet"
