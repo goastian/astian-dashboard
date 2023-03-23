@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
 "POT-Creation-Date: 2023-03-20 18:15+0530\n"
-"PO-Revision-Date: 2023-03-20 16:54+0000\n"
-"Last-Translator: Nivesh Krishna <nivesh@e.email>\n"
+"PO-Revision-Date: 2023-03-24 16:10+0000\n"
+"Last-Translator: Aude M <aude.madkaud@murena.com>\n"
 "Language-Team: French <https://i18n.e.foundation/projects/ecloud/"
 "murena-dashboard/fr/>\n"
 "Language: fr\n"
@@ -27,27 +27,27 @@ msgstr "Erreur lors d'une tentative de connexion à ONLYOFFICE"
 
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:58
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:63
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Feuille de calcul"
 
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:68
 msgid "Presentation"
-msgstr ""
+msgstr "Présentation"
 
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
 msgid "Murena dashboard"
-msgstr ""
+msgstr "Tableau de bord Murena"
 
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:3
 msgid "Murena Dashboard"
-msgstr ""
+msgstr "Tableau de bord Murena"
 
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:4
 msgid "Murena Cloud Dashboard"
-msgstr ""
+msgstr "Tableau de bord du Cloud Murena"
 
 #. TRANSLATORS src/components/AllApps.vue:29
 #: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:2
