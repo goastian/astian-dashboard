@@ -1,6 +1,6 @@
-## Make ecloud-dashboard app as default dashboard
+## Make murena-dashboard app as default dashboard
 
-- To make default dashboard, add `'defaultapp' => 'ecloud-dashboard'` changes in `/config/config.php`. 
+- To make default dashboard, add `'defaultapp' => 'murena-dashboard'` changes in `/config/config.php`. 
 
 ## Config options
 

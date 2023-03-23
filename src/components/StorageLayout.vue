@@ -28,7 +28,7 @@
 			</div>
 			<div class="row margin0">
 				<div class="row margintop10">
-					<b class="storage">{{ t('ecloud-dashboard', 'Storage') }}</b>
+					<b class="storage">{{ t('murena-dashboard', 'Storage') }}</b>
 					<div class="progress">
 						<div class="progress-bar"
 							:style="{ width: totalSpaceUsedInPercentage + '%' }"
@@ -40,7 +40,7 @@
 						</div>
 						<div v-if="increaseStorageUrl.length && storageInfo.quota > 0" class="upgrade-storage__div">
 							<a id="upgrade-btn" target="_blank" :href="increaseStorageUrl">
-								{{ t('ecloud-dashboard', 'Upgrade Storage') }}
+								{{ t('murena-dashboard', 'Upgrade Storage') }}
 							</a>
 						</div>
 					</div>
@@ -50,13 +50,13 @@
 						<div class="row margin0">
 							<div id="storage-redeem" class="storage-space-div width90">
 								<div class="instructions__label">
-									{{ t('ecloud-dashboard', 'getCredits') }}
+									{{ t('murena-dashboard', 'getCredits') }}
 								</div>
 								<div class="instructions__sublabel">
-									{{ t('ecloud-dashboard', 'openAnAccount') }}
+									{{ t('murena-dashboard', 'openAnAccount') }}
 								</div>
 								<div class="urllink">
-									<a :href="shopReferralProgramUrl" target="_blank">{{ t('ecloud-dashboard', 'Invite Your Friends') }}</a>
+									<a :href="shopReferralProgramUrl" target="_blank">{{ t('murena-dashboard', 'Invite Your Friends') }}</a>
 								</div>
 							</div>
 						</div>
@@ -79,8 +79,8 @@ export default {
 		return {
 			storageInfo: [],
 			storageFetchStatus: false,
-			shopReferralProgramUrl: loadState('ecloud-dashboard', 'shopReferralProgramUrl'),
-			increaseStorageUrl: loadState('ecloud-dashboard', 'increaseStorageUrl'),
+			shopReferralProgramUrl: loadState('murena-dashboard', 'shopReferralProgramUrl'),
+			increaseStorageUrl: loadState('murena-dashboard', 'increaseStorageUrl'),
 		}
 	},
 	computed: {

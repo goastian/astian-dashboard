@@ -1,5 +1,5 @@
 OC.L10N.register(
-    "ecloud-dashboard",
+    "murena-dashboard",
     {
     "Error when trying to connect to ONLYOFFICE" : "Erreur lors d'une tentative de connexion à ONLYOFFICE",
     "Welcome back" : "Content de vous revoir",

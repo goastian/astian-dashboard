@@ -1,5 +1,5 @@
 OC.L10N.register(
-    "ecloud-dashboard",
+    "murena-dashboard",
     {
     "Welcome back" : "Bienvenido de nuevo",
     "Show All Apps" : "Mostrar todas las aplicaciones",
