@@ -1,5 +1,5 @@
 variables:
-    APP_NAME: 'Murena dashboard'
+    APP_NAME: 'murena-dashboard'
 include:
   - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
     ref: main
