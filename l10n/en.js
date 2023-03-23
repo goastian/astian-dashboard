@@ -9,7 +9,7 @@ OC.L10N.register(
     "Storage" : "Storage",
     "Upgrade Storage" : "Upgrade Storage",
     "getCredits" : "Get up to 40€ of credits for your cloud storage by inviting your friends!",
-    "openAnAccount" : "For every friend who opens an account, you will earn 2€ to be used for cloud storage on ecloud.",
+    "openAnAccount" : "For every friend who opens an account, you will earn 2€ to be used for cloud storage on Murena cloud.",
     "Invite Your Friends" : "Invite Your Friends"
 },
 "nplurals=2; plural=n != 1;");

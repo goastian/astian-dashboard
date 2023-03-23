@@ -82,7 +82,7 @@ msgstr "Obtenez jusqu'à 40€ de crédits pour votre stockage cloud en invitant
 #. TRANSLATORS src/components/StorageLayout.vue:56
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:16
 msgid "openAnAccount"
-msgstr "Pour chaque ami qui ouvre un compte, vous gagnerez tous les deux 2€ à utiliser pour le stockage cloud sur ecloud."
+msgstr "Pour chaque ami qui ouvre un compte, vous gagnerez tous les deux 2€ à utiliser pour le stockage cloud sur Murena cloud."
 
 #. TRANSLATORS src/components/StorageLayout.vue:59
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:18
