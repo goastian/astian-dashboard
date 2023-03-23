@@ -20,71 +20,71 @@ msgstr ""
 "X-Generator: Weblate 4.16.4\n"
 
 #. TRANSLATORS src/components/AllApps.vue:103
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/js/ecloud-dashboard-main.js:2
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:8
+#: /home/nivesh/Desktop/repos/murena-dashboard/js/murena-dashboard-main.js:2
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:8
 msgid "Error when trying to connect to ONLYOFFICE"
 msgstr "Erreur lors d'une tentative de connexion à ONLYOFFICE"
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:58
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:58
 msgid "Document"
 msgstr "Document"
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:63
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:63
 msgid "Spreadsheet"
 msgstr "Feuille de calcul"
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:68
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:68
 msgid "Presentation"
 msgstr "Présentation"
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
 msgid "Murena dashboard"
 msgstr "Tableau de bord Murena"
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:3
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:3
 msgid "Murena Dashboard"
 msgstr "Tableau de bord Murena"
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:4
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:4
 msgid "Murena Cloud Dashboard"
 msgstr "Tableau de bord du Cloud Murena"
 
 #. TRANSLATORS src/components/AllApps.vue:29
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:2
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:2
 msgid "Welcome back"
 msgstr "Content de vous revoir"
 
 #. TRANSLATORS src/components/AllApps.vue:32
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:4
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:4
 msgid "Show All Apps"
 msgstr "Afficher toutes les applications"
 
 #. TRANSLATORS src/components/AllApps.vue:33
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:6
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:6
 msgid "Show Less Apps"
 msgstr "Afficher moins d'applications"
 
 #. TRANSLATORS src/components/StorageLayout.vue:31
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:10
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:10
 msgid "Storage"
 msgstr "Espace de stockage"
 
 #. TRANSLATORS src/components/StorageLayout.vue:43
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:12
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:12
 msgid "Upgrade Storage"
 msgstr "Obtenez plus de stockag"
 
 #. TRANSLATORS src/components/StorageLayout.vue:53
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:14
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:14
 msgid "getCredits"
 msgstr "Obtenez jusqu'à 40€ de crédits pour votre stockage cloud en invitant vos amis !"
 
 #. TRANSLATORS src/components/StorageLayout.vue:56
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:16
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:16
 msgid "openAnAccount"
 msgstr "Pour chaque ami qui ouvre un compte, vous gagnerez tous les deux 2€ à utiliser pour le stockage cloud sur ecloud."
 
 #. TRANSLATORS src/components/StorageLayout.vue:59
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:18
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:18
 msgid "Invite Your Friends"
 msgstr "Parrainez vos amis"

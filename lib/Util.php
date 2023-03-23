@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\EcloudDashboard;
+namespace OCA\MurenaDashboard;
 
 use OCP\IConfig;
 use OCP\INavigationManager;
@@ -129,7 +129,7 @@ class Util {
 			}
 		}
 		unset($entriesByHref['/apps/dashboard/']);
-		unset($entriesByHref['/apps/ecloud-dashboard/']);
+		unset($entriesByHref['/apps/murena-dashboard/']);
 		unset($entriesByHref['']);
 		$entries = array_values($entriesByHref);
 
