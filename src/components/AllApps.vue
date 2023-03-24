@@ -26,11 +26,11 @@
 		</div>
 		<div v-if="entries.length" class="new-icons">
 			<div class="welcome__label">
-				<h2>{{ t('murena-dashboard', 'Welcome back') }} {{ displayName }}</h2>
+				<h2>{{ t(appName, 'Welcome back') }} {{ displayName }}</h2>
 			</div>
 			<div @click="showAllApps = !showAllApps">
-				<span v-if="!showAllApps" class="toggle_apps show-all">{{ t('murena-dashboard', 'Show All Apps') }}</span>
-				<span v-if="showAllApps" class="toggle_apps show-less">{{ t('murena-dashboard', 'Show Less Apps') }}</span>
+				<span v-if="!showAllApps" class="toggle_apps show-all">{{ t(appName, 'Show All Apps') }}</span>
+				<span v-if="showAllApps" class="toggle_apps show-less">{{ t(appName, 'Show Less Apps') }}</span>
 			</div>
 			<div class="app-container">
 				<a v-for="entry in entries.slice(0,6)"
@@ -69,6 +69,7 @@ export default {
 			showAllApps: false,
 			entries: loadState('murena-dashboard', 'entries'),
 			displayName: loadState('murena-dashboard', 'displayName'),
+			appName: 'murena-dashboard',
 		}
 	},
 	methods: {
