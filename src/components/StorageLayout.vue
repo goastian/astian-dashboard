@@ -28,7 +28,7 @@
 			</div>
 			<div class="row margin0">
 				<div class="row margintop10">
-					<b class="storage">{{ t('murena-dashboard', 'Storage') }}</b>
+					<b class="storage">{{ t(appName, 'Storage') }}</b>
 					<div class="progress">
 						<div class="progress-bar"
 							:style="{ width: totalSpaceUsedInPercentage + '%' }"
@@ -40,7 +40,7 @@
 						</div>
 						<div v-if="increaseStorageUrl.length && storageInfo.quota > 0" class="upgrade-storage__div">
 							<a id="upgrade-btn" target="_blank" :href="increaseStorageUrl">
-								{{ t('murena-dashboard', 'Upgrade Storage') }}
+								{{ t(appName, 'Upgrade Storage') }}
 							</a>
 						</div>
 					</div>
@@ -50,13 +50,13 @@
 						<div class="row margin0">
 							<div id="storage-redeem" class="storage-space-div width90">
 								<div class="instructions__label">
-									{{ t('murena-dashboard', 'getCredits') }}
+									{{ t(appName, 'getCredits') }}
 								</div>
 								<div class="instructions__sublabel">
-									{{ t('murena-dashboard', 'openAnAccount') }}
+									{{ t(appName, 'openAnAccount') }}
 								</div>
 								<div class="urllink">
-									<a :href="shopReferralProgramUrl" target="_blank">{{ t('murena-dashboard', 'Invite Your Friends') }}</a>
+									<a :href="shopReferralProgramUrl" target="_blank">{{ t(appName, 'Invite Your Friends') }}</a>
 								</div>
 							</div>
 						</div>
@@ -81,6 +81,7 @@ export default {
 			storageFetchStatus: false,
 			shopReferralProgramUrl: loadState('murena-dashboard', 'shopReferralProgramUrl'),
 			increaseStorageUrl: loadState('murena-dashboard', 'increaseStorageUrl'),
+			appName: 'murena-dashboard',
 		}
 	},
 	computed: {
