@@ -5,7 +5,6 @@ OC.L10N.register(
     "Document" : "Dokument",
     "Spreadsheet" : "Tabelle",
     "Presentation" : "Präsentation",
-    "Murena dashboard" : "Murena Übersichtsseite",
     "Murena Dashboard" : "Murena Übersichtsseite",
     "Murena Cloud Dashboard" : "Murena Cloud Übersichtsseite",
     "Welcome back" : "Willkommen zurück",
