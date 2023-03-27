@@ -13,7 +13,7 @@
 		"stylelint": "stylelint {src,css}/**/{*.scss,*.css}",
 		"stylelint:fix": "stylelint {src,css}/**/{*.scss,*.css} --fix"
 	},
-	"homepage": "https://gitlab.e.foundation/e/infra/ecloud/nextcloud-apps/ecloud-dashboard",
+	"homepage": "https://gitlab.e.foundation/e/infra/ecloud/nextcloud-apps/murena-dashboard",
 	"author": "Murena",
 	"license": "AGPL-3.0-or-later",
 	"dependencies": {
