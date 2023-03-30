@@ -38,14 +38,6 @@ msgid "Presentation"
 msgstr ""
 
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
-msgid "Murena dashboard"
-msgstr ""
-
-#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:3
-msgid "Murena Dashboard"
-msgstr ""
-
-#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:4
 msgid "Murena Dashboard"
 msgstr ""
 

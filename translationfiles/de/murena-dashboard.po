@@ -38,16 +38,8 @@ msgid "Presentation"
 msgstr "Präsentation"
 
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
-msgid "Murena dashboard"
-msgstr "Murena Übersichtsseite"
-
-#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:3
 msgid "Murena Dashboard"
 msgstr "Murena Übersichtsseite"
-
-#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:4
-msgid "Murena Dashboard"
-msgstr "Murena Cloud Übersichtsseite"
 
 #. TRANSLATORS src/components/AllApps.vue:29
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:2
