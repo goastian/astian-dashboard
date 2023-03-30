@@ -46,7 +46,7 @@ msgid "Murena Dashboard"
 msgstr "Murena Übersichtsseite"
 
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:4
-msgid "Murena Cloud Dashboard"
+msgid "Murena Dashboard"
 msgstr "Murena Cloud Übersichtsseite"
 
 #. TRANSLATORS src/components/AllApps.vue:29

@@ -2,9 +2,9 @@
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>murena-dashboard</id>
-    <name>Murena Cloud Dashboard</name>
-    <summary>Murena Cloud Dashboard</summary>
-    <description><![CDATA[Murena Cloud Dashboard]]></description>
+    <name>Murena Dashboard</name>
+    <summary>Murena Dashboard</summary>
+    <description><![CDATA[Murena Dashboard]]></description>
     <version>1.5.0</version>
     <licence>agpl</licence>
     <author mail="dev@murena.io">Murena</author>
@@ -16,7 +16,7 @@
     </dependencies>
     <navigations>
         <navigation>
-            <name>Murena Cloud Dashboard</name>
+            <name>Murena Dashboard</name>
             <route>murena-dashboard.page.index</route>
         </navigation>
     </navigations>
