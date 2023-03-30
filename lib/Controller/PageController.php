@@ -20,8 +20,6 @@ class PageController extends Controller {
 	/** @var IUserSession */
 	private $userSession;
 
-	private $appName;
-
 	private $util;
 
 	public function __construct($appName, IRequest $request, IInitialState $initialState, IConfig $config, IUserSession $userSession, Util $util) {
@@ -29,7 +27,6 @@ class PageController extends Controller {
 		$this->config = $config;
 		$this->util = $util;
 		$this->userSession = $userSession;
-		$this->appName = $appName;
 		parent::__construct($appName, $request);
 	}
 
@@ -47,6 +44,6 @@ class PageController extends Controller {
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
 		$this->initialState->provideInitialState('entries', $entries);
 		$this->initialState->provideInitialState('displayName', $displayName);
-		return new TemplateResponse($this->appName, 'dashboard');
+		return new TemplateResponse('murena-dashboard', 'dashboard');
 	}
 }
