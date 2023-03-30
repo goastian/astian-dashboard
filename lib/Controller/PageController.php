@@ -44,6 +44,6 @@ class PageController extends Controller {
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
 		$this->initialState->provideInitialState('entries', $entries);
 		$this->initialState->provideInitialState('displayName', $displayName);
-		return new TemplateResponse('murena-dashboard', 'dashboard');
+		return new TemplateResponse($this->appName, 'dashboard');
 	}
 }
