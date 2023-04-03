@@ -6,7 +6,6 @@ OC.L10N.register(
     "Spreadsheet" : "Tabelle",
     "Presentation" : "Präsentation",
     "Murena Dashboard" : "Murena Übersichtsseite",
-    "Murena Dashboard" : "Murena Cloud Übersichtsseite",
     "Welcome back" : "Willkommen zurück",
     "Show All Apps" : "Alle Apps anzeigen",
     "Show Less Apps" : "Weniger Apps anzeigen",
