@@ -37,17 +37,9 @@ msgstr "Feuille de calcul"
 msgid "Presentation"
 msgstr "Présentation"
 
-#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
-msgid "Murena dashboard"
-msgstr "Tableau de bord Murena"
-
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:3
 msgid "Murena Dashboard"
 msgstr "Tableau de bord Murena"
-
-#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:4
-msgid "Murena Cloud Dashboard"
-msgstr "Tableau de bord du Cloud Murena"
 
 #. TRANSLATORS src/components/AllApps.vue:29
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:2
