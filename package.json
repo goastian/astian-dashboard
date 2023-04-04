@@ -1,6 +1,6 @@
 {
-	"name": "ecloud-dashboard",
-	"version": "1.4.1",
+	"name": "murena-dashboard",
+	"version": "1.5.0",
 	"private": true,
 	"description": "Place this app in **nextcloud/custom_apps/**",
 	"main": "js/main.js",
@@ -13,7 +13,7 @@
 		"stylelint": "stylelint {src,css}/**/{*.scss,*.css}",
 		"stylelint:fix": "stylelint {src,css}/**/{*.scss,*.css} --fix"
 	},
-	"homepage": "https://gitlab.e.foundation/e/infra/ecloud/nextcloud-apps/ecloud-dashboard",
+	"homepage": "https://gitlab.e.foundation/e/infra/ecloud/nextcloud-apps/murena-dashboard",
 	"author": "Murena",
 	"license": "AGPL-3.0-or-later",
 	"dependencies": {

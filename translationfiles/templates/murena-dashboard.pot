@@ -18,71 +18,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. TRANSLATORS src/components/AllApps.vue:103
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/js/ecloud-dashboard-main.js:2
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:8
+#: /home/nivesh/Desktop/repos/murena-dashboard/js/murena-dashboard-main.js:2
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:8
 msgid "Error when trying to connect to ONLYOFFICE"
 msgstr ""
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:58
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:58
 msgid "Document"
 msgstr ""
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:63
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:63
 msgid "Spreadsheet"
 msgstr ""
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/lib/Util.php:68
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:68
 msgid "Presentation"
 msgstr ""
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
-msgid "Murena dashboard"
-msgstr ""
-
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:3
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
 msgid "Murena Dashboard"
 msgstr ""
 
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialAppInfoFakeDummyForL10nScript.php:4
-msgid "Murena Cloud Dashboard"
-msgstr ""
-
 #. TRANSLATORS src/components/AllApps.vue:29
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:2
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:2
 msgid "Welcome back"
 msgstr ""
 
 #. TRANSLATORS src/components/AllApps.vue:32
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:4
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:4
 msgid "Show All Apps"
 msgstr ""
 
 #. TRANSLATORS src/components/AllApps.vue:33
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:6
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:6
 msgid "Show Less Apps"
 msgstr ""
 
 #. TRANSLATORS src/components/StorageLayout.vue:31
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:10
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:10
 msgid "Storage"
 msgstr ""
 
 #. TRANSLATORS src/components/StorageLayout.vue:43
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:12
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:12
 msgid "Upgrade Storage"
 msgstr ""
 
 #. TRANSLATORS src/components/StorageLayout.vue:53
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:14
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:14
 msgid "getCredits"
 msgstr ""
 
 #. TRANSLATORS src/components/StorageLayout.vue:56
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:16
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:16
 msgid "openAnAccount"
 msgstr ""
 
 #. TRANSLATORS src/components/StorageLayout.vue:59
-#: /home/nivesh/Desktop/repos/ecloud-dashboard/specialVueFakeDummyForL10nScript.js:18
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:18
 msgid "Invite Your Friends"
 msgstr ""

@@ -1,13 +1,11 @@
 OC.L10N.register(
-    "ecloud-dashboard",
+    "murena-dashboard",
     {
     "Error when trying to connect to ONLYOFFICE" : "Fehler beim Verbinden mit ONLYOFFICE",
     "Document" : "Dokument",
     "Spreadsheet" : "Tabelle",
     "Presentation" : "Präsentation",
-    "Murena dashboard" : "Murena Übersichtsseite",
     "Murena Dashboard" : "Murena Übersichtsseite",
-    "Murena Cloud Dashboard" : "Murena Cloud Übersichtsseite",
     "Welcome back" : "Willkommen zurück",
     "Show All Apps" : "Alle Apps anzeigen",
     "Show Less Apps" : "Weniger Apps anzeigen",

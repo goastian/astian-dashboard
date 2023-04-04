@@ -1,5 +1,5 @@
 OC.L10N.register(
-    "ecloud-dashboard",
+    "murena-dashboard",
     {
     "Error when trying to connect to ONLYOFFICE" : "Erreur lors d'une tentative de connexion à ONLYOFFICE",
     "Document" : "Document",
@@ -14,7 +14,8 @@ OC.L10N.register(
     "Storage" : "Espace de stockage",
     "Upgrade Storage" : "Obtenez plus de stockag",
     "getCredits" : "Obtenez jusqu'à 40€ de crédits pour votre stockage cloud en invitant vos amis !",
-    "openAnAccount" : "Pour chaque ami qui ouvre un compte, vous gagnerez tous les deux 2€ à utiliser pour le stockage cloud sur ecloud.",
-    "Invite Your Friends" : "Parrainez vos amis"
+    "openAnAccount" : "Pour chaque ami qui ouvre un compte, vous gagnerez tous les deux 2€ à utiliser pour le stockage cloud sur Murena cloud.",
+    "Invite Your Friends" : "Parrainez vos amis",
+    "Murena Dashboard" : "Tableau de bord Murena"
 },
 "nplurals=2; plural=n > 1;");

@@ -26,11 +26,11 @@
 		</div>
 		<div v-if="entries.length" class="new-icons">
 			<div class="welcome__label">
-				<h2>{{ t('ecloud-dashboard', 'Welcome back') }} {{ displayName }}</h2>
+				<h2>{{ t(appName, 'Welcome back') }} {{ displayName }}</h2>
 			</div>
 			<div @click="showAllApps = !showAllApps">
-				<span v-if="!showAllApps" class="toggle_apps show-all">{{ t('ecloud-dashboard', 'Show All Apps') }}</span>
-				<span v-if="showAllApps" class="toggle_apps show-less">{{ t('ecloud-dashboard', 'Show Less Apps') }}</span>
+				<span v-if="!showAllApps" class="toggle_apps show-all">{{ t(appName, 'Show All Apps') }}</span>
+				<span v-if="showAllApps" class="toggle_apps show-less">{{ t(appName, 'Show Less Apps') }}</span>
 			</div>
 			<div class="app-container">
 				<a v-for="entry in entries.slice(0,6)"
@@ -67,8 +67,9 @@ export default {
 	data() {
 		return {
 			showAllApps: false,
-			entries: loadState('ecloud-dashboard', 'entries'),
-			displayName: loadState('ecloud-dashboard', 'displayName'),
+			entries: loadState('murena-dashboard', 'entries'),
+			displayName: loadState('murena-dashboard', 'displayName'),
+			appName: 'murena-dashboard',
 		}
 	},
 	methods: {
