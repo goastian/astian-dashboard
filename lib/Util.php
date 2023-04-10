@@ -99,7 +99,7 @@ class Util {
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
 			if (strpos($entry["id"], "external_index") !== 0) {
-				$entry["style"] = "";
+				$entry["style"] = "background-image: url('/svg/". $entry["id"] ."/".$entry["id"] ."?color=808080')";
 				$entry["target"] = "";
 			} else {
 				$entry["style"] = "background-image: url('". $entry["icon"] ."')";
