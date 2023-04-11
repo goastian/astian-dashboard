@@ -103,7 +103,10 @@ class Util {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
-			$icon = str_replace('.svg', '-dark.svg', $entry["icon"]);
+			$icon = $entry["icon"];
+			if (!str_contains($entry["icon"], '/themes/eCloud')) {
+				$icon = str_replace('.svg', '-dark.svg', $entry["icon"]);
+			}
 			$entry["style"] = "background-image: url('". $icon ."')";
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
