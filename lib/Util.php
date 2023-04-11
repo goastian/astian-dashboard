@@ -103,7 +103,8 @@ class Util {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
-			$entry["style"] = "background-image: url('". $entry["icon"] ."')";
+			$icon = str_replace('.svg', '-dark.svg', $entry["icon"]);
+			$entry["style"] = "background-image: url('". $icon ."')";
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
 			} else {
