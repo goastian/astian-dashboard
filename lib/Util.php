@@ -10,7 +10,7 @@ use OCP\IUser;
 use OCP\IUserManager;
 use OCP\IGroupManager;
 use OCP\IUserSession;
-
+use OCP\IURLGenerator;
 class Util {
 	private $appName;
 	private $userId;
@@ -27,6 +27,8 @@ class Util {
 
 	/** @var IUserSession */
 	private $userSession;
+	/** @var IURLGenerator */
+	protected $url;
 
 	private const DEFAULT_ORDER = array("/apps/files/", "/apps/snappymail/", "/apps/contacts/", "/apps/calendar/", "/apps/notes/", "/apps/tasks/", "/apps/photos/");
 	public function __construct(
@@ -37,6 +39,7 @@ class Util {
 		IUserSession $userSession,
 		IAppManager $appManager,
 		IFactory $l10nFac,
+		IURLGenerator $url,
 		$userId
 	) {
 		$this->userId = $userId;
@@ -47,6 +50,7 @@ class Util {
 		$this->appManager = $appManager;
 		$this->l10nFac = $l10nFac;
 		$this->userSession = $userSession;
+		$this->url = $url;
 	}
 
 	private function getOnlyOfficeEntries() {
@@ -98,11 +102,10 @@ class Util {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
-			if (strpos($entry["id"], "external_index") !== 0) {
-				$entry["style"] = "background-image: url('/svg/". $entry["id"] ."/".$entry["id"] ."?color=808080')";
+			$entry["style"] = "background-image: url('". $entry["icon"] ."')";
+			if (strpos($entry["id"], "external_index") !== 0) {				
 				$entry["target"] = "";
 			} else {
-				$entry["style"] = "background-image: url('". $entry["icon"] ."')";
 				$entry["target"] = "_blank";
 			}
 
