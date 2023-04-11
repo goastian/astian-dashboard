@@ -11,6 +11,7 @@ use OCP\IUserManager;
 use OCP\IGroupManager;
 use OCP\IUserSession;
 use OCP\IURLGenerator;
+
 class Util {
 	private $appName;
 	private $userId;
@@ -103,7 +104,7 @@ class Util {
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
 			$entry["style"] = "background-image: url('". $entry["icon"] ."')";
-			if (strpos($entry["id"], "external_index") !== 0) {				
+			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
 			} else {
 				$entry["target"] = "_blank";
