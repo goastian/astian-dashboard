@@ -103,17 +103,17 @@ class Util {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
-			$icon = $entry["icon"];
-			if (!str_contains($entry["icon"], '/themes/eCloud')) {
-				$icon = str_replace('.svg', '-dark.svg', $entry["icon"]);
+			$theme = \OC::$server->getConfig()->getSystemValue("theme");
+			$imgPath = '/themes/'. $theme . '/apps/' . strtolower($entry["id"]).'/img/app-color.svg';
+			if (\file_exists(\OC::$SERVERROOT . $imgPath)) {
+				$entry["icon"] = $imgPath;
 			}
-			$entry["style"] = "background-image: url('". $icon ."')";
+			$entry["icon"] .= '?color=808080';
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
 			} else {
 				$entry["target"] = "_blank";
 			}
-
 			$entry["iconOffsetY"] = 0;
 			$entry["is_beta"] = 0;
 			$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
