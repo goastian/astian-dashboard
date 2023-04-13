@@ -103,10 +103,12 @@ class Util {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
+			$entry["filterInvert"] = 'filter: invert(1)';
 			$theme = \OC::$server->getConfig()->getSystemValue("theme");
 			$imgPath = '/themes/'. $theme . '/apps/' . strtolower($entry["id"]).'/img/app-color.svg';
 			if (\file_exists(\OC::$SERVERROOT . $imgPath)) {
 				$entry["icon"] = $imgPath;
+				$entry["filterInvert"] = '';
 			}
 			$entry["icon"] .= '?color=808080';
 			if (strpos($entry["id"], "external_index") !== 0) {

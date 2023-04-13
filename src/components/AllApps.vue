@@ -40,17 +40,18 @@
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
 					<div class="color-icons">
-						<svg width="70"
-							height="70"
-							viewBox="0 0 70 70"
+						<svg width="60"
+							height="60"
+							viewBox="0 0 60 60"
 							alt="">';
 							<defs><filter id="invert"><feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" /></filter></defs>
 							<image x="0"
 								y="0"
-								width="70"
-								height="70"
+								width="60"
+								height="60"
 								preserveAspectRatio="xMinYMin meet"
 								:xlink:href="entry.icon"
+								:style="entry.filterInvert"
 								class="app-icon" />
 						</svg>
 					</div>
@@ -65,17 +66,18 @@
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
 					<div class="color-icons">
-						<svg width="70"
-							height="70"
-							viewBox="0 0 70 70"
+						<svg width="60"
+							height="60"
+							viewBox="0 0 60 60"
 							alt="">';
 							<defs><filter id="invert"><feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" /></filter></defs>
 							<image x="0"
 								y="0"
-								width="70"
-								height="70"
+								width="60"
+								height="60"
 								preserveAspectRatio="xMinYMin meet"
 								:xlink:href="entry.icon"
+								:style="entry.filterInvert"
 								class="app-icon" />
 						</svg>
 					</div>
