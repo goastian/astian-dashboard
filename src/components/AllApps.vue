@@ -44,7 +44,11 @@
 							height="60"
 							viewBox="0 0 60 60"
 							alt="">';
-							<defs><filter id="invert"><feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" /></filter></defs>
+							<defs>
+								<filter id="invert">
+									<feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" />
+								</filter>
+							</defs>
 							<image x="0"
 								y="0"
 								width="60"
@@ -70,7 +74,11 @@
 							height="60"
 							viewBox="0 0 60 60"
 							alt="">';
-							<defs><filter id="invert"><feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" /></filter></defs>
+							<defs>
+								<filter id="invert">
+									<feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" />
+								</filter>
+							</defs>
 							<image x="0"
 								y="0"
 								width="60"

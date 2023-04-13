@@ -110,7 +110,6 @@ class Util {
 				$entry["icon"] = $imgPath;
 				$entry["filterInvert"] = '';
 			}
-			$entry["icon"] .= '?color=808080';
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
 			} else {
