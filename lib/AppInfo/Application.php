@@ -1,12 +1,12 @@
 <?php
 
-namespace OCA\EcloudDashboard\AppInfo;
+namespace OCA\MurenaDashboard\AppInfo;
 
 use OCP\AppFramework\App;
 
 class Application extends App {
 	public function __construct(array $urlParams = array()) {
-		$appName = "ecloud-dashboard";
+		$appName = "murena-dashboard";
 		parent::__construct($appName, $urlParams);
 	}
 }

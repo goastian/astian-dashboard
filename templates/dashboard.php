@@ -1,4 +1,4 @@
 <?php
-script('ecloud-dashboard', 'ecloud-dashboard-main');
+script('murena-dashboard', 'murena-dashboard-main');
 ?>
 <div id="app" class="container"></div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\EcloudDashboard\Controller;
+namespace OCA\MurenaDashboard\Controller;
 
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -8,7 +8,7 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\IUserSession;
-use OCA\EcloudDashboard\Util;
+use OCA\MurenaDashboard\Util;
 
 class PageController extends Controller {
 	/** @var IInitialState */
@@ -44,6 +44,6 @@ class PageController extends Controller {
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
 		$this->initialState->provideInitialState('entries', $entries);
 		$this->initialState->provideInitialState('displayName', $displayName);
-		return new TemplateResponse('ecloud-dashboard', 'dashboard');
+		return new TemplateResponse($this->appName, 'dashboard');
 	}
 }
