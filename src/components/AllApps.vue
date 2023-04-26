@@ -58,8 +58,6 @@
 	</div>
 </template>
 <script>
-import axios from '@nextcloud/axios'
-import { showError } from '@nextcloud/dialogs'
 import { loadState } from '@nextcloud/initial-state'
 
 export default {
@@ -74,43 +72,10 @@ export default {
 	},
 	methods: {
 		handleOfficeClick(entry, e) {
-			if (entry.type === 'onlyoffice') {
+			if (entry.href.indexOf('/apps/onlyoffice') === 0) {
 				e.preventDefault()
-				axios.get('/apps/murena_launcher/getDocumentsFolder').then(function(response) {
-					const dir = response.data.dir
-					if (dir && dir.length) {
-						let docName = 'untitled'
-						if (entry.id === 'onlyoffice_docx') {
-							docName += '.docx'
-						}
-						if (entry.id === 'onlyoffice_pptx') {
-							docName += '.pptx'
-						}
-						if (entry.id === 'onlyoffice_xlsx') {
-							docName += '.xlsx'
-						}
-						axios
-							.post(entry.href, {
-								name: docName,
-								dir,
-							})
-							.then(function(response) {
-								if (response.data.id) {
-									window.open('/apps/onlyoffice/' + response.data.id, '_self')
-								} else if (response.data.error && response.data.error.length) {
-									showError(response.data.error)
-								}
-							}).catch(function() {
-								showError(t('murena_launcher', 'Error when trying to connect to ONLYOFFICE'))
-							})
-					}
-				}).catch(function(error) {
-					if (error.response && error.response.data) {
-						const errorMessage = error.response.data.error
-						showError(errorMessage)
-					}
-				})
-
+				const newOnlyOfficeFileEvent = new CustomEvent('new-onlyoffice-file', { detail: entry.id })
+				document.dispatchEvent(newOnlyOfficeFileEvent)
 			}
 		},
 	},
