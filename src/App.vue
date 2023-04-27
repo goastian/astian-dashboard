@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style scoped>
-.app-murena-dashboard {
+#dashboard-app >>> .app-murena-dashboard {
 	z-index: 1000;
 	background-color: var(--color-main-background) !important;
 	position: relative;
