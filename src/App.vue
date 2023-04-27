@@ -35,6 +35,7 @@ export default {
 	position: relative;
 	flex-basis: 100vw;
 	min-height: 100%;
+  overflow: scroll !important;
 }
 
 ::v-deep .new-icons .welcome__label h2,
