@@ -7,18 +7,19 @@ use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
-use OCA\MurenaLauncher\Listeners\BeforeTemplateRenderedListener;
+use OCA\MurenaDashboard\Listeners\BeforeTemplateRenderedListener;
 
-class Application extends App {
-	public function __construct(array $urlParams = array()) {
-		$appName = "murena-dashboard";
-		parent::__construct($appName, $urlParams);
+class Application extends App implements IBootstrap {
+	public const APP_ID = 'murena-dashboardr';
+
+	public function __construct(array $urlParams = []) {
+		parent::__construct(self::APP_ID, $urlParams);
 	}
+
 	public function register(IRegistrationContext $context): void {
 		$context->registerEventListener(BeforeTemplateRenderedEvent::class, BeforeTemplateRenderedListener::class);
 	}
 
 	public function boot(IBootContext $context): void {
 	}
-
 }
