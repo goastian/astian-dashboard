@@ -10,7 +10,7 @@ use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCA\MurenaDashboard\Listeners\BeforeTemplateRenderedListener;
 
 class Application extends App implements IBootstrap {
-	public const APP_ID = 'murena-dashboardr';
+	public const APP_ID = 'murena-dashboard';
 
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::APP_ID, $urlParams);
