@@ -36,19 +36,7 @@ class BeforeTemplateRenderedListener implements IEventListener {
 			return;
 		}
 		if ($this->userSession->isLoggedIn()) {
-			if ($this->appManager->isEnabledForUser(self::ONLYOFFICE_APP_ID)) {
-				$this->addOnlyOfficeEntriesToNavigation();
-			}
 			$this->util->addStyle($this->appName, 'murena-dashboard');
-		}
-	}
-
-	private function addOnlyOfficeEntriesToNavigation() {
-		$entries = $this->appsService->getOnlyOfficeEntries();
-		foreach ($entries as $entry) {
-			$this->navigationManager->add(function () use ($entry) {
-				return $entry;
-			});
 		}
 	}
 }
