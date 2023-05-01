@@ -159,6 +159,6 @@ class AppsService {
 		if (!$user) {
 			return false;
 		}
-		return $this->config->getUserValue($user->getUID(), $this->appName, 'theme', false) === 'dark';
+		return $this->config->getUserValue($user->getUID(), 'accessibility', 'theme', false) === 'dark';
 	}
 }
