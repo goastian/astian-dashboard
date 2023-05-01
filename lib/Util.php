@@ -104,7 +104,7 @@ class Util {
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
 			$entry["filterInvert"] = 'filter: invert(1)';
-			$imgPath = $this->url->imagePath(strtolower($entry["id"]),  'app-color.svg');
+			$imgPath = $this->url->imagePath(strtolower($entry["id"]), 'app-color.svg');
 			if (\file_exists(\OC::$SERVERROOT . $imgPath)) {
 				$entry["icon"] = $imgPath;
 				$entry["filterInvert"] = '';
