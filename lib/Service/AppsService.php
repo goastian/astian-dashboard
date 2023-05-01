@@ -96,11 +96,13 @@ class AppsService {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
+			$entry["filterInvert"] = '';
 			try {
 				$entry["icon"] = $this->urlGenerator->imagePath($entry["id"], 'app-color.svg');
-				$entry["filterInvert"] = '';
 			} catch (\Throwable $th) {
-				$entry["filterInvert"] = 'filter: invert(1)';
+				if (!$this->isDarkThemeEnabled()) {
+					$entry["filterInvert"] = 'filter: invert(1)';
+				}
 			}
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
@@ -144,5 +146,18 @@ class AppsService {
 		$uid = $this->userSession->getUser()->getUID();
 		$gid = $this->config->getSystemValue("beta_group_name");
 		return $this->groupManager->isInGroup($uid, $gid);
+	}
+	/**
+	 * Return true if the dark theme is enabled for the current user
+	 */
+	private function isDarkThemeEnabled(): bool {
+		if (!$this->userSession->isLoggedIn()) {
+			return false;
+		}
+		$user = $this->userSession->getUser();
+		if (!$user) {
+			return false;
+		}
+		return $this->config->getUserValue($user->getUID(), $this->appName, 'theme', false) === 'dark';
 	}
 }
