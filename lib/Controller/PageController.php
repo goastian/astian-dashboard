@@ -8,7 +8,7 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\IUserSession;
-use OCA\MurenaDashboard\Util;
+use OCA\MurenaDashboard\Service\AppsService;
 
 class PageController extends Controller {
 	/** @var IInitialState */
@@ -20,13 +20,14 @@ class PageController extends Controller {
 	/** @var IUserSession */
 	private $userSession;
 
-	private $util;
+	private AppsService $appsService;
 
-	public function __construct($appName, IRequest $request, IInitialState $initialState, IConfig $config, IUserSession $userSession, Util $util) {
+
+	public function __construct($appName, IRequest $request, IInitialState $initialState, IConfig $config, IUserSession $userSession, AppsService $appsService) {
 		$this->initialState = $initialState;
 		$this->config = $config;
-		$this->util = $util;
 		$this->userSession = $userSession;
+		$this->appsService = $appsService;
 		parent::__construct($appName, $request);
 	}
 
@@ -37,9 +38,8 @@ class PageController extends Controller {
 	public function index() {
 		$referralUrl = $this->config->getSystemValue('shop_referral_program_url', '');
 		$storageUrl = $this->config->getAppValue('increasestoragebutton', 'link', '');
-		$entries = $this->util->getAppEntries();
+		$entries = $this->appsService->getAppEntries();
 		$displayName = $this->userSession->getUser()->getDisplayName();
-
 		$this->initialState->provideInitialState('shopReferralProgramUrl', $referralUrl);
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
 		$this->initialState->provideInitialState('entries', $entries);
