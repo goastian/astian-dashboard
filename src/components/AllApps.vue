@@ -54,7 +54,7 @@
 								width="60"
 								height="60"
 								preserveAspectRatio="xMinYMin meet"
-								:xlink:href="entry.icon"
+								:href="entry.icon"
 								:style="entry.filterInvert"
 								class="app-icon" />
 						</svg>
@@ -84,7 +84,7 @@
 								width="60"
 								height="60"
 								preserveAspectRatio="xMinYMin meet"
-								:xlink:href="entry.icon"
+								:href="entry.icon"
 								:style="entry.filterInvert"
 								class="app-icon" />
 						</svg>
