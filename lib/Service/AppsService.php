@@ -97,16 +97,14 @@ class AppsService {
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
 			try {
-				// $entry["icon"] = $this->urlGenerator->imagePath(strtolower($entry["id"]), 'app-color.svg');
+				$entry["icon"] = $this->urlGenerator->imagePath($entry["id"], 'app-color.svg');
 				$entry["filterInvert"] = '';
 			} catch (\Throwable $th) {
 				$entry["filterInvert"] = 'filter: invert(1)';
 			}
 			if (strpos($entry["id"], "external_index") !== 0) {
-				$entry["style"] = "";
 				$entry["target"] = "";
 			} else {
-				$entry["style"] = "background-image: url('". $entry["icon"] ."')";
 				$entry["target"] = "_blank";
 			}
 			$entry["iconOffsetY"] = 0;
@@ -135,7 +133,7 @@ class AppsService {
 		unset($entriesByHref['/apps/murena-dashboard/']);
 		unset($entriesByHref['']);
 
-		return array('apps' => array_values($entriesByHref));
+		return array_values($entriesByHref);
 	}
 
 	public function updateOrder(string $order) {
