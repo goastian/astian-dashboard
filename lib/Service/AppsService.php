@@ -108,6 +108,7 @@ class AppsService {
 				$entry["target"] = "";
 			} else {
 				$entry["target"] = "_blank";
+				$entry["filterInvert"] = '';
 			}
 			$entry["iconOffsetY"] = 0;
 			$entry["is_beta"] = 0;
