@@ -1,6 +1,6 @@
 {
 	"name": "murena-dashboard",
-	"version": "2.0.1",
+	"version": "2.0.0",
 	"private": true,
 	"description": "Place this app in **nextcloud/custom_apps/**",
 	"main": "js/main.js",
