@@ -10,7 +10,7 @@ use OCP\IUser;
 use OCP\IUserManager;
 use OCP\IGroupManager;
 use OCP\IUserSession;
-use OCP\IURLGenerator;
+use OC\URLGenerator;
 
 class Util {
 	private $appName;
@@ -28,7 +28,7 @@ class Util {
 
 	/** @var IUserSession */
 	private $userSession;
-	/** @var IURLGenerator */
+	/** @var URLGenerator */
 	protected $url;
 
 	private const DEFAULT_ORDER = array("/apps/files/", "/apps/snappymail/", "/apps/contacts/", "/apps/calendar/", "/apps/notes/", "/apps/tasks/", "/apps/photos/");
@@ -40,7 +40,7 @@ class Util {
 		IUserSession $userSession,
 		IAppManager $appManager,
 		IFactory $l10nFac,
-		IURLGenerator $url,
+		URLGenerator $url,
 		$userId
 	) {
 		$this->userId = $userId;
@@ -103,11 +103,11 @@ class Util {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
-			$entry["filterInvert"] = 'filter: invert(1)';
-			$imgPath = $this->url->imagePath(strtolower($entry["id"]), 'app-color.svg');
-			if (\file_exists(\OC::$SERVERROOT . $imgPath)) {
-				$entry["icon"] = $imgPath;
+			try {
+				$entry["icon"] = $this->url->imagePath(strtolower($entry["id"]), 'app-color.svg');
 				$entry["filterInvert"] = '';
+			} catch (\Throwable $th) {
+				$entry["filterInvert"] = 'filter: invert(1)';
 			}
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
