@@ -40,7 +40,11 @@
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
 					<div class="color-icons">
-						<img :src="entry.icon" :alt="entry.name" :class="entry.class" width="60" height="60">
+						<img :src="entry.icon"
+							:alt="entry.name"
+							:class="entry.class"
+							width="60"
+							height="60">
 					</div>
 					<div class="item-label">{{ entry.name }}</div>
 				</a>
@@ -53,7 +57,11 @@
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
 					<div class="color-icons">
-						<img :src="entry.icon" :alt="entry.name" :class="entry.class" width="60" height="60">
+						<img :src="entry.icon"
+							:alt="entry.name"
+							:class="entry.class"
+							width="60"
+							height="60">
 					</div>
 					<div class="item-label">{{ entry.name }}</div>
 				</a>
