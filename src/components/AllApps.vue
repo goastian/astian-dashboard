@@ -40,24 +40,7 @@
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
 					<div class="color-icons">
-						<svg width="60"
-							height="60"
-							viewBox="0 0 60 60"
-							alt="">';
-							<defs>
-								<filter id="invert">
-									<feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" />
-								</filter>
-							</defs>
-							<image x="0"
-								y="0"
-								width="60"
-								height="60"
-								preserveAspectRatio="xMinYMin meet"
-								:href="entry.icon"
-								:style="entry.filterInvert"
-								class="app-icon" />
-						</svg>
+						<img :src="entry.icon" :alt="entry.name" :class="entry.class" width="60" height="60">
 					</div>
 					<div class="item-label">{{ entry.name }}</div>
 				</a>
@@ -70,24 +53,7 @@
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
 					<div class="color-icons">
-						<svg width="60"
-							height="60"
-							viewBox="0 0 60 60"
-							alt="">';
-							<defs>
-								<filter id="invert">
-									<feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" />
-								</filter>
-							</defs>
-							<image x="0"
-								y="0"
-								width="60"
-								height="60"
-								preserveAspectRatio="xMinYMin meet"
-								:href="entry.icon"
-								:style="entry.filterInvert"
-								class="app-icon" />
-						</svg>
+						<img :src="entry.icon" :alt="entry.name" :class="entry.class" width="60" height="60">
 					</div>
 					<div class="item-label">{{ entry.name }}</div>
 				</a>

@@ -96,13 +96,14 @@ class AppsService {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
-			$entry["filterInvert"] = '';
 			try {
 				$entry["icon"] = $this->urlGenerator->imagePath($entry["id"], 'app-color.svg');
 			} catch (\Throwable $th) {
-				if (!$this->isDarkThemeEnabled()) {
-					$entry["filterInvert"] = 'filter: invert(1)';
-				}
+				//exception - continue execution
+			}
+			$entry["class"] = "";
+			if (strpos($entry["icon"], "app.svg")) {
+				$entry["class"] = "custom-app-icon";
 			}
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
