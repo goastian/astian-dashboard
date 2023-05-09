@@ -149,17 +149,4 @@ class AppsService {
 		$gid = $this->config->getSystemValue("beta_group_name");
 		return $this->groupManager->isInGroup($uid, $gid);
 	}
-	/**
-	 * Return true if the dark theme is enabled for the current user
-	 */
-	private function isDarkThemeEnabled(): bool {
-		if (!$this->userSession->isLoggedIn()) {
-			return false;
-		}
-		$user = $this->userSession->getUser();
-		if (!$user) {
-			return false;
-		}
-		return $this->config->getUserValue($user->getUID(), 'accessibility', 'theme', false) === 'dark';
-	}
 }
