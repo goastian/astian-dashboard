@@ -8,7 +8,6 @@ OC.L10N.register(
     "Upgrade Storage" : "Actualizar almacenamiento",
     "getCredits" : "¡Obtenga hasta 40€ de créditos para su almacenamiento en la nube invitando a sus amigos!",
     "openAnAccount" : "Por cada amigo que abra una cuenta, ambos ganarán 2 € que se utilizarán para el almacenamiento en la nube en Murena cloud.",
-    "Invite Your Friends" : "Invita a tus amigos",
-    "Murena Dashboard" : "Cuadro de mando de Murena"
+    "Invite Your Friends" : "Invita a tus amigos"
 },
 "");

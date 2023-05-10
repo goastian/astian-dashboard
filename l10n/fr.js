@@ -5,9 +5,7 @@ OC.L10N.register(
     "Document" : "Document",
     "Spreadsheet" : "Feuille de calcul",
     "Presentation" : "Présentation",
-    "Murena dashboard" : "Tableau de bord Murena",
     "Murena Dashboard" : "Tableau de bord Murena",
-    "Murena Cloud Dashboard" : "Tableau de bord du Cloud Murena",
     "Welcome back" : "Content de vous revoir",
     "Show All Apps" : "Afficher toutes les applications",
     "Show Less Apps" : "Afficher moins d'applications",
@@ -15,7 +13,6 @@ OC.L10N.register(
     "Upgrade Storage" : "Obtenez plus de stockag",
     "getCredits" : "Obtenez jusqu'à 40€ de crédits pour votre stockage cloud en invitant vos amis !",
     "openAnAccount" : "Pour chaque ami qui ouvre un compte, vous gagnerez tous les deux 2€ à utiliser pour le stockage cloud sur Murena cloud.",
-    "Invite Your Friends" : "Parrainez vos amis",
-    "Murena Dashboard" : "Tableau de bord Murena"
+    "Invite Your Friends" : "Parrainez vos amis"
 },
 "nplurals=2; plural=n > 1;");

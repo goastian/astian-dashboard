@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
 "POT-Creation-Date: 2023-03-20 18:15+0530\n"
-"PO-Revision-Date: 2023-03-22 00:10+0000\n"
+"PO-Revision-Date: 2023-05-11 12:58+0000\n"
 "Last-Translator: F Wildermuth <wildermuth.f@e.email>\n"
 "Language-Team: German <https://i18n.e.foundation/projects/ecloud/"
 "murena-dashboard/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 
 #. TRANSLATORS src/components/AllApps.vue:103
 #: /home/nivesh/Desktop/repos/murena-dashboard/js/murena-dashboard-main.js:2
@@ -69,13 +69,15 @@ msgstr "Speicherplatz erweitern"
 #. TRANSLATORS src/components/StorageLayout.vue:53
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:14
 msgid "getCredits"
-msgstr "Holen Sie sich bis zu 40€ Guthaben für Ihren Cloud-Speicher, indem Sie Ihre Freunde einladen!"
+msgstr ""
+"Holen Sie sich bis zu 40 € Guthaben für Ihren Cloud-Speicher, indem Sie Ihre "
+"Freunde einladen!"
 
 #. TRANSLATORS src/components/StorageLayout.vue:56
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:16
 msgid "openAnAccount"
 msgstr ""
-"Für jeden Freund, der ein Konto eröffnet, verdienen Sie beide 2€, die für "
+"Für jeden Freund, der ein Konto eröffnet, erhalten Sie beide 2 €, die für "
 "Cloud-Speicher verwendet werden können."
 
 #. TRANSLATORS src/components/StorageLayout.vue:59

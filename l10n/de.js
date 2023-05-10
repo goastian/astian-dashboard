@@ -11,8 +11,8 @@ OC.L10N.register(
     "Show Less Apps" : "Weniger Apps anzeigen",
     "Storage" : "Speicherplatz",
     "Upgrade Storage" : "Speicherplatz erweitern",
-    "getCredits" : "Holen Sie sich bis zu 40€ Guthaben für Ihren Cloud-Speicher, indem Sie Ihre Freunde einladen!",
-    "openAnAccount" : "Für jeden Freund, der ein Konto eröffnet, verdienen Sie beide 2€, die für Cloud-Speicher verwendet werden können.",
+    "getCredits" : "Holen Sie sich bis zu 40 € Guthaben für Ihren Cloud-Speicher, indem Sie Ihre Freunde einladen!",
+    "openAnAccount" : "Für jeden Freund, der ein Konto eröffnet, erhalten Sie beide 2 €, die für Cloud-Speicher verwendet werden können.",
     "Invite Your Friends" : "Lade deine Freunde ein"
 },
 "nplurals=2; plural=n != 1;");
