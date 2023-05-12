@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
 "POT-Creation-Date: 2023-03-20 18:15+0530\n"
-"PO-Revision-Date: 2023-03-24 16:10+0000\n"
-"Last-Translator: Aude M <aude.madkaud@murena.com>\n"
+"PO-Revision-Date: 2023-05-13 07:58+0000\n"
+"Last-Translator: Florent VINCENT <diroots@no-log.org>\n"
 "Language-Team: French <https://i18n.e.foundation/projects/ecloud/"
 "murena-dashboard/fr/>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 
 #. TRANSLATORS src/components/AllApps.vue:103
 #: /home/nivesh/Desktop/repos/murena-dashboard/js/murena-dashboard-main.js:2
@@ -64,7 +64,7 @@ msgstr "Espace de stockage"
 #. TRANSLATORS src/components/StorageLayout.vue:43
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:12
 msgid "Upgrade Storage"
-msgstr "Obtenez plus de stockag"
+msgstr "Obtenez plus de stockage"
 
 #. TRANSLATORS src/components/StorageLayout.vue:53
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:14
