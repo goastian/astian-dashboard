@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2023-03-20 18:15+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. TRANSLATORS src/components/AllApps.vue:103
+#: /home/nivesh/Desktop/repos/murena-dashboard/js/murena-dashboard-main.js:2
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:8
+msgid "Error when trying to connect to ONLYOFFICE"
+msgstr ""
+
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:58
+msgid "Document"
+msgstr ""
+
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:63
+msgid "Spreadsheet"
+msgstr ""
+
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:68
+msgid "Presentation"
+msgstr ""
+
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
+msgid "Murena Dashboard"
+msgstr ""
+
+#. TRANSLATORS src/components/AllApps.vue:29
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:2
+msgid "Welcome back"
+msgstr ""
+
+#. TRANSLATORS src/components/AllApps.vue:32
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:4
+msgid "Show All Apps"
+msgstr ""
+
+#. TRANSLATORS src/components/AllApps.vue:33
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:6
+msgid "Show Less Apps"
+msgstr ""
+
+#. TRANSLATORS src/components/StorageLayout.vue:31
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:10
+msgid "Storage"
+msgstr ""
+
+#. TRANSLATORS src/components/StorageLayout.vue:43
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:12
+msgid "Upgrade Storage"
+msgstr ""
+
+#. TRANSLATORS src/components/StorageLayout.vue:53
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:14
+msgid "getCredits"
+msgstr ""
+
+#. TRANSLATORS src/components/StorageLayout.vue:56
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:16
+msgid "openAnAccount"
+msgstr ""
+
+#. TRANSLATORS src/components/StorageLayout.vue:59
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:18
+msgid "Invite Your Friends"
+msgstr ""
