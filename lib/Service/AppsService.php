@@ -101,15 +101,10 @@ class AppsService {
 			} catch (\Throwable $th) {
 				//exception - continue execution
 			}
-			$entry["class"] = "";
-			if (strpos($entry["icon"], "app.svg")) {
-				$entry["class"] = "custom-app-icon";
-			}
 			if (strpos($entry["id"], "external_index") !== 0) {
 				$entry["target"] = "";
 			} else {
 				$entry["target"] = "_blank";
-				$entry["filterInvert"] = '';
 			}
 			$entry["iconOffsetY"] = 0;
 			$entry["is_beta"] = 0;
