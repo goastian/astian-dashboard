@@ -106,6 +106,10 @@ class AppsService {
 			} else {
 				$entry["target"] = "_blank";
 			}
+			$entry["class"] = "";
+			if (strpos($entry["icon"], "/custom_apps/") === 0) {
+				$entry["class"] = "icon-invert";
+			}
 			$entry["iconOffsetY"] = 0;
 			$entry["is_beta"] = 0;
 			$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');

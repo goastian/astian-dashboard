@@ -59,6 +59,7 @@
 					<div class="color-icons">
 						<img :src="entry.icon"
 							:alt="entry.name"
+              :class="entry.class"
 							width="60"
 							height="60">
 					</div>
@@ -260,5 +261,9 @@ a.item.beta-app {
     line-height: normal;
     padding: 2px 10px;
     font-weight: 800;
+}
+.icon-invert
+{
+  filter: var(--background-invert-if-bright);
 }
 </style>
