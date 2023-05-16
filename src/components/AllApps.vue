@@ -59,7 +59,7 @@
 					<div class="color-icons">
 						<img :src="entry.icon"
 							:alt="entry.name"
-              :class="entry.class"
+							:class="entry.class"
 							width="60"
 							height="60">
 					</div>
