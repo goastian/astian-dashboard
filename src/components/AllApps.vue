@@ -264,6 +264,6 @@ a.item.beta-app {
 }
 .icon-invert
 {
-  filter: var(--background-invert-if-bright);
+  filter: var(--active-icon-filter);
 }
 </style>
