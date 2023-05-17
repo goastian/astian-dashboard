@@ -39,7 +39,13 @@
 					:href="entry.href"
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
-					<div class="color-icons" :class="entry.id" :style="entry.style" />
+					<div class="color-icons">
+						<img :src="entry.icon"
+							:alt="entry.name"
+							:class="entry.class"
+							width="60"
+							height="60">
+					</div>
 					<div class="item-label">{{ entry.name }}</div>
 				</a>
 			</div>
@@ -50,7 +56,13 @@
 					:href="entry.href"
 					:target="entry.target"
 					@click="handleOfficeClick(entry, $event)">
-					<div class="color-icons" :class="entry.id" :style="entry.style" />
+					<div class="color-icons">
+						<img :src="entry.icon"
+							:alt="entry.name"
+							:class="entry.class"
+							width="60"
+							height="60">
+					</div>
 					<div class="item-label">{{ entry.name }}</div>
 				</a>
 			</div>
@@ -249,5 +261,9 @@ a.item.beta-app {
     line-height: normal;
     padding: 2px 10px;
     font-weight: 800;
+}
+.icon-invert
+{
+  filter: var(--app-icon-filter);
 }
 </style>
