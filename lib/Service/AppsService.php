@@ -1,75 +1,71 @@
 <?php
 
-namespace OCA\MurenaDashboard;
+namespace OCA\MurenaDashboard\Service;
 
 use OCP\IConfig;
 use OCP\INavigationManager;
 use OCP\App\IAppManager;
-use OCP\L10N\IFactory;
-use OCP\IUser;
-use OCP\IUserManager;
 use OCP\IGroupManager;
 use OCP\IUserSession;
+use OCP\IURLGenerator;
+use OCP\L10N\IFactory;
 
-class Util {
-	private $appName;
-	private $userId;
-	private $config;
-	private $navigationManager;
-	private $appManager;
-	private $root;
-	private $l10nFac;
-	/** @var IGroupManager */
-	private $groupManager;
+class AppsService {
+	private string $appName;
+	private ?string $userId;
+	private IConfig $config;
+	private INavigationManager $navigationManager;
+	private IAppManager $appManager;
+	private IFactory $l10nFac;
+	private IUserSession $userSession;
+	private IGroupManager $groupManager;
+	private IURLGenerator $urlGenerator;
 
-	/** @var IUserManager */
-	private $userManager;
-
-	/** @var IUserSession */
-	private $userSession;
 
 	private const DEFAULT_ORDER = array("/apps/files/", "/apps/snappymail/", "/apps/contacts/", "/apps/calendar/", "/apps/notes/", "/apps/tasks/", "/apps/photos/");
 	public function __construct(
+		$appName,
 		IConfig $config,
 		INavigationManager $navigationManager,
-		IGroupManager $groupManager,
-		IUserManager $userManager,
-		IUserSession $userSession,
 		IAppManager $appManager,
 		IFactory $l10nFac,
+		IUserSession $userSession,
+		IGroupManager $groupManager,
+		IURLGenerator $urlGenerator,
 		$userId
 	) {
+		$this->appName = $appName;
 		$this->userId = $userId;
 		$this->config = $config;
 		$this->navigationManager = $navigationManager;
-		$this->groupManager = $groupManager;
-		$this->userManager = $userManager;
 		$this->appManager = $appManager;
 		$this->l10nFac = $l10nFac;
 		$this->userSession = $userSession;
+		$this->groupManager = $groupManager;
+		$this->urlGenerator = $urlGenerator;
 	}
 
-	private function getOnlyOfficeEntries() {
+	public function getOnlyOfficeEntries() {
 		$l = $this->l10nFac->get("onlyoffice");
 		$onlyOfficeEntries = array(
 			array(
 				"id" => "onlyoffice_docx",
-				"icon" => "/svg/core/filetypes/x-office-document",
+				"icon" => $this->urlGenerator->imagePath('core', 'filetypes/x-office-document.svg'),
 				"name" => $l->t("Document"),
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
-				"icon" => "/svg/core/filetypes/x-office-spreadsheet",
+				"icon" => $this->urlGenerator->imagePath('core', 'filetypes/x-office-spreadsheet.svg'),
 				"name" => $l->t("Spreadsheet"),
 			),
 			array(
 				"id" => "onlyoffice_pptx",
-				"icon" => "/svg/core/filetypes/x-office-presentation",
+				"icon" => $this->urlGenerator->imagePath('core', 'filetypes/x-office-presentation.svg'),
 				"name" => $l->t("Presentation"),
 			),
 		);
 		$onlyOfficeEntries = array_map(function ($entry) {
-			$entry["type"] = "onlyoffice";
+			$entry["type"] = "link";
 			$entry["active"] = false;
 			$entry["href"] = "/apps/onlyoffice/ajax/new?id=".$entry["id"];
 			return $entry;
@@ -77,8 +73,9 @@ class Util {
 
 		return $onlyOfficeEntries;
 	}
-	public function getOrder() {
-		$order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
+
+	public function getAppOrder() {
+		$order_raw = $this->config->getUserValue($this->userId, $this->appName, 'order');
 		// If order raw empty try to get from 'apporder' app config
 		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
 		// If order raw is still empty, return empty array
@@ -87,9 +84,10 @@ class Util {
 		}
 		return json_decode($order_raw);
 	}
+
 	public function getAppEntries() {
 		$entries = array_values($this->navigationManager->getAll());
-		$order = $this->getOrder();
+		$order = $this->getAppOrder();
 		$entriesByHref = array();
 		if ($this->appManager->isEnabledForUser("onlyoffice")) {
 			$office_entries = $this->getOnlyOfficeEntries();
@@ -98,14 +96,20 @@ class Util {
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
+			try {
+				$entry["icon"] = $this->urlGenerator->imagePath($entry["id"], 'app-color.svg');
+			} catch (\Throwable $th) {
+				//exception - continue execution
+			}
 			if (strpos($entry["id"], "external_index") !== 0) {
-				$entry["style"] = "";
 				$entry["target"] = "";
 			} else {
-				$entry["style"] = "background-image: url('". $entry["icon"] ."')";
 				$entry["target"] = "_blank";
 			}
-
+			$entry["class"] = "";
+			if (strpos($entry["icon"], "/custom_apps/") === 0) {
+				$entry["class"] = "icon-invert";
+			}
 			$entry["iconOffsetY"] = 0;
 			$entry["is_beta"] = 0;
 			$appEnabledGroups = $this->config->getAppValue($entry['id'], 'enabled', 'no');
@@ -131,28 +135,17 @@ class Util {
 		unset($entriesByHref['/apps/dashboard/']);
 		unset($entriesByHref['/apps/murena-dashboard/']);
 		unset($entriesByHref['']);
-		$entries = array_values($entriesByHref);
 
-		return $entries;
+		return array_values($entriesByHref);
 	}
 
-	/**
-	 * returns a sorted list of the user's group GIDs
-	 *
-	 * @param IUser $user
-	 * @return array
-	 */
-	public function getGroups(): array {
-		$user = $this->userSession->getUser();
-		if (!$user) {
-			return [];
-		}
-		return $this->groupManager->getUserGroupIds($user);
+	public function updateOrder(string $order) {
+		$this->config->setUserValue($this->userId, $this->appName, 'order', $order);
 	}
 
 	private function isBetaUser() {
 		$uid = $this->userSession->getUser()->getUID();
-		$betaGroupName = $this->config->getSystemValue("beta_group_name");
-		return $this->groupManager->isInGroup($uid, $betaGroupName);
+		$gid = $this->config->getSystemValue("beta_group_name");
+		return $this->groupManager->isInGroup($uid, $gid);
 	}
 }

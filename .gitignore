@@ -20,3 +20,4 @@ translationtool.phar
 .php-cs-fixer.cache
 .phpunit.result.cache
 junit.xml
+css
