@@ -266,4 +266,7 @@ a.item.beta-app {
 {
   filter: var(--app-icon-filter);
 }
+.item-label {
+  height: 2em;
+}
 </style>
