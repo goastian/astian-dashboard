@@ -22,12 +22,14 @@ class PageController extends Controller {
 
 	private AppsService $appsService;
 
+	private string $appName;
 
 	public function __construct($appName, IRequest $request, IInitialState $initialState, IConfig $config, IUserSession $userSession, AppsService $appsService) {
 		$this->initialState = $initialState;
 		$this->config = $config;
 		$this->userSession = $userSession;
 		$this->appsService = $appsService;
+		$this->appName = $appName;
 		parent::__construct($appName, $request);
 	}
 
