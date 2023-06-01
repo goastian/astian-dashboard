@@ -50,7 +50,7 @@ class AppsService {
 		$onlyOfficeEntries = array(
 			array(
 				"id" => "onlyoffice_docx",
-				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),,
+				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),
 				"name" => $l->t("Document"),
 			),
 			array(
