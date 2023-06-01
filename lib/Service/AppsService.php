@@ -50,17 +50,17 @@ class AppsService {
 		$onlyOfficeEntries = array(
 			array(
 				"id" => "onlyoffice_docx",
-				"icon" => $this->urlGenerator->imagePath('core', 'filetypes/x-office-document.svg'),
+				"icon" => "icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),,
 				"name" => $l->t("Document"),
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
-				"icon" => $this->urlGenerator->imagePath('core', 'filetypes/x-office-spreadsheet.svg'),
+				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app-color.svg'),
 				"name" => $l->t("Spreadsheet"),
 			),
 			array(
 				"id" => "onlyoffice_pptx",
-				"icon" => $this->urlGenerator->imagePath('core', 'filetypes/x-office-presentation.svg'),
+				"icon" => "icon" => $this->urlGenerator->imagePath('onlyoffice', 'pptx/app-color.svg'),
 				"name" => $l->t("Presentation"),
 			),
 		);
