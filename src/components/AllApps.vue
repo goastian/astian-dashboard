@@ -33,7 +33,7 @@
 				<span v-if="showAllApps" class="toggle_apps show-less">{{ t(appName, 'Show Less Apps') }}</span>
 			</div>
 			<div class="app-container">
-				<a v-for="entry in entries.slice(0,6)"
+				<a v-for="entry in entries.slice(0,12)"
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
@@ -50,7 +50,7 @@
 				</a>
 			</div>
 			<div v-if="showAllApps" class="app-container">
-				<a v-for="entry in entries.slice(6)"
+				<a v-for="entry in entries.slice(12)"
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
