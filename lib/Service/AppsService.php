@@ -22,7 +22,7 @@ class AppsService {
 	private IURLGenerator $urlGenerator;
 
 
-	private const DEFAULT_ORDER = array("/apps/files/", "/apps/snappymail/", "/apps/contacts/", "/apps/calendar/", "/apps/notes/", "/apps/tasks/", "/apps/photos/");
+	private const DEFAULT_ORDER = array("/apps/snappymail/", "/apps/calendar/", "/apps/files/" , "/apps/photos/", "/apps/memories/", "/apps/contacts/", "/apps/onlyoffice/ajax/new?id=onlyoffice_docx", "/apps/onlyoffice/ajax/new?id=onlyoffice_xlsx", "/apps/onlyoffice/ajax/new?id=onlyoffice_pptx", "/apps/notes/", "/apps/tasks/", "https://spot.murena.io" , "https://murena.com" );
 	public function __construct(
 		$appName,
 		IConfig $config,
