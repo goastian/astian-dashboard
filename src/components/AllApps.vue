@@ -76,7 +76,7 @@ export default {
 	name: 'AllApps',
 	data() {
 		return {
-      defaultApps: 12,
+			defaultApps: 12,
 			showAllApps: false,
 			entries: loadState('murena-dashboard', 'entries'),
 			displayName: loadState('murena-dashboard', 'displayName'),
