@@ -33,7 +33,7 @@
 				<span v-if="showAllApps" class="toggle_apps show-less">{{ t(appName, 'Show Less Apps') }}</span>
 			</div>
 			<div class="app-container">
-				<a v-for="entry in entries.slice(0,defaultApps)"
+				<a v-for="entry in entries.slice(0,defaultAppCount)"
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
@@ -50,7 +50,7 @@
 				</a>
 			</div>
 			<div v-if="showAllApps" class="app-container">
-				<a v-for="entry in entries.slice(defaultApps)"
+				<a v-for="entry in entries.slice(defaultAppCount)"
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
@@ -76,7 +76,7 @@ export default {
 	name: 'AllApps',
 	data() {
 		return {
-			defaultApps: 12,
+			defaultAppCount: 12,
 			showAllApps: false,
 			entries: loadState('murena-dashboard', 'entries'),
 			displayName: loadState('murena-dashboard', 'displayName'),
