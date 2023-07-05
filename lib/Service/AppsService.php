@@ -71,7 +71,7 @@ class AppsService {
 			$entry["type"] = "link";
 			$entry["active"] = false;
 			$baseDirectory = "Documents";
-			$entry["href"] = "/apps/onlyoffice/new?id=".$entry["id"]."&name=".$entry["default_filename"]."&dir=".$baseDirectory;
+			$entry["href"] = "/apps/onlyoffice/new?id=" . $entry["id"] . "&name=" . $entry["default_filename"] . "&dir=" . $baseDirectory;
 			return $entry;
 		}, $onlyOfficeEntries);
 
