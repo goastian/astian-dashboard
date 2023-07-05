@@ -52,22 +52,26 @@ class AppsService {
 				"id" => "onlyoffice_docx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),
 				"name" => $l->t("Document"),
+				"default_filename" => 'untitled.docx'
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app-color.svg'),
 				"name" => $l->t("Spreadsheet"),
+				"default_filename" => 'untitled.xlsx'
 			),
 			array(
 				"id" => "onlyoffice_pptx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'pptx/app-color.svg'),
 				"name" => $l->t("Presentation"),
+				"default_filename" => 'untitled.pptx'
 			),
 		);
 		$onlyOfficeEntries = array_map(function ($entry) {
 			$entry["type"] = "link";
 			$entry["active"] = false;
-			$entry["href"] = "/apps/onlyoffice/ajax/new?id=".$entry["id"];
+			$baseDirectory = "Documents";
+			$entry["href"] = "/apps/onlyoffice/new?id=".$entry["id"]."&name=".$entry["default_filename"]."&dir=".$baseDirectory;
 			return $entry;
 		}, $onlyOfficeEntries);
 
