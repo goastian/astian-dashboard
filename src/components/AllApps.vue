@@ -151,6 +151,8 @@ export default {
   table-layout: fixed;
   width: 100%;
   box-sizing: border-box;
+  transform-origin: 50% 0;
+	animation: append-animate .3s linear;
 }
 .item {
   vertical-align: middle;
@@ -269,5 +271,15 @@ a.item.beta-app {
 }
 .item-label {
   height: 2em;
+}
+@keyframes append-animate {
+	from {
+		transform: scaleY(0);
+		opacity: 0;
+	}
+	to {
+		transform: scaleY(1);
+		opacity: 1;
+	}
 }
 </style>
