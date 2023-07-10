@@ -155,11 +155,6 @@ class AppsService {
 		$gid = $this->config->getSystemValue("beta_group_name");
 		return $this->groupManager->isInGroup($uid, $gid);
 	}
-
-	/**
-	 *  @NoAdminRequired
-	 * @return string
-	 */
 	public function getDocumentsFolder() {
 		$folderName = 'Documents';
 		$userId = $this->userSession->getUser()->getUID();
@@ -175,5 +170,4 @@ class AppsService {
 		}
 		return $filePath === $userPath ? '/' : $folder->getName();
 	}
-
 }
