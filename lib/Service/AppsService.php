@@ -9,6 +9,7 @@ use OCP\IGroupManager;
 use OCP\IUserSession;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
+use OCP\Files\IRootFolder;
 
 class AppsService {
 	private string $appName;
@@ -20,7 +21,7 @@ class AppsService {
 	private IUserSession $userSession;
 	private IGroupManager $groupManager;
 	private IURLGenerator $urlGenerator;
-
+	private IRootFolder $rootFolder;
 
 	private const DEFAULT_ORDER = array("/apps/snappymail/", "/apps/calendar/", "/apps/files/" , "/apps/photos/", "/apps/memories/", "/apps/contacts/", "/apps/onlyoffice/ajax/new?id=onlyoffice_docx", "/apps/onlyoffice/ajax/new?id=onlyoffice_xlsx", "/apps/onlyoffice/ajax/new?id=onlyoffice_pptx", "/apps/notes/", "/apps/tasks/", "https://spot.murena.io" , "https://murena.com" );
 	public function __construct(
@@ -32,6 +33,7 @@ class AppsService {
 		IUserSession $userSession,
 		IGroupManager $groupManager,
 		IURLGenerator $urlGenerator,
+		IRootFolder $rootFolder,
 		$userId
 	) {
 		$this->appName = $appName;
@@ -43,6 +45,7 @@ class AppsService {
 		$this->userSession = $userSession;
 		$this->groupManager = $groupManager;
 		$this->urlGenerator = $urlGenerator;
+		$this->rootFolder = $rootFolder;
 	}
 
 	public function getOnlyOfficeEntries() {
@@ -70,7 +73,7 @@ class AppsService {
 		$onlyOfficeEntries = array_map(function ($entry) {
 			$entry["type"] = "link";
 			$entry["active"] = false;
-			$baseDirectory = "Documents";
+			$baseDirectory = $this->getDocumentsFolder();
 			$entry["href"] = "/apps/onlyoffice/new?id=" . $entry["id"] . "&name=" . $entry["default_filename"] . "&dir=" . $baseDirectory;
 			return $entry;
 		}, $onlyOfficeEntries);
@@ -152,4 +155,25 @@ class AppsService {
 		$gid = $this->config->getSystemValue("beta_group_name");
 		return $this->groupManager->isInGroup($uid, $gid);
 	}
+
+	/**
+	 *  @NoAdminRequired
+	 * @return string
+	 */
+	public function getDocumentsFolder() {
+		$folderName = 'Documents';
+		$userId = $this->userSession->getUser()->getUID();
+		$userPath = $this->rootFolder->getUserFolder($userId)->getPath();
+		$filePath = $userPath . '/' . $folderName;
+
+		$folder = null;
+		if ($this->rootFolder->nodeExists($filePath)) {
+			$folder = $this->rootFolder->get($filePath);
+		} else {
+			$folder = $this->rootFolder->get($userPath);
+			$filePath = $userPath;
+		}
+		return $filePath === $userPath ? '/' : $folder->getName();
+	}
+
 }
