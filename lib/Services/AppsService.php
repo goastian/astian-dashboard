@@ -23,7 +23,6 @@ class AppsService {
 	private IURLGenerator $urlGenerator;
 	private IRootFolder $rootFolder;
 
-
 	private const DEFAULT_ORDER = array("/apps/snappymail/", "/apps/calendar/", "/apps/files/" , "/apps/photos/", "/apps/memories/", "/apps/contacts/", "/apps/onlyoffice/ajax/new?id=onlyoffice_docx", "/apps/onlyoffice/ajax/new?id=onlyoffice_xlsx", "/apps/onlyoffice/ajax/new?id=onlyoffice_pptx", "/apps/notes/", "/apps/tasks/", "https://spot.murena.io" , "https://murena.com" );
 	public function __construct(
 		$appName,
@@ -49,24 +48,24 @@ class AppsService {
 		$this->rootFolder = $rootFolder;
 	}
 
-	public function getOnlyOfficeEntries(bool $navEntry = true) {
+	public function getOnlyOfficeEntries() {
 		$l = $this->l10nFac->get("onlyoffice");
 		$onlyOfficeEntries = array(
 			array(
 				"id" => "onlyoffice_docx",
-				"icon" => ($navEntry) ? $this->urlGenerator->imagePath('onlyoffice', 'docx/app.svg') : $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),
+				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),
 				"name" => $l->t("Document"),
 				"default_filename" => 'untitled.docx'
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
-				"icon" => ($navEntry) ? $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app.svg') : $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app-color.svg'),
+				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app-color.svg'),
 				"name" => $l->t("Spreadsheet"),
 				"default_filename" => 'untitled.xlsx'
 			),
 			array(
 				"id" => "onlyoffice_pptx",
-				"icon" => ($navEntry) ? $this->urlGenerator->imagePath('onlyoffice', 'pptx/app.svg') : $this->urlGenerator->imagePath('onlyoffice', 'pptx/app-color.svg'),
+				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'pptx/app-color.svg'),
 				"name" => $l->t("Presentation"),
 				"default_filename" => 'untitled.pptx'
 			),
@@ -83,7 +82,7 @@ class AppsService {
 	}
 
 	public function getAppOrder() {
-		$order_raw = $this->config->getUserValue($this->userId, $this->appName, 'order');
+		$order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
 		// If order raw empty try to get from 'apporder' app config
 		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
 		// If order raw is still empty, return empty array
@@ -98,8 +97,8 @@ class AppsService {
 		$order = $this->getAppOrder();
 		$entriesByHref = array();
 		if ($this->appManager->isEnabledForUser("onlyoffice")) {
-			$officeEntries = $this->getOnlyOfficeEntries(false);
-			$entries = array_merge($entries, $officeEntries);
+			$office_entries = $this->getOnlyOfficeEntries();
+			$entries = array_merge($entries, $office_entries);
 		}
 		$betaGroupName = $this->config->getSystemValue("beta_group_name");
 		$isBeta = $this->isBetaUser();
@@ -144,7 +143,7 @@ class AppsService {
 		unset($entriesByHref['/apps/murena-dashboard/']);
 		unset($entriesByHref['']);
 
-		return array('apps' => array_values($entriesByHref));
+		return array_values($entriesByHref);
 	}
 
 	public function updateOrder(string $order) {

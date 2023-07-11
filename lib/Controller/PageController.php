@@ -41,7 +41,7 @@ class PageController extends Controller {
 		$displayName = $this->userSession->getUser()->getDisplayName();
 		$this->initialState->provideInitialState('shopReferralProgramUrl', $referralUrl);
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
-		$this->initialState->provideInitialState('entries', $entries['apps']);
+		$this->initialState->provideInitialState('entries', $entries);
 		$this->initialState->provideInitialState('displayName', $displayName);
 		return new TemplateResponse($this->appName, 'dashboard');
 	}
