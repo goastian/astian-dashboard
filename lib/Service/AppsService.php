@@ -50,24 +50,26 @@ class AppsService {
 
 	public function getOnlyOfficeEntries() {
 		$l = $this->l10nFac->get("onlyoffice");
+		$l_dashboard = $this->l10nFac->get("murena-dashboard");
+		$untitled = $l_dashboard->t("untitled");
 		$onlyOfficeEntries = array(
 			array(
 				"id" => "onlyoffice_docx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),
 				"name" => $l->t("Document"),
-				"default_filename" => 'untitled.docx'
+				"default_filename" => $untitled.'.docx'
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app-color.svg'),
 				"name" => $l->t("Spreadsheet"),
-				"default_filename" => 'untitled.xlsx'
+				"default_filename" => $untitled.'.xlsx'
 			),
 			array(
 				"id" => "onlyoffice_pptx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'pptx/app-color.svg'),
 				"name" => $l->t("Presentation"),
-				"default_filename" => 'untitled.pptx'
+				"default_filename" => $untitled.'.pptx'
 			),
 		);
 		$baseDirectory = $this->getDocumentsFolder();
