@@ -8,7 +8,7 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\IUserSession;
-use OCA\EcloudAccounts\Service\AppsService;
+use OCA\MurenaDashboard\Service\AppsService;
 
 class PageController extends Controller {
 	/** @var IInitialState */
