@@ -70,10 +70,10 @@ class AppsService {
 				"default_filename" => 'untitled.pptx'
 			),
 		);
-		$onlyOfficeEntries = array_map(function ($entry) {
+		$baseDirectory = $this->getDocumentsFolder();
+		$onlyOfficeEntries = array_map(function ($entry) use ($baseDirectory) {
 			$entry["type"] = "link";
 			$entry["active"] = false;
-			$baseDirectory = $this->getDocumentsFolder();
 			$entry["href"] = "/apps/onlyoffice/new?id=" . $entry["id"] . "&name=" . $entry["default_filename"] . "&dir=" . $baseDirectory;
 			return $entry;
 		}, $onlyOfficeEntries);
