@@ -165,11 +165,10 @@ class AppsService {
 		$userPath = $this->rootFolder->getUserFolder($userId)->getPath();
 		$filePath = $userPath . '/' . $folderName;
 
-		$folder = null;
+		$folder = $this->rootFolder->get($userPath);
 		if ($this->rootFolder->nodeExists($filePath)) {
 			$folder = $this->rootFolder->get($filePath);
 		} else {
-			$folder = $this->rootFolder->get($userPath);
 			$filePath = $userPath;
 		}
 		return $filePath === $userPath ? '/' : $folder->getName();
