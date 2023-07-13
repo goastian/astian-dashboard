@@ -50,36 +50,38 @@ class AppsService {
 
 	public function getOnlyOfficeEntries() {
 		$l = $this->l10nFac->get("onlyoffice");
-		$l_dashboard = $this->l10nFac->get("murena-dashboard");
-		$untitled = $l_dashboard->t("untitled");
+		$lDashboard = $this->l10nFac->get("murena-dashboard");
+		$untitled = $lDashboard->t("untitled");
+		$baseDirectory = $this->getDocumentsFolder();
 		$onlyOfficeEntries = array(
 			array(
 				"id" => "onlyoffice_docx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),
 				"name" => $l->t("Document"),
-				"default_filename" => $untitled.'.docx'
+				"default_filename" => $untitled.'.docx',
+				"type" => "link",
+				"active" => false,
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_docx&name=" . $untitled.".docx&dir=" . $baseDirectory
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app-color.svg'),
 				"name" => $l->t("Spreadsheet"),
-				"default_filename" => $untitled.'.xlsx'
+				"default_filename" => $untitled.'.xlsx',
+				"type" => "link",
+				"active" => false,
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_xlsx&name=" . $untitled.".xlsx&dir=" . $baseDirectory
 			),
 			array(
 				"id" => "onlyoffice_pptx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'pptx/app-color.svg'),
 				"name" => $l->t("Presentation"),
-				"default_filename" => $untitled.'.pptx'
+				"default_filename" => $untitled.'.pptx',
+				"type" => "link",
+				"active" => false,
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_pptx&name=" . $untitled.".pptx&dir=" . $baseDirectory
 			),
 		);
-		$baseDirectory = $this->getDocumentsFolder();
-		$onlyOfficeEntries = array_map(function ($entry) use ($baseDirectory) {
-			$entry["type"] = "link";
-			$entry["active"] = false;
-			$entry["href"] = "/apps/onlyoffice/new?id=" . $entry["id"] . "&name=" . $entry["default_filename"] . "&dir=" . $baseDirectory;
-			return $entry;
-		}, $onlyOfficeEntries);
-
 		return $onlyOfficeEntries;
 	}
 
