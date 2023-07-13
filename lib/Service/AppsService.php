@@ -50,8 +50,8 @@ class AppsService {
 
 	public function getOnlyOfficeEntries() {
 		$l = $this->l10nFac->get("onlyoffice");
-		$lDashboard = $this->l10nFac->get("murena-dashboard");
-		$untitled = $lDashboard->t("untitled");
+		$l10nDashboard = $this->l10nFac->get("murena-dashboard");
+		$untitled = $l10nDashboard->t("untitled");
 		$baseDirectory = $this->getDocumentsFolder();
 		$onlyOfficeEntries = array(
 			array(
