@@ -9,6 +9,7 @@ use OCP\IGroupManager;
 use OCP\IUserSession;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
+use OCP\Files\IRootFolder;
 
 class AppsService {
 	private string $appName;
@@ -20,7 +21,7 @@ class AppsService {
 	private IUserSession $userSession;
 	private IGroupManager $groupManager;
 	private IURLGenerator $urlGenerator;
-
+	private IRootFolder $rootFolder;
 
 	private const DEFAULT_ORDER = array("/apps/snappymail/", "/apps/calendar/", "/apps/files/" , "/apps/photos/", "/apps/memories/", "/apps/contacts/", "/apps/onlyoffice/ajax/new?id=onlyoffice_docx", "/apps/onlyoffice/ajax/new?id=onlyoffice_xlsx", "/apps/onlyoffice/ajax/new?id=onlyoffice_pptx", "/apps/notes/", "/apps/tasks/", "https://spot.murena.io" , "https://murena.com" );
 	public function __construct(
@@ -32,6 +33,7 @@ class AppsService {
 		IUserSession $userSession,
 		IGroupManager $groupManager,
 		IURLGenerator $urlGenerator,
+		IRootFolder $rootFolder,
 		$userId
 	) {
 		$this->appName = $appName;
@@ -43,34 +45,40 @@ class AppsService {
 		$this->userSession = $userSession;
 		$this->groupManager = $groupManager;
 		$this->urlGenerator = $urlGenerator;
+		$this->rootFolder = $rootFolder;
 	}
 
 	public function getOnlyOfficeEntries() {
 		$l = $this->l10nFac->get("onlyoffice");
+		$l10nDashboard = $this->l10nFac->get("murena-dashboard");
+		$untitled = $l10nDashboard->t("untitled");
+		$baseDirectory = $this->getDocumentsFolder();
 		$onlyOfficeEntries = array(
 			array(
 				"id" => "onlyoffice_docx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),
 				"name" => $l->t("Document"),
+				"type" => "link",
+				"active" => false,
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_docx&name=" . $untitled.".docx&dir=" . $baseDirectory
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app-color.svg'),
 				"name" => $l->t("Spreadsheet"),
+				"type" => "link",
+				"active" => false,
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_xlsx&name=" . $untitled.".xlsx&dir=" . $baseDirectory
 			),
 			array(
 				"id" => "onlyoffice_pptx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'pptx/app-color.svg'),
 				"name" => $l->t("Presentation"),
+				"type" => "link",
+				"active" => false,
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_pptx&name=" . $untitled.".pptx&dir=" . $baseDirectory
 			),
 		);
-		$onlyOfficeEntries = array_map(function ($entry) {
-			$entry["type"] = "link";
-			$entry["active"] = false;
-			$entry["href"] = "/apps/onlyoffice/ajax/new?id=".$entry["id"];
-			return $entry;
-		}, $onlyOfficeEntries);
-
 		return $onlyOfficeEntries;
 	}
 
@@ -147,5 +155,19 @@ class AppsService {
 		$uid = $this->userSession->getUser()->getUID();
 		$gid = $this->config->getSystemValue("beta_group_name");
 		return $this->groupManager->isInGroup($uid, $gid);
+	}
+	public function getDocumentsFolder() {
+		$folderName = 'Documents';
+		$userId = $this->userSession->getUser()->getUID();
+		$userPath = $this->rootFolder->getUserFolder($userId)->getPath();
+		$filePath = $userPath . '/' . $folderName;
+
+		$folder = $this->rootFolder->get($userPath);
+		if ($this->rootFolder->nodeExists($filePath)) {
+			$folder = $this->rootFolder->get($filePath);
+		} else {
+			$filePath = $userPath;
+		}
+		return $filePath === $userPath ? '/' : $folder->getName();
 	}
 }
