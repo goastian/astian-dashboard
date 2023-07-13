@@ -13,6 +13,7 @@ OC.L10N.register(
     "Upgrade Storage" : "Ingrandisci lo Spazio Disco",
     "getCredits" : "ottieni Crediti",
     "openAnAccount" : "apri un Account",
-    "Invite Your Friends" : "Invita gli Amici"
+    "Invite Your Friends" : "Invita gli Amici",
+    "untitled" : "senza titolo"
 },
 "nplurals=2; plural=n != 1;");
