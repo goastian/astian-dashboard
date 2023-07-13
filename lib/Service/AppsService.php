@@ -58,7 +58,6 @@ class AppsService {
 				"id" => "onlyoffice_docx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'docx/app-color.svg'),
 				"name" => $l->t("Document"),
-				"default_filename" => $untitled.'.docx',
 				"type" => "link",
 				"active" => false,
 				"href" => "/apps/onlyoffice/new?id=onlyoffice_docx&name=" . $untitled.".docx&dir=" . $baseDirectory
@@ -67,7 +66,6 @@ class AppsService {
 				"id" => "onlyoffice_xlsx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'xlsx/app-color.svg'),
 				"name" => $l->t("Spreadsheet"),
-				"default_filename" => $untitled.'.xlsx',
 				"type" => "link",
 				"active" => false,
 				"href" => "/apps/onlyoffice/new?id=onlyoffice_xlsx&name=" . $untitled.".xlsx&dir=" . $baseDirectory
@@ -76,7 +74,6 @@ class AppsService {
 				"id" => "onlyoffice_pptx",
 				"icon" => $this->urlGenerator->imagePath('onlyoffice', 'pptx/app-color.svg'),
 				"name" => $l->t("Presentation"),
-				"default_filename" => $untitled.'.pptx',
 				"type" => "link",
 				"active" => false,
 				"href" => "/apps/onlyoffice/new?id=onlyoffice_pptx&name=" . $untitled.".pptx&dir=" . $baseDirectory
