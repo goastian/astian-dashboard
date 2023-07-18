@@ -37,8 +37,7 @@
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
-					:target="entry.target"
-					@click="handleOfficeClick(entry, $event)">
+					:target="entry.target">
 					<div class="color-icons">
 						<img :src="entry.icon"
 							:alt="entry.name"
@@ -54,8 +53,7 @@
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
-					:target="entry.target"
-					@click="handleOfficeClick(entry, $event)">
+					:target="entry.target">
 					<div class="color-icons">
 						<img :src="entry.icon"
 							:alt="entry.name"
@@ -82,15 +80,6 @@ export default {
 			displayName: loadState('murena-dashboard', 'displayName'),
 			appName: 'murena-dashboard',
 		}
-	},
-	methods: {
-		handleOfficeClick(entry, e) {
-			if (entry.href.indexOf('/apps/onlyoffice') === 0) {
-				e.preventDefault()
-				const newOnlyOfficeFileEvent = new CustomEvent('new-onlyoffice-file', { detail: entry.id })
-				document.dispatchEvent(newOnlyOfficeFileEvent)
-			}
-		},
 	},
 }
 </script>
