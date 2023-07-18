@@ -37,8 +37,7 @@
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
-					:target="entry.target"
-					>
+					:target="entry.target">
 					<div class="color-icons">
 						<img :src="entry.icon"
 							:alt="entry.name"
@@ -54,8 +53,7 @@
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
 					:href="entry.href"
-					:target="entry.target"
-					>
+					:target="entry.target">
 					<div class="color-icons">
 						<img :src="entry.icon"
 							:alt="entry.name"
