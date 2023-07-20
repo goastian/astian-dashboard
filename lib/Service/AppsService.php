@@ -137,6 +137,14 @@ class AppsService {
 			foreach ($order as $href) {
 				if (!empty($entriesByHref[$href])) {
 					$entriesByHref = array($href => $entriesByHref[$href]) + $entriesByHref;
+					
+					list($file, $parameters) = explode('?', $entriesByHref[$href]);
+					parse_str($parameters, $output);
+					unset($output['name']);
+					unset($output['dir']);
+
+					$result = $file . '?' . http_build_query($output);
+					$entriesByHref = array($href => $result) + $entriesByHref;
 				}
 			}
 		}
