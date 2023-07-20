@@ -11,7 +11,8 @@ use OCP\IURLGenerator;
 use OCP\L10N\IFactory;
 use OCP\Files\IRootFolder;
 
-class AppsService {
+class AppsService
+{
 	private string $appName;
 	private ?string $userId;
 	private IConfig $config;
@@ -23,7 +24,7 @@ class AppsService {
 	private IURLGenerator $urlGenerator;
 	private IRootFolder $rootFolder;
 
-	private const DEFAULT_ORDER = array("/apps/snappymail/", "/apps/calendar/", "/apps/files/" , "/apps/photos/", "/apps/memories/", "/apps/contacts/", "/apps/onlyoffice/new?id=onlyoffice_docx", "/apps/onlyoffice/new?id=onlyoffice_xlsx", "/apps/onlyoffice/new?id=onlyoffice_pptx", "/apps/notes/", "/apps/tasks/", "https://spot.murena.io" , "https://murena.com" );
+	private const DEFAULT_ORDER = array("/apps/snappymail/", "/apps/calendar/", "/apps/files/", "/apps/photos/", "/apps/memories/", "/apps/contacts/", "/apps/onlyoffice/new?id=onlyoffice_docx", "/apps/onlyoffice/new?id=onlyoffice_xlsx", "/apps/onlyoffice/new?id=onlyoffice_pptx", "/apps/notes/", "/apps/tasks/", "https://spot.murena.io", "https://murena.com");
 	public function __construct(
 		$appName,
 		IConfig $config,
@@ -48,7 +49,8 @@ class AppsService {
 		$this->rootFolder = $rootFolder;
 	}
 
-	public function getOnlyOfficeEntries() {
+	public function getOnlyOfficeEntries()
+	{
 		$l = $this->l10nFac->get("onlyoffice");
 		$l10nDashboard = $this->l10nFac->get("murena-dashboard");
 		$untitled = $l10nDashboard->t("untitled");
@@ -60,7 +62,7 @@ class AppsService {
 				"name" => $l->t("Document"),
 				"type" => "link",
 				"active" => false,
-				"href" => "/apps/onlyoffice/new?id=onlyoffice_docx&name=" . $untitled.".docx&dir=" . $baseDirectory
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_docx&name=" . $untitled . ".docx&dir=" . $baseDirectory
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
@@ -68,7 +70,7 @@ class AppsService {
 				"name" => $l->t("Spreadsheet"),
 				"type" => "link",
 				"active" => false,
-				"href" => "/apps/onlyoffice/new?id=onlyoffice_xlsx&name=" . $untitled.".xlsx&dir=" . $baseDirectory
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_xlsx&name=" . $untitled . ".xlsx&dir=" . $baseDirectory
 			),
 			array(
 				"id" => "onlyoffice_pptx",
@@ -76,13 +78,14 @@ class AppsService {
 				"name" => $l->t("Presentation"),
 				"type" => "link",
 				"active" => false,
-				"href" => "/apps/onlyoffice/new?id=onlyoffice_pptx&name=" . $untitled.".pptx&dir=" . $baseDirectory
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_pptx&name=" . $untitled . ".pptx&dir=" . $baseDirectory
 			),
 		);
 		return $onlyOfficeEntries;
 	}
 
-	public function getAppOrder() {
+	public function getAppOrder()
+	{
 		$order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
 		// If order raw empty try to get from 'apporder' app config
 		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
@@ -93,7 +96,8 @@ class AppsService {
 		return json_decode($order_raw);
 	}
 
-	public function getAppEntries() {
+	public function getAppEntries()
+	{
 		$entries = array_values($this->navigationManager->getAll());
 		$order = $this->getAppOrder();
 		$entriesByHref = array();
@@ -136,7 +140,14 @@ class AppsService {
 			$order = array_reverse($order);
 			foreach ($order as $href) {
 				if (!empty($entriesByHref[$href])) {
-					$entriesByHref = array($href => $entriesByHref[$href]) + $entriesByHref;
+					
+					list($file, $parameters) = explode('?', $entriesByHref[$href]);
+					parse_str($parameters, $output);
+					unset($output['name']);
+					unset($output['dir']);
+
+					$result = $file . '?' . http_build_query($output);
+					$entriesByHref = array($href => $result) + $entriesByHref;
 				}
 			}
 		}
@@ -147,16 +158,19 @@ class AppsService {
 		return array_values($entriesByHref);
 	}
 
-	public function updateOrder(string $order) {
+	public function updateOrder(string $order)
+	{
 		$this->config->setUserValue($this->userId, $this->appName, 'order', $order);
 	}
 
-	private function isBetaUser() {
+	private function isBetaUser()
+	{
 		$uid = $this->userSession->getUser()->getUID();
 		$gid = $this->config->getSystemValue("beta_group_name");
 		return $this->groupManager->isInGroup($uid, $gid);
 	}
-	public function getDocumentsFolder() {
+	public function getDocumentsFolder()
+	{
 		$folderName = 'Documents';
 		$userId = $this->userSession->getUser()->getUID();
 		$userPath = $this->rootFolder->getUserFolder($userId)->getPath();
