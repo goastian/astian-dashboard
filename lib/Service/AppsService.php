@@ -124,7 +124,11 @@ class AppsService {
 			if ($isBeta && str_contains($appEnabledGroups, $betaGroupName)) {
 				$entry["is_beta"] = 1;
 			}
-			$entriesByHref[$entry["href"]] = $entry;
+			
+			// We take href without params as that is what is stored in the user defined order
+			// Also params can be dynamic, makes no sense to include them in the indexing attribute
+			$hrefWithoutParams = parse_url($entry["href"], PHP_URL_PATH);
+			$entriesByHref[$hrefWithoutParams] = $entry;
 		}
 		/*
 		 Sort apps according to order
@@ -137,14 +141,6 @@ class AppsService {
 			foreach ($order as $href) {
 				if (!empty($entriesByHref[$href])) {
 					$entriesByHref = array($href => $entriesByHref[$href]) + $entriesByHref;
-					
-					list($file, $parameters) = explode('?', $entriesByHref[$href]);
-					parse_str($parameters, $output);
-					unset($output['name']);
-					unset($output['dir']);
-
-					$result = $file . '?' . http_build_query($output);
-					$entriesByHref = array($href => $result) + $entriesByHref;
 				}
 			}
 		}
