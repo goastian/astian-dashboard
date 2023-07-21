@@ -36,7 +36,7 @@
 				<a v-for="entry in entries.slice(0,defaultAppCount)"
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
-					:href="entry.href"
+					:href="getHref(entry)"
 					:target="entry.target">
 					<div class="color-icons">
 						<img :src="entry.icon"
@@ -52,7 +52,7 @@
 				<a v-for="entry in entries.slice(defaultAppCount)"
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
-					:href="entry.href"
+					:href="getHref(entry)"
 					:target="entry.target">
 					<div class="color-icons">
 						<img :src="entry.icon"
@@ -79,7 +79,24 @@ export default {
 			entries: loadState('murena-dashboard', 'entries'),
 			displayName: loadState('murena-dashboard', 'displayName'),
 			appName: 'murena-dashboard',
+			baseDirectory: loadState('murena-dashboard', 'baseDirectory'),
+			untitled: t('murena-dashboard', 'untitled'),
 		}
+	},
+	methods: {
+		getHref(entry) {
+			let params = ''
+			if (entry.id === 'onlyoffice_docx') {
+				params = '&dir=' + this.baseDirectory + '&name=' + this.untitled + '.docx'
+			}
+			if (entry.id === 'onlyoffice_xlsx') {
+				params = '&dir=' + this.baseDirectory + '&name=' + this.untitled + '.xlsx'
+			}
+			if (entry.id === 'onlyoffice_pptx') {
+				params = '&dir=' + this.baseDirectory + '&name=' + this.untitled + '.pptx'
+			}
+			return entry.href + params
+		},
 	},
 }
 </script>
