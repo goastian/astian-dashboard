@@ -86,17 +86,15 @@ export default {
 	},
 	methods: {
 		getHref(entry) {
-			let params = ''
-			if (entry.id === 'onlyoffice_docx') {
-				params = '&dir=' + this.documentsBaseDirectory + '&name=' + this.untitled + '.docx'
+			const extensions = {
+				onlyoffice_docx: '.docx',
+				onlyoffice_xlsx: '.xlsx',
+				onlyoffice_pptx: '.pptx',
 			}
-			if (entry.id === 'onlyoffice_xlsx') {
-				params = '&dir=' + this.documentsBaseDirectory + '&name=' + this.untitled + '.xlsx'
+			if (extensions[entry.id]) {
+				return entry.href + '&dir=' + this.documentsBaseDirectory + '&name=' + this.untitled + extensions[entry.id]
 			}
-			if (entry.id === 'onlyoffice_pptx') {
-				params = '&dir=' + this.documentsBaseDirectory + '&name=' + this.untitled + '.pptx'
-			}
-			return entry.href + params
+			return entry.href
 		},
 	},
 }
