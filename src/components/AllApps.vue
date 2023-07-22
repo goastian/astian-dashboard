@@ -69,6 +69,7 @@
 </template>
 <script>
 import { loadState } from '@nextcloud/initial-state'
+const APPLICATION_NAME = 'murena-dashboard'
 
 export default {
 	name: 'AllApps',
@@ -76,24 +77,24 @@ export default {
 		return {
 			defaultAppCount: 12,
 			showAllApps: false,
-			entries: loadState('murena-dashboard', 'entries'),
-			displayName: loadState('murena-dashboard', 'displayName'),
-			appName: 'murena-dashboard',
-			baseDirectory: loadState('murena-dashboard', 'baseDirectory'),
-			untitled: t('murena-dashboard', 'untitled'),
+			entries: loadState(APPLICATION_NAME, 'entries'),
+			displayName: loadState(APPLICATION_NAME, 'displayName'),
+			appName: APPLICATION_NAME,
+			documentsBaseDirectory: loadState(APPLICATION_NAME, 'documentsBaseDirectory'),
+			untitled: t(APPLICATION_NAME, 'untitled'),
 		}
 	},
 	methods: {
 		getHref(entry) {
 			let params = ''
 			if (entry.id === 'onlyoffice_docx') {
-				params = '&dir=' + this.baseDirectory + '&name=' + this.untitled + '.docx'
+				params = '&dir=' + this.documentsBaseDirectory + '&name=' + this.untitled + '.docx'
 			}
 			if (entry.id === 'onlyoffice_xlsx') {
-				params = '&dir=' + this.baseDirectory + '&name=' + this.untitled + '.xlsx'
+				params = '&dir=' + this.documentsBaseDirectory + '&name=' + this.untitled + '.xlsx'
 			}
 			if (entry.id === 'onlyoffice_pptx') {
-				params = '&dir=' + this.baseDirectory + '&name=' + this.untitled + '.pptx'
+				params = '&dir=' + this.documentsBaseDirectory + '&name=' + this.untitled + '.pptx'
 			}
 			return entry.href + params
 		},
