@@ -121,16 +121,7 @@ class AppsService {
 			if ($isBeta && str_contains($appEnabledGroups, $betaGroupName)) {
 				$entry["is_beta"] = 1;
 			}
-
-			// We take href without params as that is what is stored in the user defined order
-			// Also params can be dynamic, makes no sense to include them in the indexing attribute
-			$hrefWithoutParams = parse_url($entry["href"], PHP_URL_PATH);
-			$hrefQuery = parse_url($entry["href"], PHP_URL_QUERY);
-			parse_str($hrefQuery, $params);
-			$id = (isset($params['id'])) ? '?id=' . $params['id'] : '';
-			$hrefWithId = $hrefWithoutParams . $id;
-
-			$entriesByHref[$hrefWithId] = $entry;
+			$entriesByHref[$entry["href"]] = $entry;
 		}
 		/*
 		 Sort apps according to order
