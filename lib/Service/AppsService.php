@@ -50,9 +50,6 @@ class AppsService {
 
 	public function getOnlyOfficeEntries() {
 		$l = $this->l10nFac->get("onlyoffice");
-		$l10nDashboard = $this->l10nFac->get("murena-dashboard");
-		$untitled = $l10nDashboard->t("untitled");
-		$baseDirectory = $this->getDocumentsFolder();
 		$onlyOfficeEntries = array(
 			array(
 				"id" => "onlyoffice_docx",
@@ -60,7 +57,7 @@ class AppsService {
 				"name" => $l->t("Document"),
 				"type" => "link",
 				"active" => false,
-				"href" => "/apps/onlyoffice/new?id=onlyoffice_docx&name=" . $untitled.".docx&dir=" . $baseDirectory
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_docx"
 			),
 			array(
 				"id" => "onlyoffice_xlsx",
@@ -68,7 +65,7 @@ class AppsService {
 				"name" => $l->t("Spreadsheet"),
 				"type" => "link",
 				"active" => false,
-				"href" => "/apps/onlyoffice/new?id=onlyoffice_xlsx&name=" . $untitled.".xlsx&dir=" . $baseDirectory
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_xlsx"
 			),
 			array(
 				"id" => "onlyoffice_pptx",
@@ -76,7 +73,7 @@ class AppsService {
 				"name" => $l->t("Presentation"),
 				"type" => "link",
 				"active" => false,
-				"href" => "/apps/onlyoffice/new?id=onlyoffice_pptx&name=" . $untitled.".pptx&dir=" . $baseDirectory
+				"href" => "/apps/onlyoffice/new?id=onlyoffice_pptx"
 			),
 		);
 		return $onlyOfficeEntries;
