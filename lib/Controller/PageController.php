@@ -43,6 +43,9 @@ class PageController extends Controller {
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
 		$this->initialState->provideInitialState('entries', $entries);
 		$this->initialState->provideInitialState('displayName', $displayName);
+
+		$documentsBaseDirectory = $this->appsService->getDocumentsFolder();
+		$this->initialState->provideInitialState('documentsBaseDirectory', $documentsBaseDirectory);
 		return new TemplateResponse($this->appName, 'dashboard');
 	}
 }

@@ -36,7 +36,7 @@
 				<a v-for="entry in entries.slice(0,defaultAppCount)"
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
-					:href="entry.href"
+					:href="getHref(entry)"
 					:target="entry.target">
 					<div class="color-icons">
 						<img :src="entry.icon"
@@ -52,7 +52,7 @@
 				<a v-for="entry in entries.slice(defaultAppCount)"
 					:key="entry.message"
 					:class="{ 'beta-app': entry.is_beta, 'item': true }"
-					:href="entry.href"
+					:href="getHref(entry)"
 					:target="entry.target">
 					<div class="color-icons">
 						<img :src="entry.icon"
@@ -69,6 +69,7 @@
 </template>
 <script>
 import { loadState } from '@nextcloud/initial-state'
+const APPLICATION_NAME = 'murena-dashboard'
 
 export default {
 	name: 'AllApps',
@@ -76,10 +77,24 @@ export default {
 		return {
 			defaultAppCount: 12,
 			showAllApps: false,
-			entries: loadState('murena-dashboard', 'entries'),
-			displayName: loadState('murena-dashboard', 'displayName'),
-			appName: 'murena-dashboard',
+			entries: loadState(APPLICATION_NAME, 'entries'),
+			displayName: loadState(APPLICATION_NAME, 'displayName'),
+			appName: APPLICATION_NAME,
+			documentsBaseDirectory: loadState(APPLICATION_NAME, 'documentsBaseDirectory')
 		}
+	},
+	methods: {
+		getHref(entry) {
+			const extensions = {
+				onlyoffice_docx: '.docx',
+				onlyoffice_xlsx: '.xlsx',
+				onlyoffice_pptx: '.pptx',
+			}
+			if (extensions[entry.id]) {
+				return entry.href + '&dir=' + this.documentsBaseDirectory + '&name=' + t(APPLICATION_NAME, 'untitled') + extensions[entry.id]
+			}
+			return entry.href
+		},
 	},
 }
 </script>
