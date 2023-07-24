@@ -80,8 +80,7 @@ export default {
 			entries: loadState(APPLICATION_NAME, 'entries'),
 			displayName: loadState(APPLICATION_NAME, 'displayName'),
 			appName: APPLICATION_NAME,
-			documentsBaseDirectory: loadState(APPLICATION_NAME, 'documentsBaseDirectory'),
-			untitled: t(APPLICATION_NAME, 'untitled'),
+			documentsBaseDirectory: loadState(APPLICATION_NAME, 'documentsBaseDirectory')
 		}
 	},
 	methods: {
@@ -92,7 +91,7 @@ export default {
 				onlyoffice_pptx: '.pptx',
 			}
 			if (extensions[entry.id]) {
-				return entry.href + '&dir=' + this.documentsBaseDirectory + '&name=' + this.untitled + extensions[entry.id]
+				return entry.href + '&dir=' + this.documentsBaseDirectory + '&name=' + t(APPLICATION_NAME, 'untitled') + extensions[entry.id]
 			}
 			return entry.href
 		},
