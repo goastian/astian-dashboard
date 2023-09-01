@@ -23,7 +23,7 @@ class AppsService {
 	private IURLGenerator $urlGenerator;
 	private IRootFolder $rootFolder;
 
-	private const DEFAULT_ORDER = array("/apps/snappymail/", "/apps/calendar/", "/apps/files/" , "/apps/photos/", "/apps/memories/", "/apps/contacts/", "/apps/onlyoffice/new?id=onlyoffice_docx", "/apps/onlyoffice/new?id=onlyoffice_xlsx", "/apps/onlyoffice/new?id=onlyoffice_pptx", "/apps/notes/", "/apps/tasks/", "https://spot.murena.io" , "https://murena.com" );
+	private const DEFAULT_ORDER = array("/apps/snappymail/", "/apps/calendar/", "/apps/files/" , "/apps/memories/", "/apps/contacts/", "/apps/onlyoffice/new?id=onlyoffice_docx", "/apps/onlyoffice/new?id=onlyoffice_xlsx", "/apps/onlyoffice/new?id=onlyoffice_pptx", "/apps/notes/", "/apps/tasks/", "https://spot.murena.io" , "https://murena.com" );
 	public function __construct(
 		$appName,
 		IConfig $config,
@@ -123,6 +123,10 @@ class AppsService {
 			}
 			$entriesByHref[$entry["href"]] = $entry;
 		}
+		// Remove photos, replace in order correctly with memories
+		$order = str_replace('/apps/photos/', '/apps/memories/', $order);
+		$order = array_unique($order);
+		unset($entriesByHref['/apps/photos/']);
 		/*
 		 Sort apps according to order
 		 Since "entriesByHref" is indexed by "href", simply reverse the order array and prepend in "entriesByHref"
