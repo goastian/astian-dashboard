@@ -86,6 +86,7 @@ export default {
 	},
 	computed: {
 		totalSpaceUsedInPercentage() {
+      // eslint-disable-next-line no-console
       console.log(this.storageInfo);
 			const percent = (this.storageInfo.used * 100) / this.storageInfo.quota
 			return percent.toFixed(2)
