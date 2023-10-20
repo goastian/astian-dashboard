@@ -124,7 +124,7 @@ export default {
 		getStorageUsageDetails() {
 			this.storageFetchStatus = false
 			axios
-				.get(generateUrl('/apps/files/v1/stats'))
+				.get(generateUrl('/apps/files/api/v1/stats'))
 				.then((response) => {
 					this.storageInfo = response.data.data
 					this.storageFetchStatus = true
