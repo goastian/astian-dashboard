@@ -80,7 +80,7 @@ export default {
 			entries: loadState(APPLICATION_NAME, 'entries'),
 			displayName: loadState(APPLICATION_NAME, 'displayName'),
 			appName: APPLICATION_NAME,
-			documentsBaseDirectory: loadState(APPLICATION_NAME, 'documentsBaseDirectory')
+			documentsBaseDirectory: loadState(APPLICATION_NAME, 'documentsBaseDirectory'),
 		}
 	},
 	methods: {
