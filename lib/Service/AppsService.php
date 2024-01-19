@@ -102,7 +102,7 @@ class AppsService {
 		$isBeta = $this->isBetaUser();
 		foreach ($entries as &$entry) {
 			try {
-				$entry["icon"] = $this->urlGenerator->imagePath($entry["id"], 'app-color.svg');
+				// $entry["icon"] = $this->urlGenerator->imagePath($entry["id"], 'app-color.svg');
 			} catch (\Throwable $th) {
 				//exception - continue execution
 			}
