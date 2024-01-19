@@ -91,7 +91,6 @@ class AppsService {
 	}
 
 	public function getAppEntries() {
-		return [];
 		$entries = array_values($this->navigationManager->getAll());
 		$order = $this->getAppOrder();
 		$entriesByHref = array();

@@ -1,6 +1,6 @@
 variables:
     APP_NAME: 'murena-dashboard'
-    TO_PACKAGE: 'appinfo l10n lib templates js css'
+    TO_PACKAGE: 'appinfo l10n lib templates js css img'
 
 include:
   - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
