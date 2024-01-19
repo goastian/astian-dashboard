@@ -18,7 +18,6 @@
         <navigation>
             <name>Murena Dashboard</name>
             <route>murena-dashboard.page.index</route>
-            <icon>app.svg</icon>
         </navigation>
     </navigations>
 </info>
