@@ -14,10 +14,4 @@
     <dependencies>
         <nextcloud min-version="26" max-version="26"/>
     </dependencies>
-    <navigations>
-        <navigation>
-            <name>Murena Dashboard</name>
-            <route>murena-dashboard.page.index</route>
-        </navigation>
-    </navigations>
 </info>
