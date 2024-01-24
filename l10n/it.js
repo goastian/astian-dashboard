@@ -10,8 +10,8 @@ OC.L10N.register(
     "Show All Apps" : "Mostra tutte le App",
     "Show Less Apps" : "Mostra meno App",
     "Storage" : "Spazio disco",
-    "Upgrade Storage" : "Ingrandisci lo Spazio Disco",
-    "getCredits" : "ottieni Crediti",
+    "Upgrade Storage" : "Aumenta lo spazio Disco",
+    "getCredits" : "Crediti",
     "openAnAccount" : "apri un Account",
     "Invite Your Friends" : "Invita gli Amici"
 },
