@@ -45,7 +45,7 @@
 						</div>
 					</div>
 				</div>
-				<div v-if="shopReferralProgramUrl.length" class="row margin0">
+				<div v-if="isReferralProgramActive && shopReferralProgramUrl.length" class="row margin0">
 					<div class="col-lg-12 instructions">
 						<div class="row margin0">
 							<div id="storage-redeem" class="storage-space-div width90">
@@ -79,6 +79,7 @@ export default {
 		return {
 			storageInfo: [],
 			storageFetchStatus: false,
+      isReferralProgramActive: false,
 			shopReferralProgramUrl: loadState('murena-dashboard', 'shopReferralProgramUrl'),
 			increaseStorageUrl: loadState('murena-dashboard', 'increaseStorageUrl'),
 			appName: 'murena-dashboard',
