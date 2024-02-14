@@ -39,7 +39,7 @@ class PageController extends Controller {
 		$storageUrl = $this->config->getAppValue('increasestoragebutton', 'link', '');
 		$entries = $this->appsService->getAppEntries();
 		$displayName = $this->userSession->getUser()->getDisplayName();
-		$isReferralProgramActive = $this->config->getSystemValue('isReferralProgramActive', false);
+		$isReferralProgramActive = $this->config->getSystemValue('is_referral_program_active', false);
 		$this->initialState->provideInitialState('shopReferralProgramUrl', $referralUrl);
 		$this->initialState->provideInitialState('increaseStorageUrl', $storageUrl);
 		$this->initialState->provideInitialState('entries', $entries);
