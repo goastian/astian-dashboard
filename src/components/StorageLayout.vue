@@ -79,7 +79,7 @@ export default {
 		return {
 			storageInfo: [],
 			storageFetchStatus: false,
-      isReferralProgramActive: false,
+			isReferralProgramActive: false,
 			shopReferralProgramUrl: loadState('murena-dashboard', 'shopReferralProgramUrl'),
 			increaseStorageUrl: loadState('murena-dashboard', 'increaseStorageUrl'),
 			appName: 'murena-dashboard',
