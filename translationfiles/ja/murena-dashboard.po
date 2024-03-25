@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2023-03-20 18:15+0530\n"
+"PO-Revision-Date: 2024-07-11 03:52+0000\n"
+"Last-Translator: kivk shozk <kivk@users.noreply.i18n.e.foundation>\n"
+"Language-Team: Japanese <https://i18n.e.foundation/projects/ecloud/"
+"murena-dashboard/ja/>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.6.2\n"
+
+#. TRANSLATORS src/components/AllApps.vue:103
+#: /home/nivesh/Desktop/repos/murena-dashboard/js/murena-dashboard-main.js:2
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:8
+msgid "Error when trying to connect to ONLYOFFICE"
+msgstr "ONLYOFFICEに接続する際にエラーが発生しました"
+
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:58
+msgid "Document"
+msgstr "ドキュメント"
+
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:63
+msgid "Spreadsheet"
+msgstr "スプレッドシート"
+
+#: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:68
+msgid "Presentation"
+msgstr "プレゼンテーション"
+
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
+msgid "Murena Dashboard"
+msgstr "Murenaダッシュボード"
+
+#. TRANSLATORS src/components/AllApps.vue:29
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:2
+msgid "Welcome back"
+msgstr "おかえりなさい"
+
+#. TRANSLATORS src/components/AllApps.vue:32
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:4
+msgid "Show All Apps"
+msgstr "全てのアプリを表示"
+
+#. TRANSLATORS src/components/AllApps.vue:33
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:6
+msgid "Show Less Apps"
+msgstr "一部のアプリのみを表示"
+
+#. TRANSLATORS src/components/StorageLayout.vue:31
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:10
+msgid "Storage"
+msgstr "ストレージ"
+
+#. TRANSLATORS src/components/StorageLayout.vue:43
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:12
+msgid "Upgrade Storage"
+msgstr "ストレージをアップグレード"
+
+#. TRANSLATORS src/components/StorageLayout.vue:53
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:14
+msgid "getCredits"
+msgstr "友達を招待すると、最高40ユーロのクラウドストレージ用クレジットをプレゼントし"
+"ます！"
+
+#. TRANSLATORS src/components/StorageLayout.vue:56
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:16
+msgid "openAnAccount"
+msgstr "あなたの友達がアカウントを登録すると、1人あたり2ユーロのMurenaクラウドのスト"
+"レージ用クレジットをあなたにプレゼントします。"
+
+#. TRANSLATORS src/components/StorageLayout.vue:59
+#: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:18
+msgid "Invite Your Friends"
+msgstr "友達を招待"
