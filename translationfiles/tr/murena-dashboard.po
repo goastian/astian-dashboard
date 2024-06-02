@@ -8,72 +8,79 @@ msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
 "POT-Creation-Date: 2023-03-20 18:15+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-07-11 03:52+0000\n"
+"Last-Translator: Mert Kara <efemertkara06@proton.me>\n"
+"Language-Team: Turkish <https://i18n.e.foundation/projects/ecloud/"
+"murena-dashboard/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. TRANSLATORS src/components/AllApps.vue:103
 #: /home/nivesh/Desktop/repos/murena-dashboard/js/murena-dashboard-main.js:2
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:8
 msgid "Error when trying to connect to ONLYOFFICE"
-msgstr ""
+msgstr "ONLYOFFICE bağlanırken sorun oluştu"
 
 #: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:58
 msgid "Document"
-msgstr ""
+msgstr "Doküman"
 
 #: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:63
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Çizelge"
 
 #: /home/nivesh/Desktop/repos/murena-dashboard/lib/Util.php:68
 msgid "Presentation"
-msgstr ""
+msgstr "Sunum"
 
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialAppInfoFakeDummyForL10nScript.php:2
 msgid "Murena Dashboard"
-msgstr ""
+msgstr "Murena Paneli"
 
 #. TRANSLATORS src/components/AllApps.vue:29
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:2
 msgid "Welcome back"
-msgstr ""
+msgstr "Tekrar hoşgeldiniz"
 
 #. TRANSLATORS src/components/AllApps.vue:32
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:4
 msgid "Show All Apps"
-msgstr ""
+msgstr "Tüm Uygulamaları Göster"
 
 #. TRANSLATORS src/components/AllApps.vue:33
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:6
 msgid "Show Less Apps"
-msgstr ""
+msgstr "Daha Az Uygulama Göster"
 
 #. TRANSLATORS src/components/StorageLayout.vue:31
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:10
 msgid "Storage"
-msgstr ""
+msgstr "Depolama"
 
 #. TRANSLATORS src/components/StorageLayout.vue:43
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:12
 msgid "Upgrade Storage"
-msgstr ""
+msgstr "Depolamayı Artır"
 
 #. TRANSLATORS src/components/StorageLayout.vue:53
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:14
 msgid "getCredits"
 msgstr ""
+"Arkadaşlarınızı davet ederek bulut depolama alanınız için 40€'ya kadar kredi "
+"kazanın!"
 
 #. TRANSLATORS src/components/StorageLayout.vue:56
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:16
 msgid "openAnAccount"
 msgstr ""
+"Hesap açan her arkadaşınız için, Murena bulutunda bulut depolama için "
+"kullanılmak üzere 2 € kazanacaksınız."
 
 #. TRANSLATORS src/components/StorageLayout.vue:59
 #: /home/nivesh/Desktop/repos/murena-dashboard/specialVueFakeDummyForL10nScript.js:18
 msgid "Invite Your Friends"
-msgstr ""
+msgstr "Arkadaşlarınızı Davet Edin"
