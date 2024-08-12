@@ -82,7 +82,7 @@ class AppsService {
 	public function getAppOrder() {
 		$order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
 		// If order raw empty try to get from 'apporder' app config
-		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'apporder', 'order') : $order_raw;
+		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'core', 'apporder') : $order_raw;
 		// If order raw is still empty, return empty array
 		if (!$order_raw) {
 			return self::DEFAULT_ORDER;
