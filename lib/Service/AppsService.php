@@ -80,9 +80,9 @@ class AppsService {
 	}
 
 	public function getAppOrder() {
-		$order_raw = $this->config->getUserValue($this->userId, 'core', 'apporder');
+		$order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
 		// If order raw empty try to get from 'apporder' app config
-		// $order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'core', 'apporder') : $order_raw;
+		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'core', 'apporder') : $order_raw;
 		// If order raw is still empty, return empty array
 		if (!$order_raw) {
 			return self::DEFAULT_ORDER;
@@ -93,10 +93,6 @@ class AppsService {
 	public function getAppEntries() {
 		$entries = array_values($this->navigationManager->getAll());
 		$order = $this->getAppOrder();
-		if ($order instanceof stdClass) {
-			// Typecast to array
-			$order = (array) $order;
-		}
 		$entriesByHref = array();
 		if ($this->appManager->isEnabledForUser("onlyoffice")) {
 			$office_entries = $this->getOnlyOfficeEntries();
@@ -128,11 +124,9 @@ class AppsService {
 			$entriesByHref[$entry["href"]] = $entry;
 		}
 		// Remove photos, replace in order correctly with memories
-		if (is_array($order)) {
-			$order = str_replace('/apps/photos/', '/apps/memories/', $order);
-			$order = array_unique($order);
-			unset($entriesByHref['/apps/photos/']);
-		}
+		$order = str_replace('/apps/photos/', '/apps/memories/', $order);
+		$order = array_unique($order);
+		unset($entriesByHref['/apps/photos/']);
 		/*
 		 Sort apps according to order
 		 Since "entriesByHref" is indexed by "href", simply reverse the order array and prepend in "entriesByHref"
@@ -155,7 +149,7 @@ class AppsService {
 	}
 
 	public function updateOrder(string $order) {
-		$this->config->setUserValue($this->userId, 'core', 'apporder', $order);
+		$this->config->setUserValue($this->userId, $this->appName, 'order', $order);
 	}
 
 	private function isBetaUser() {
