@@ -80,9 +80,9 @@ class AppsService {
 	}
 
 	public function getAppOrder() {
-		$order_raw = $this->config->getUserValue($this->userId, 'murena_launcher', 'order');
+		$order_raw = $this->config->getUserValue($this->userId, 'core', 'apporder');
 		// If order raw empty try to get from 'apporder' app config
-		$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'core', 'apporder') : $order_raw;
+		//$order_raw = !$order_raw ? $this->config->getUserValue($this->userId, 'core', 'apporder') : $order_raw;
 		// If order raw is still empty, return empty array
 		if (!$order_raw) {
 			return self::DEFAULT_ORDER;
@@ -149,7 +149,7 @@ class AppsService {
 	}
 
 	public function updateOrder(string $order) {
-		$this->config->setUserValue($this->userId, $this->appName, 'order', $order);
+		$this->config->setUserValue($this->userId,'core', 'apporder', $order);
 	}
 
 	private function isBetaUser() {
