@@ -128,7 +128,7 @@ class AppsService {
 			$order = str_replace('/apps/photos/', '/apps/memories/', $order);
 			$order = array_unique($order);
 			unset($entriesByHref['/apps/photos/']);
-		}	
+		}
 		/*
 		 Sort apps according to order
 		 Since "entriesByHref" is indexed by "href", simply reverse the order array and prepend in "entriesByHref"
