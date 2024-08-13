@@ -93,6 +93,10 @@ class AppsService {
 	public function getAppEntries() {
 		$entries = array_values($this->navigationManager->getAll());
 		$order = $this->getAppOrder();
+		if ($order instanceof stdClass) {
+			// Typecast to array
+			$order = (array) $order;
+		}
 		$entriesByHref = array();
 		if ($this->appManager->isEnabledForUser("onlyoffice")) {
 			$office_entries = $this->getOnlyOfficeEntries();
