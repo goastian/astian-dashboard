@@ -6,8 +6,8 @@ stages:
   - deploy
 
 variables:
-    APP_NAME: 'murena-dashboard'
-    TO_PACKAGE: 'appinfo l10n lib templates js css'
+  APP_NAME: "murena-dashboard"
+  TO_PACKAGE: "appinfo l10n lib templates js css"
 
 include:
   - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
