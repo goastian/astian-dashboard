@@ -1,3 +1,10 @@
+stages:
+  - test
+  - build
+  - performance
+  - dast
+  - deploy
+
 variables:
     APP_NAME: 'murena-dashboard'
     TO_PACKAGE: 'appinfo l10n lib templates js css'
