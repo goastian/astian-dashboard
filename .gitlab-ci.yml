@@ -1,6 +1,13 @@
+stages:
+  - test
+  - build
+  - performance
+  - dast
+  - deploy
+
 variables:
-    APP_NAME: 'murena-dashboard'
-    TO_PACKAGE: 'appinfo l10n lib templates js css'
+  APP_NAME: "murena-dashboard"
+  TO_PACKAGE: "appinfo l10n lib templates js css"
 
 include:
   - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
@@ -9,3 +16,12 @@ include:
   - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
     ref: main
     file: "nc-apps-deploy.yml"
+  - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
+    ref: main
+    file: "mr-review-tools.yml"
+  - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
+    ref: main
+    file: "git-operations.yml"
+  - project: "e/infra/ecloud/nextcloud-apps/ci-templates"
+    ref: main
+    file: "populate-code-climate-default-config.yml"
