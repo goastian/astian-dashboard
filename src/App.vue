@@ -1,29 +1,29 @@
 <template>
 	<div id="dashboard-app">
 		<AllApps />
-		<StorageLayout />
+		<!-- <StorageLayout /> -->
 	</div>
 </template>
 <script>
 import AllApps from './components/AllApps.vue'
-import StorageLayout from './components/StorageLayout.vue'
+// import StorageLayout from './components/StorageLayout.vue'
 export default {
 	name: 'App',
 	components: {
 		AllApps,
-		StorageLayout,
+		// StorageLayout,
 	},
 }
 </script>
 
 <script>
 import AllApps from './components/AllApps.vue'
-import StorageLayout from './components/StorageLayout.vue'
+// import StorageLayout from './components/StorageLayout.vue'
 export default {
   name: 'App',
   components: {
     AllApps,
-    StorageLayout,
+    // StorageLayout,
   },
 }
 </script>
