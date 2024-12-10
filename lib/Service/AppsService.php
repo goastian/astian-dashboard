@@ -158,6 +158,8 @@ class AppsService {
 		return $this->groupManager->isInGroup($uid, $gid);
 	}
 	public function getDocumentsFolder() {
+		return '/';
+		/*
 		$folderName = 'Documents';
 		$userId = $this->userSession->getUser()->getUID();
 		$userPath = $this->rootFolder->getUserFolder($userId)->getPath();
@@ -170,5 +172,6 @@ class AppsService {
 			$filePath = $userPath;
 		}
 		return $filePath === $userPath ? '/' : $folder->getName();
+		*/
 	}
 }
