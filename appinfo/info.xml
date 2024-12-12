@@ -5,7 +5,7 @@
     <name>Murena Dashboard</name>
     <summary>Murena Dashboard</summary>
     <description><![CDATA[Murena Dashboard]]></description>
-    <version>5.0.2</version>
+    <version>6.0.0</version>
     <licence>agpl</licence>
     <author mail="dev@murena.com">Murena</author>
     <namespace>MurenaDashboard</namespace>
