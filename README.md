@@ -1,6 +1,6 @@
-## Make murena-dashboard app as default dashboard
+## Make astian-dashboard app as default dashboard
 
-- To make default dashboard, add `'defaultapp' => 'murena-dashboard'` changes in `/config/config.php`. 
+- To make default dashboard, add `'defaultapp' => 'astian-dashboard'` changes in `/config/config.php`. 
 
 ## Config options
 
